@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Complete Binary Search Tree</title>
+    <url>/2022/10/30/Complete-Binary-Search-Tree/</url>
+    <content><![CDATA[<h3 id="Complete-Binary-Search-Tree"><a href="#Complete-Binary-Search-Tree" class="headerlink" title="Complete Binary Search Tree"></a><a href="https://pintia.cn/problem-sets/1582215244956827648/exam/problems/1582215245019742217">Complete Binary Search Tree</a></h3><p>​    本题采取先排序，再将这个问题转换为中序遍历填数字的问题，简化了代码。</p>
+<span id="more"></span>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10005</span>], b[<span class="number">10005</span>], n, flag;</span><br><span class="line"><span class="type">void</span> <span class="title function_">sort</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = a[j];</span><br><span class="line">                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">                cnt = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!cnt)<span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">inorder</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">2</span>*i &lt;= n)inorder(<span class="number">2</span>*i);</span><br><span class="line">    b[i] = a[flag];</span><br><span class="line">    flag ++;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">2</span>*i+<span class="number">1</span> &lt;= n)inorder(<span class="number">2</span>*i+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]); </span><br><span class="line">    &#125;</span><br><span class="line">    sort();</span><br><span class="line">    inorder(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, b[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ICS速成笔记</title>
+    <url>/2022/11/09/ICS%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>大一暑学期计算机系统概论考前复习速成。</p>
+<span id="more"></span>
+<div class="pdf-container" data-target="/pdf/ICS速成笔记.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+      <tags>
+        <tag>ICS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NeRF</title>
+    <url>/2022/11/18/NeRF/</url>
+    <content><![CDATA[<p>第一次阅读计算机视觉相关领域论文。</p>
+<span id="more"></span>
+<blockquote>
+<p>原文链接：<a href="https://arxiv.org/pdf/2003.08934.pdf">NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</a></p>
+<p>NeRF框架总体介绍、原理详解及相关技术(有一些前置知识介绍)：</p>
+</blockquote>
+<iframe src="//player.bilibili.com/player.html?aid=852328703&bvid=BV1fL4y1T7Ag&cid=550491381&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<blockquote>
+<p>其他相关介绍视频（本人并未观看）:</p>
+<p><a href="https://www.bilibili.com/video/BV1d841187tn/">NeRF源码解析</a></p>
+<p><a href="https://www.bilibili.com/video/BV1d34y1n7fn/">NeRF系列公开课</a></p>
+</blockquote>
+<p>下面开始正式论文阅读记录：</p>
+<h1 id="0-Abstract"><a href="#0-Abstract" class="headerlink" title="0 Abstract"></a>0 Abstract</h1><p>这个算法用全连接深度网络来表示场景。</p>
+<ul>
+<li><p>输入：5D坐标（空间位置$x,y,z$和观察方向$θ，φ$）</p>
+<img src="/2022/11/18/NeRF/1.png" class>
+</li>
+<li><p>输出：每个空间位置的体积密度(volume density)和视景发射辐射度(view-dependent emitted radiance)</p>
+</li>
+</ul>
+<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h1><p>将静态场景表示为一个连续的5D函数，这个函数输出空间中每个点的颜色(radiance)和密度(可理解为不透明度)。</p>
+<img src="/2022/11/18/NeRF/2.png" class>
+<blockquote>
+<p>以上图为例，即先将输入的100张图片变成第二张图的样子，找到每个相机的位置，然后用体渲染技术沿光线累积这个场景表示的采样点信息，最后从新的视角渲染图像。</p>
+</blockquote>
+<p>这个程序的运行流程是：</p>
+<ol>
+<li>沿相机光线查询5D坐标</li>
+<li>利用神经网络合成视图</li>
+<li>用体渲染技术输出颜色和密度，投影到图像中</li>
+</ol>
+<p>此算法还优化了神经辐射场：</p>
+<p>​    对于复杂场景，优化神经辐射场的表示并没有收敛到足够高的清晰度，并且在每个摄像机光线所需要的采样数方面效率低下。所以作者还使用了<strong>位置编码</strong>输入的坐标来解决这些问题。</p>
+<p>​    位置编码能使MLP表示频率更高的函数。作者还提出了<strong>分层采样过程</strong>，用来减少需要的输入视图的个数。</p>
+<p>总而言之，这个算法的技术贡献有：</p>
+<ul>
+<li>将具有复杂几何和材质的连续场景表现为5D神经辐射场，参数化为基本MLP网络。</li>
+<li>基于经典体渲染技术的可微分渲染过程，包括分层采样策略，用于将MLP的容量分配给场景中的可见内容。</li>
+<li>将每个5D空间坐标映射到更高维度空间的位置编码，成功优化神经辐射场从而表示高频内容。</li>
+</ul>
+<img src="/2022/11/18/NeRF/3.png" class>
+<p>​    沿着相机的光线采样5D坐标(图a)，将这些信息输入$F_θ$生成颜色和密度(图b)，用体渲染技术合成2D图像(图c)。该渲染函数是可微的，因此我们可以通过最小化合成图像和GT观测图像之间的error来优化场景表示(图d)。</p>
+<h1 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2 Related Work"></a>2 Related Work</h1><p>​    回顾了一些这项工作所用到的技术和前人所做的努力。</p>
+<h2 id="2-1-Neural-3D-shape-representations"><a href="#2-1-Neural-3D-shape-representations" class="headerlink" title="2.1 Neural 3D shape representations"></a>2.1 Neural 3D shape representations</h2><p>​    通过优化将$xyz$坐标映射到有符号距离函数的深层网络。但是该函数仅允许使用2D图像优化神经隐式形状表示，只能表示几何复杂度较低的简单形状。</p>
+<h2 id="2-2-View-synthesis-and-image-based-rendering"><a href="#2-2-View-synthesis-and-image-based-rendering" class="headerlink" title="2.2 View synthesis and image-based rendering"></a>2.2 View synthesis and image-based rendering</h2><ul>
+<li>mesh方法：基于图像重投影的基于梯度的mesh优化通常非常困难，在优化前需要提供具有固定拓扑的末班网络作为初始化。这不适用于无约束的现实世界场景。</li>
+<li>体积方法：能表示更复杂的材料和形状并且适合基于梯度的优化，视觉干扰也更少，现有的方法时间空间复杂度更高。本文提出在MLP的参数中编码连续volume来规避这个问题，渲染质量更高，存储成本更小。</li>
+</ul>
+<h1 id="3-Neural-Radiance-Field-Scene-Representation"><a href="#3-Neural-Radiance-Field-Scene-Representation" class="headerlink" title="3 Neural Radiance Field Scene Representation"></a>3 Neural Radiance Field Scene Representation</h1><p>​    本文将连续场景表现为5D向量值函数。输入为5D坐标，输出为每个点的颜色$c=(r,g,b)$和空间密度$σ$。</p>
+<p>​    在实际表现中，我们将视角方向表示为3D向量<strong>$d$</strong>，用MLP网络近似这种连续的5D场景表示。</p>
+<p>​    我们通过让网络把体积密度预测为仅与位置$x$有关，来保证这种方法在不同视图下是一致的。</p>
+<p>​    同时RGB颜色$c$预测为位置和观察方向的函数：</p>
+<ul>
+<li>MLP首先把3D坐标$x$通过8层全连接层(激活函数为ReLU，每层256通道)，输出体积密度$σ$和一个256维的特征向量。</li>
+<li>将特征向量与相机光线的观察方向连接起来，传递到额外的一个全连接层(激活函数为ReLU，每层128通道)，该层输出与视图相关的RGB颜色。</li>
+</ul>
+<img src="/2022/11/18/NeRF/4.png" class>
+<p>​    显示来自两个相机位置的两个固定3D点的外观，预测这两个3D点镜面反射外观的变化并持续推广。</p>
+<img src="/2022/11/18/NeRF/5.png" class>
+<p>​    没有视图依赖性(只有x输入)训练的模型难以表示镜面反射，会导致过度平滑的外观。</p>
+<h1 id="4-Volume-Rendering-with-Radiance-Fields"><a href="#4-Volume-Rendering-with-Radiance-Fields" class="headerlink" title="4 Volume Rendering with Radiance Fields"></a>4 Volume Rendering with Radiance Fields</h1><blockquote>
+<p>体渲染：<a href="https://blog.csdn.net/Aaron9489/article/details/127899392?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EAD_ESQUERY%7Eyljh-1-127899392-blog-107904447.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EAD_ESQUERY%7Eyljh-1-127899392-blog-107904447.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=2">体渲染(Volume Rendering)与光线投射(Ray Casting)算法详解</a></p>
+<p>alpha合成：图像与背景结合，可以产生部分透明或全透明的视觉效果，透明度用(0,1)表示</p>
+<p>alpha混合：半透明的前景色和背景结合的过程，加权计算。<br>$<br>\left\{<br>\begin{array}{**l}<br>out_A &amp; = &amp; src_A + dst_A(1-src_A) \\<br>out_{RGB} &amp; = &amp; \frac {(src_{RGB}src_A+dst_{RGB}dst_A(1-src_A))}{out_A} \\<br>out_A=0 &amp; =&gt; &amp; out_{RGB}=0<br>\end{array}<br>\right.<br>$</p>
+</blockquote>
+<p>体密度即为光线在x处终止的概率，相机光线$r_{(t)}=o+td$的预期颜色为：</p>
+<p>$C_{(r)}\int_{t_n}^{t_f} T_{(t)}σ(r_{(t)}c(r_{(t)})，d) dt, where: T_{(t)}=exp(-\int_{t_n}^{t} σ(r_{(s)}) ds)$</p>
+<p>$T_{(t)}$表示沿光线从$t_n$到$t$传播而不撞击任何其他粒子的概率，这个$T$可以避免渲染时过度引入对象背面的信息。</p>
+<p>我们使用数值估计这个连续积分。我们将$[t_n,t_f]$划分为$N$个均匀间隔的区域，然后从每个区域内均匀随机抽取一个采样点。</p>
+<h1 id="5-Optimizing-a-Neural-Radiance-Field"><a href="#5-Optimizing-a-Neural-Radiance-Field" class="headerlink" title="5 Optimizing a Neural Radiance Field"></a>5 Optimizing a Neural Radiance Field</h1><p>​    上一节中已经描述了将场景建模为神经辐射场和从该表示中渲染新视图所需的核心组件，但是仍然不能达到最高的质量。因此，需要引入两项改进：</p>
+<ul>
+<li>输入坐标的位置编码，有助于MLP表示高频函数</li>
+<li>分层采样过程，有效地对高频进行采样</li>
+</ul>
+<h2 id="5-1-位置编码-Positional-encoding"><a href="#5-1-位置编码-Positional-encoding" class="headerlink" title="5.1 位置编码(Positional encoding)"></a>5.1 位置编码(Positional encoding)</h2><p>​    将F~θ~重新表示为两个函数的组合$F_θ=F_{θ}^{‘}○γ$，γ是从$R$空间到$R^{2L}$空间的函数，实际上$F_{θ}^{‘}$还是一个MLP。</p>
+<p>​    在流行的Transformer架构中也使用了类似的映射，在这里它被称为位置编码。然而，Transformers将其用于一个不同的目标，即提供序列中token的离散位置，作为不包含任何顺序概念的架构的输入。相反，我们使用这些函数将连续输入坐标映射到更高维空间，以使我们的MLP更容易逼近更高频的函数。</p>
+<h2 id="5-2-分层体积采样-Hierarchical-volume-sampling"><a href="#5-2-分层体积采样-Hierarchical-volume-sampling" class="headerlink" title="5.2 分层体积采样(Hierarchical volume sampling)"></a>5.2 分层体积采样(Hierarchical volume sampling)</h2><p>​    渲染策略是在每个相机光线的N个查询点处密集评估神将辐射场网络，这种策略效率低下，所以本文提出了一中分层表示法，通过按最终渲染的预期效果按比例分配采样点提高渲染效率。</p>
+<p>​    不使用单个神经网络来表示场景，而同时优化两个神经网络：”course”和”fine”</p>
+<ol>
+<li>首先，使用基本的分层采样对一组N~c~个位置进行采样，评估这些位置对应的course网络。</li>
+<li>然后沿着每一条光线生成一个更合理的点采样，其中采样点偏向于体积存在的相关部分。</li>
+<li>为此，我们首先从course网络生成合成颜色，然后在光线上采样体密度大的点，采样N~f~个作为第二组采样点，在第一组和第二组采样的并集上计算”fine”网络，并计算最终的渲染颜色。</li>
+</ol>
+<h2 id="5-3-实现细节"><a href="#5-3-实现细节" class="headerlink" title="5.3 实现细节"></a>5.3 实现细节</h2><p>​    我们为每个场景优化一个单独的神经连续体积表示网络。需要的参数有：RGB图像数据集、相应的相机外参和内参以及场景边界。在每次优化迭代中，我们从数据集中的所有像素集合中随机采样一批相机光线，然后按照$5.2$中的分层采样。最后的损失只是course和fine的渲染像素和真实像素颜色之间的平方误差。</p>
+<img src="/2022/11/18/NeRF/6.png" class>
+<p>​    其中，$R$为batch中的光线集，$C(r),C_{c}(r),C_{f}(r)$为GT，course网络预测，fine网络预测的RGB颜色。</p>
+<h1 id="6-Results"><a href="#6-Results" class="headerlink" title="6 Results"></a>6 Results</h1><p>两种数据集：</p>
+<ul>
+<li>Synthetic renderings of objects</li>
+<li>Real images of complex scenes</li>
+</ul>
+<blockquote>
+<p>nerf-pytorch代码阅读笔记：<a href="https://github.com/lhmd/nerf-notes">nerf-notes</a></p>
+<p>上手pytorch：<a href="https://blog.csdn.net/jiaowoshouzi/article/details/102002468?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-102002468-blog-123333042.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-102002468-blog-123333042.pc_relevant_default&amp;utm_relevant_index=1">60分钟教你上手PyTorch + 迁移学习</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CV</category>
+        <category>paper</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>code before this website</title>
+    <url>/2022/10/27/code-before-this-website/</url>
+    <content><![CDATA[<h1 id="fds刷题记录"><a href="#fds刷题记录" class="headerlink" title="fds刷题记录"></a>fds刷题记录</h1><h3 id="PTA-B-1003-我要通过"><a href="#PTA-B-1003-我要通过" class="headerlink" title="PTA B 1003 我要通过!"></a><a href="https://pintia.cn/problem-sets/994805260223102976/exam/problems/994805323154440192">PTA B 1003 我要通过!</a></h3><span id="more"></span>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> n,k,flag;</span><br><span class="line">    <span class="type">char</span> ch;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    getchar();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">        <span class="type">int</span> a[<span class="number">3</span>]= &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        k=<span class="number">0</span>;</span><br><span class="line">        flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>((ch=getchar())!=<span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(ch==<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">                a[k]++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;P&#x27;</span>&amp;&amp;k==<span class="number">0</span>)</span><br><span class="line">                k=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;T&#x27;</span>&amp;&amp;k==<span class="number">1</span>)</span><br><span class="line">                k=<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                flag=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag&amp;&amp;k==<span class="number">2</span>&amp;&amp;a[<span class="number">0</span>]*a[<span class="number">1</span>]==a[<span class="number">2</span>]&amp;&amp;a[<span class="number">1</span>]!=<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="初识dp：买卖股票最佳时机"><a href="#初识dp：买卖股票最佳时机" class="headerlink" title="初识dp：买卖股票最佳时机"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2zsx1/">初识dp：买卖股票最佳时机</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size=prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> dp[<span class="number">30005</span>][<span class="number">2</span>]=&#123;<span class="number">0</span>&#125;,i;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>]=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;size; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i])?dp[i<span class="number">-1</span>][<span class="number">0</span>]:dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i];</span><br><span class="line">            dp[i][<span class="number">1</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>])?dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]:dp[i<span class="number">-1</span>][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[size<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*此题利润累加法也可解&lt;贪心算法&gt;</span></span><br><span class="line"><span class="comment">public int maxProfit(int[] prices) &#123;</span></span><br><span class="line"><span class="comment">    if (prices == null || prices.length &lt; 2)</span></span><br><span class="line"><span class="comment">        return 0;</span></span><br><span class="line"><span class="comment">    int total = 0, index = 0, length = prices.length;</span></span><br><span class="line"><span class="comment">    while (index &lt; length) &#123;</span></span><br><span class="line"><span class="comment">        //如果股票下跌就一直找，直到找到股票开始上涨为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &gt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //股票上涨开始的值，也就是这段时间上涨的最小值</span></span><br><span class="line"><span class="comment">        int min = prices[index];</span></span><br><span class="line"><span class="comment">        //一直找到股票上涨的最大值为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &lt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //计算这段上涨时间的差值，然后累加</span></span><br><span class="line"><span class="comment">        total += prices[index++] - min;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return total;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="异或运算的应用：查重"><a href="#异或运算的应用：查重" class="headerlink" title="异或运算的应用：查重"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x21ib6/">异或运算的应用：查重</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            res=res^nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="位运算的应用：判断数字是否重复"><a href="#位运算的应用：判断数字是否重复" class="headerlink" title="位运算的应用：判断数字是否重复"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2f9gg/">位运算的应用：判断数字是否重复</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> line[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> column[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> block[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> shift = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;<span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="string">&#x27;.&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                shift = <span class="number">1</span> &lt;&lt; (board[i][j] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                <span class="type">int</span> k = (i / <span class="number">3</span>) * <span class="number">3</span> + j / <span class="number">3</span>;</span><br><span class="line">                <span class="comment">//如果对应的位置只要有一个大于0，说明有冲突，直接返回false</span></span><br><span class="line">                <span class="keyword">if</span> ((column[i] &amp; shift) &gt; <span class="number">0</span> || (line[j] &amp; shift) &gt; <span class="number">0</span> || (block[k] &amp; shift) &gt; <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                column[i] |= shift;</span><br><span class="line">                line[j] |= shift;</span><br><span class="line">                block[k] |= shift;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>专业分流内训</title>
+    <url>/2022/10/28/%E4%B8%93%E4%B8%9A%E5%88%86%E6%B5%81%E5%86%85%E8%AE%AD/</url>
+    <content><![CDATA[<h1 id="Welcome-to-QC-family"><a href="#Welcome-to-QC-family" class="headerlink" title="Welcome to QC family"></a>Welcome to QC family</h1><p>professional introduction for tech team<br><br>from:lhmd</p>
+<div class="pt-12">
+  <span @click="$slidev.nav.next" class="px-2 p-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
+    Let's start! <carbon:arrow-right class="inline">
+  </carbon:arrow-right></span>
+</div>
+
+<span id="more"></span>
+<hr>
+<h1 id="专业选择"><a href="#专业选择" class="headerlink" title="专业选择"></a>专业选择</h1><p>今年计科120个名额，工设要哭了<br><br>信安也扩招了，人麻了</p>
+<ul>
+<li>计科和软工80%课程一样，软工有一些sb课不便描述，计科have硬件课</li>
+<li>信安培养方案年年大改，总体来说很硬核</li>
+<li>能去计科就不要来软工</li>
+<li>计科也在课改，但是是向好的方向，软工在改但改的不多</li>
+</ul>
+<hr>
+<h1 id="个人简历"><a href="#个人简历" class="headerlink" title="个人简历"></a>个人简历</h1><p>简约</p>
+<ul>
+<li>基本信息</li>
+<li>高考成绩</li>
+<li>教育背景</li>
+<li>奖项证书</li>
+<li>自我评价</li>
+<li>校园经历</li>
+<li>不要写自己的<strong>缺点</strong> </li>
+</ul>
+<hr>
+<h1 id="辅助材料"><a href="#辅助材料" class="headerlink" title="辅助材料"></a>辅助材料</h1><p>老师会看的</p>
+<ul>
+<li>有什么写什么</li>
+<li>能写多少是多少</li>
+<li>和竞赛本身没什么关系，只是加分手段<del>除非你和太宗一样强</del></li>
+</ul>
+<hr>
+<h1 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h1><ul>
+<li>半分钟到一分半，有三个档位</li>
+<li>要有自己来这个专业的原因</li>
+<li>有过相关经历一定要说</li>
+<li>编一个<strong>情感方面的理由</strong>()</li>
+<li>自我介绍中提到的每一个词你都必须很清楚他如果继续问你你能答上来</li>
+<li>不要太装学习</li>
+<li>一分钟内传达更多要点</li>
+<li>自我介绍时最好每个教授都看过去</li>
+<li>编程能力不错，数学英语好，未来考虑</li>
+<li>基本不会有英文自我介绍，遇到算你倒霉</li>
+</ul>
+<hr>
+<h1 id="example"><a href="#example" class="headerlink" title="example"></a>example</h1><ul>
+<li><p>尊敬的老师：<br>我是工信2119班的王伟杰，来自陕西西安。<br>我小学时候学习过scratch，第一次对软件感兴趣是在初中看三体时被冯诺依曼用人列计算机制作的软件来推算三体的运动规律所打动，觉得计算机真的很神奇，从此对软件的兴趣便一发不可收拾，原来生活中丰富多彩的软件用这些小小的代码就能打出来，对软件方面知识的热情一直到高中毕业也没有衰减半分。所以我毅然选择了浙江大学，怀着最初的梦想来到了这里。<br>我在高中的时候曾获得数学、英语竞赛二等奖，还被推举为陕西省三好学生，有良好的数理基础，在自学C语言和大计基的过程中也让我坚定了来到软件工程专业的信心。来到大学后，我加入了计算机学院学生会和勤创的视觉与技术推广部的技术组，在与同学和学长们的交流中锻炼了自己的沟通技巧和逻辑思考能力。<br>在仔细阅读软件工程的培养方案和自学《软件工程导论》后，我发现软件工程确实是一门适合我并且可以让我热爱并为之奋斗、钻研的专业，因此，我希望在大学的四年中可以在软件工程这个领域中不断钻研于提升自我，在未来的某一天实现自己的理想。</p>
+</li>
+<li><p>大学规划：在大学打好基础，主动学习，拓宽视野，并参加一些计算机比赛，实习积累经验，并争取出国交流的机会。毕业后保研本校或考研。</p>
+</li>
+<li>生涯规划：我目标在移动开发和前端领域工作，并致力于个性化的SaaS领域，同时为国家“大数据背景下智慧政务的建设”方向奉献自己的一份力。</li>
+</ul>
+<hr>
+<h1 id="个人陈述"><a href="#个人陈述" class="headerlink" title="个人陈述"></a>个人陈述</h1><ul>
+<li>写出来的东西尽量挑关键词<strong>标重点</strong></li>
+<li>个人优势，选择原因，个人兴趣，未来规划（具体）</li>
+<li>志愿说明：没有必要全计院</li>
+</ul>
+<hr>
+<h1 id="一些tips"><a href="#一些tips" class="headerlink" title="一些tips"></a>一些tips</h1><ul>
+<li>提前想好<strong>话术</strong>，例如我在回答非专业性问题时要重点突出我的哪些优势让面试老师注意到我</li>
+<li>想好自己被问到劣势怎么回答，不知道就表达自己很想学的想法</li>
+<li>放一个模板：我在不断地学习中也发现了自己在计算机语言算法问题上的不足，和竞赛选手们的差距也在激励着我不断地学习和请教，我同时也相信只要保持着我的热爱和努力，以及利用好浙大给我的资源，会在慢慢的自我磨炼中达到自我的超越并向目标一步一步的迈进。</li>
+<li>关于未来规划，可以<del>编</del>一个自己想探索的<strong>领域</strong>，例如<del>计算机视觉</del>、<del>人工智能</del>等等，在自我介绍和个人陈述中引导老师向这方面靠拢，掌握老师会问你的问题。</li>
+<li>如上一条，在自我介绍中留空子</li>
+<li>多看以前的面试题</li>
+<li><del>Markdown个人陈述？</del></li>
+</ul>
+<hr>
+<h1 id="硬知识储备"><a href="#硬知识储备" class="headerlink" title="硬知识储备"></a>硬知识储备</h1><ul>
+<li>关于简历和自我介绍中可以说的<strong>勤创</strong>的前端知识，大家不用担心老师会问到</li>
+<li>算法题一般不会问太难，撑死问到排序，<del>同组有信竞生除外</del>，有时间的话可以看看《啊哈算法》</li>
+<li>计科—人工智能，大数据</li>
+<li>软工—软件工程导论</li>
+<li>信安—密码学</li>
+<li><strong>大计基</strong>速成</li>
+<li>如果还是小白的话，百度百科用起来</li>
+<li>细读<strong>培养方案</strong>！！！</li>
+</ul>
+<hr>
+<h1 id="要了解的硬知识举栗"><a href="#要了解的硬知识举栗" class="headerlink" title="要了解的硬知识举栗"></a>要了解的硬知识举栗</h1><ul>
+<li>数据类型</li>
+<li>二进制科学计数法</li>
+<li>反码补码</li>
+<li>小数存储</li>
+<li>数据结构基本知识（啊哈算法看过的就秒杀</li>
+<li>冯诺依曼</li>
+<li>C语言基础</li>
+</ul>
+<hr>
+<h1 id="hb-and-Tai-zong’s-time"><a href="#hb-and-Tai-zong’s-time" class="headerlink" title="hb and Tai_zong’s time"></a>hb and Tai_zong’s time</h1><hr>
+<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1>]]></content>
+      <categories>
+        <category>勤创相关</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>专业分流</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大物期中整理</title>
+    <url>/2022/11/02/%E5%A4%A7%E7%89%A9%E6%9C%9F%E4%B8%AD%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<p>大二上大学物理乙期中复习。</p>
+<span id="more"></span>
+<div class="pdf-container" data-target="/pdf/大物期中整理.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+      <tags>
+        <tag>大物</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机视觉导论</title>
+    <url>/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/</url>
+    <content><![CDATA[<p>接触计算机视觉相关的第一门课程。</p>
+<span id="more"></span>
+<p>[toc]</p>
+<h1 id="Lecture"><a href="#Lecture" class="headerlink" title="Lecture"></a>Lecture</h1><h2 id="Lec-1-Introduction"><a href="#Lec-1-Introduction" class="headerlink" title="Lec 1 Introduction"></a>Lec 1 Introduction</h2><h3 id="CV主要任务："><a href="#CV主要任务：" class="headerlink" title="CV主要任务："></a>CV主要任务：</h3><ul>
+<li>三维重建</li>
+<li>图像理解</li>
+<li>图像合成</li>
+</ul>
+<h3 id="Review-of-Linear-Algebra"><a href="#Review-of-Linear-Algebra" class="headerlink" title="Review of Linear Algebra"></a>Review of Linear Algebra</h3><p>省略。。。</p>
+<h2 id="Lec-2"><a href="#Lec-2" class="headerlink" title="Lec 2"></a>Lec 2</h2><h2 id="Lec-3"><a href="#Lec-3" class="headerlink" title="Lec 3"></a>Lec 3</h2><h2 id="Lec-4"><a href="#Lec-4" class="headerlink" title="Lec 4"></a>Lec 4</h2><h2 id="Lec-5"><a href="#Lec-5" class="headerlink" title="Lec 5"></a>Lec 5</h2><h2 id="Lec-6"><a href="#Lec-6" class="headerlink" title="Lec 6"></a>Lec 6</h2><h2 id="Lec-7-Structure-from-Motion"><a href="#Lec-7-Structure-from-Motion" class="headerlink" title="Lec 7 Structure from Motion"></a>Lec 7 Structure from Motion</h2><blockquote>
+<p>Target: recover camera poses and 3D structure of a scene from its images</p>
+</blockquote>
+<h3 id="1-Camera-calibration"><a href="#1-Camera-calibration" class="headerlink" title="1 Camera calibration"></a>1 Camera calibration</h3><h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><p>参考文献：<a href="https://blog.csdn.net/fengye2two/article/details/80686409/">图像处理——相机标定</a></p>
+<blockquote>
+<p>世界坐标系（world coordinate）(<em>xw,yw,zw</em>)，也称为测量坐标系，是一个三维直角坐标系，以其为基准可以描述相机和待测物体的空间位置。世界坐标系的位置可以根据实际情况自由确定。世界坐标系的最小单位为mm。</p>
+<p>相机坐标系（camera coordinate）(<em>xc,yc,zc</em>)，也是一个三维直角坐标系，原点位于镜头光心处，xc、yc轴分别与像面的两边平行，zc轴为镜头光轴，与像平面垂直。相机坐标系的最小单位为mm。</p>
+<p>图像坐标系（image coordinate）(<em>x</em>,<em>y</em>)，是像平面上的二维直角坐标系。图像坐标系的原点为镜头光轴与像平面的交点（也称主点，principal point），它的x轴与相机坐标系的xc轴平行，它的y轴与相机坐标系的yc轴平行。图像坐标系的最小单位为mm。</p>
+<p>像素坐标系（pixel coordinate）(u,v)，是图像处理工作中常用的二维直角坐标系，反映了相机CCD/CMOS芯片中像素的排列情况。它的原点位于图像左上角，横坐标u表示像素所在的列，纵坐标v表示像素所在的行。像素坐标系与图像坐标系可以简单理解为平移关系，它们同处于像平面。像素坐标系的x轴与图像坐标系的u轴平行，像素坐标系的y轴与图像坐标系的v轴平行。像素坐标系的最小单位为像素。</p>
+</blockquote>
+<p>变换过程：</p>
+<p>世界=》相机=》图像=》像素</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/1.png" class>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/2.png" class>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/3.png" class>
+<p>so, it is similar to lab2.</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/4.png" class>
+<p>世界直接转换为像素：</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/5.png" class>
+<p>解方程时：</p>
+<ul>
+<li>找特征点，建立方程求解未知数$p$</li>
+</ul>
+<blockquote>
+<p>具体查看参考文献和课程PPT</p>
+</blockquote>
+<h4 id="PnP问题"><a href="#PnP问题" class="headerlink" title="PnP问题"></a>PnP问题</h4><p>参考文献：<a href="https://zhuanlan.zhihu.com/p/399140251">PnP问题各种算法总结分析</a></p>
+<blockquote>
+<p>问题描述：已知n个3D点的坐标(相对世界坐标系)以及这些点的像素坐标时，如何估计相机的位姿</p>
+</blockquote>
+<h5 id="Direct-Linear-Transform-DLT"><a href="#Direct-Linear-Transform-DLT" class="headerlink" title="Direct Linear Transform (DLT)"></a>Direct Linear Transform (DLT)</h5><p>前面我们通过解方程的形式解出了这个方程，这种方法就叫做DLT。</p>
+<h5 id="P3P"><a href="#P3P" class="headerlink" title="P3P"></a>P3P</h5><p>至少三个对应关系可以解出相机坐标，还需要一个对应关系使这个解是特解。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/6.png" class>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/7.png" class>
+<h5 id="EPnP"><a href="#EPnP" class="headerlink" title="EPnP"></a>EPnP</h5><p>Main steps: </p>
+<ol>
+<li>Represent each point as the linear combination of 4 control points c~i~. </li>
+<li><p>Construct a linear system in the control-point coordinate.</p>
+</li>
+<li><p>Solve the equation.</p>
+</li>
+</ol>
+<h3 id="2-Two-frame-structure-from-motion"><a href="#2-Two-frame-structure-from-motion" class="headerlink" title="2 Two-frame structure from motion"></a>2 Two-frame structure from motion</h3><ol>
+<li>Assume Camera Matrix 𝐾 is known for each camera </li>
+<li>Find a few Reliable Corresponding Points</li>
+<li>Find Relative Camera Position 𝐭 and Orientation 𝑅</li>
+<li>Find 3D position of scene points</li>
+</ol>
+<p>详细讲解：<a href="https://zhuanlan.zhihu.com/p/472205819">对极几何—知乎</a></p>
+<p>​                    <a href="https://xhy3054.github.io/epipolar-geometry/">对极几何—github</a></p>
+<h3 id="3-Multi-frame-structure-from-motion"><a href="#3-Multi-frame-structure-from-motion" class="headerlink" title="3 Multi-frame structure from motion"></a>3 Multi-frame structure from motion</h3><ol>
+<li>Initialize camera motion and scene structure </li>
+<li>For each additional view - Determine projection matrix of new camera using all the<br> known 3D points that are visible in its image - Refine and extend structure: compute new 3D points, reoptimize existing points that are also seen by this camera</li>
+<li>Refine structure and motion: Bundle Adjustment</li>
+</ol>
+<h3 id="4-A-modern-SfM-system-COLMAP"><a href="#4-A-modern-SfM-system-COLMAP" class="headerlink" title="4 A modern SfM system: COLMAP"></a>4 A modern SfM system: COLMAP</h3><blockquote>
+<p>sfM: Structure-from-Motion</p>
+<p>MVS: Multi-View Stereo</p>
+</blockquote>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/8.png" class>
+<h2 id="Lec-8-Depth-estimation-and-3D-reconstruction"><a href="#Lec-8-Depth-estimation-and-3D-reconstruction" class="headerlink" title="Lec 8 Depth estimation and 3D reconstruction"></a>Lec 8 Depth estimation and 3D reconstruction</h2><h3 id="1-Depth-estimation"><a href="#1-Depth-estimation" class="headerlink" title="1 Depth estimation"></a>1 Depth estimation</h3><h4 id="1-1-Introduction"><a href="#1-1-Introduction" class="headerlink" title="1.1 Introduction"></a>1.1 Introduction</h4><p>​    深度传感器顾名思义是用来探测环境物体与传感器之间的距离的。它的输出主要可以表示为深度图(depth map)和点云(point cloud)这两种形式。</p>
+<p>​    深度图像（depth image)也被称为距离影像（range image），是指将从图像采集器到场景中各点的距离（深度）作为像素值的图像，它直接反映了景物可见表面的几何形状。深度图像经过坐标转换可以计算为点云数据，有规则及必要信息的点云数据也可以反算为深度图像数据。<br>深度数据流所提供的图像帧中，每一个像素点代表的是在深度感应器的视野中，该特定的（x, y）坐标处物体到离摄像头平面最近的物体到该平面的距离（以毫米为单位）。</p>
+<ul>
+<li>被动测距传感(Passive depth sensing)</li>
+</ul>
+<blockquote>
+<p>被动测距传感=两个相隔一定距离的相机获得两幅图像+立体匹配+三角原理计算视差（disparity）</p>
+</blockquote>
+<p>​        两个相隔一定距离的摄像机同时获取同一场景的两幅图像，通过立体匹配算法找到两幅图像中对应的像素点，随后根据三角原理计算出视差信息，而视差信息通过转换可用于表征场景中物体的深度信息。基于立体匹配算法，还可通过拍摄同一场景下不同角度的一组图像来获得该场景的深度图像。除此之外，场景深度信息还可以通过对图像的光度特征、明暗特征等特征进行分析间接估算得到。</p>
+<ul>
+<li>主动测距传感(Active depth sensing)</li>
+</ul>
+<p>​        主动测距传感相比较于被动测距传感最明显的特征是：设备本身需要发射能量来完成深度信息的采集。这也就保证了深度图像的获取独立于彩色图像的获取。近年来，主动深度传感在市面上的应用愈加丰富。主动深度传感的方法主要包括了TOF（Time of Flight）、结构光、激光扫描等。</p>
+<h4 id="1-2-Stereo-matching"><a href="#1-2-Stereo-matching" class="headerlink" title="1.2 Stereo matching"></a>1.2 Stereo matching</h4><blockquote>
+<p>参考资料<a href="https://zhuanlan.zhihu.com/p/161276985">3D视觉之立体匹配</a></p>
+<p><a href="https://blog.csdn.net/Android_WPF/article/details/126434543">立体匹配算法</a></p>
+</blockquote>
+<p>最简单的算法：</p>
+<ul>
+<li>For each pixel in the first image <ul>
+<li>Find corresponding epipolar line in the right image</li>
+<li>Search along epipolar line and pick the best match</li>
+</ul>
+</li>
+<li>Simplest case: epipolar lines are horizontal scanlines</li>
+</ul>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/9.png" class>
+<p>这样就找到了两个相同的点，然后计算深度。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/10.png" class>
+<p>如果视角不在同一水平线上，就先把他们转到同一水平线。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/11.png" class>
+<p>Stereo as energy minimization：让当前像素的代价聚合过程受多个方向(或路径)上所有像素的影响，方向越多参与影响当前像素的邻域像素就越多</p>
+<p>动态规划：</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/12.png" class>
+<p>Choosing the stereo baseline：</p>
+<ul>
+<li>Too small: large depth error </li>
+<li>Too large: difficult search problem</li>
+</ul>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/13.png" class>
+<h4 id="1-3-Multi-view-stereo"><a href="#1-3-Multi-view-stereo" class="headerlink" title="1.3 Multi-view stereo"></a>1.3 Multi-view stereo</h4><p>Plane-Sweep: <a href="https://blog.csdn.net/xuangenihao/article/details/81392684">平面扫描算法</a></p>
+<p>PatchMatch: <a href="PatchMatch">PatchMatch</a></p>
+<ol>
+<li>Initialize pixels with random patch offsets</li>
+<li>Check if neighbors have better patch offsets</li>
+<li>Search in concentric radius around the current offset for better better patch offsets</li>
+<li>Go to Step 2 until converge.</li>
+</ol>
+<h3 id="2-3D-reconstruction"><a href="#2-3D-reconstruction" class="headerlink" title="2 3D reconstruction"></a>2 3D reconstruction</h3><h4 id="2-1-3D-representations"><a href="#2-1-3D-representations" class="headerlink" title="2.1 3D representations"></a>2.1 3D representations</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/14.png" class>
+<ul>
+<li><p>点云</p>
+</li>
+<li><p>mesh 用G(E, V)表示</p>
+</li>
+<li><p>voxel</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/15.png" class>
+</li>
+<li><p>SDF(Signed Distance Function)</p>
+<ul>
+<li>The distance of a point to the shape boundary</li>
+<li>The distance is defined by a metric, usually the Euclidean distance</li>
+</ul>
+<p>Truncated Signed Distance Function (TSDF): Truncation SDF’s distance value to [−1, 1]</p>
+</li>
+</ul>
+<h4 id="2-2-3D-surface-reconstruction"><a href="#2-2-3D-surface-reconstruction" class="headerlink" title="2.2 3D surface reconstruction"></a>2.2 3D surface reconstruction</h4><p><a href="https://blog.csdn.net/qinqinxiansheng/article/details/119449196">KinectFusion</a></p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/16.png" class>
+<p><strong><a href="https://www.jianshu.com/p/8641e0db0367">泊松重建</a></strong></p>
+<p><a href="https://blog.csdn.net/weixin_38060850/article/details/109143025"><strong>Marching Cubes算法</strong></a></p>
+<p>视频介绍Marching Cubes算法: </p>
+<iframe src="//player.bilibili.com/player.html?aid=79262663&bvid=BV1yJ411r73v&cid=135644481&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p><a href="https://blog.csdn.net/whuawell/article/details/74998280">Marching Squares</a> 基本和Marching cubes 类似。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/17.png" class>
+<p><strong><a href="https://blog.csdn.net/jiankangyq/article/details/121808174">COLMAP</a></strong>: 一种通用的运动结构 (SfM) 和多视图立体 (MVS) 管道。</p>
+<h4 id="2-3-Texture-mapping"><a href="#2-3-Texture-mapping" class="headerlink" title="2.3 Texture mapping"></a>2.3 Texture mapping</h4><blockquote>
+<p>Surface lives in 3D world space</p>
+<p>Every 3D surface point also has a place where it goes in the 2D image (texture).</p>
+</blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/364045620">纹理映射(Texture mapping)</a></p>
+<h2 id="Lec-9-Deep-Learning"><a href="#Lec-9-Deep-Learning" class="headerlink" title="Lec 9 Deep Learning"></a>Lec 9 Deep Learning</h2><h3 id="1-Machine-learning"><a href="#1-Machine-learning" class="headerlink" title="1 Machine learning"></a>1 Machine learning</h3><blockquote>
+<p>传统程序是给电脑输入和程序，电脑给出输出。</p>
+<p>机器学习是给电脑输入和输出，电脑给出程序。</p>
+</blockquote>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li><p>Model: $x$和$y$之间关系的数学表示</p>
+</li>
+<li><p>Supervised learning(监督学习): 可以由训练资料中学到或建立一个模式（函数/learning model），并且依次模式推测出新的实例。</p>
+<p>labeled data: exisitng (x,y) pairs, called training data.</p>
+</li>
+<li><p>机器学习的两个阶段：</p>
+<ul>
+<li>训练(Training)</li>
+<li>测试(Testing)</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/18.png" class>
+<h3 id="2-Linear-classifier"><a href="#2-Linear-classifier" class="headerlink" title="2 Linear classifier"></a>2 Linear classifier</h3><h4 id="CLassification-model"><a href="#CLassification-model" class="headerlink" title="CLassification model"></a>CLassification model</h4><blockquote>
+<p>输入是一张图片</p>
+<p>输出是每个分类的对应分数</p>
+</blockquote>
+<p>有两部分组成：</p>
+<ul>
+<li>评分函数</li>
+<li>损失函数</li>
+</ul>
+<h4 id="Linear-classifier"><a href="#Linear-classifier" class="headerlink" title="Linear classifier"></a>Linear classifier</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/19.png" class>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/20.png" class>
+<p>将一张照片里面的所有像素变成一个向量。</p>
+<p>$f(x_i,W,b) = Wx_i + b$</p>
+<p>参数<strong>W</strong>被称为<strong>权重（weights）</strong>，<strong>b</strong>被称为<strong>偏差向量（bias vector）</strong>。</p>
+<ul>
+<li>首先，一个单独的矩阵乘法$Wx_i$就高效地并行评估10个不同的分类器（每个分类器针对一个分类），其中每个类的分类器就是W的一个行向量。</li>
+<li>训练数据用来学习$W$和$b$</li>
+<li>一张图像可看做高维空间的一个点，每个分类就是把这些点划分成若干个区域。</li>
+</ul>
+<h4 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h4><blockquote>
+<p>判断一个权重矩阵是否足够好</p>
+<p>回归问题使用均方误差(MSE)</p>
+<p>分类问题使用交叉熵(Cross Entropy Loss)</p>
+<p>参考资料：<a href="https://blog.csdn.net/xg123321123/article/details/80781611">简单谈谈Cross Entropy Loss</a></p>
+</blockquote>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/21.png" class>
+<p>Softmax: 把K个实值转换为另外K个实值并使K个实值之和为1的函数。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/22.png" class>
+<h3 id="3-Neural-networks"><a href="#3-Neural-networks" class="headerlink" title="3 Neural networks"></a>3 Neural networks</h3><blockquote>
+<p>参考资料：<a href="https://blog.csdn.net/weixin_39910711/article/details/114849349">激活函数（Activation Function）</a></p>
+</blockquote>
+<p>​    <strong>激活函数</strong>：不使用激活函数的话，神经网络的每层都只是做<strong>线性变换</strong>，多层输入叠加后也还是线性变换。因为线性模型的表达能力通常不够，所以这时候就体现了激活函数的作用了，激活函数可以引入<strong>非线性因素</strong>。</p>
+<p>​    在神经网络每一层神经元做完线性变换后，加上一个非线性激励函数对线性变换的结果进行转换，输出就可以变成一个非线性的函数。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/23.png" class>
+<p><strong>多层感知器</strong></p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/24.png" class>
+<p><strong>全连接神经网络</strong></p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/25.png" class>
+<h3 id="4-Convolutional-neural-networks—卷积神经网络"><a href="#4-Convolutional-neural-networks—卷积神经网络" class="headerlink" title="4 Convolutional neural networks—卷积神经网络"></a>4 Convolutional neural networks—卷积神经网络</h3><blockquote>
+<p>参考资料：<a href="https://blog.csdn.net/jiaoyangwm/article/details/80011656/">卷积神经网络超详细介绍</a></p>
+</blockquote>
+<h4 id="Convolution-local-connectivity-weight-sharing"><a href="#Convolution-local-connectivity-weight-sharing" class="headerlink" title="Convolution = local connectivity + weight sharing"></a>Convolution = local connectivity + weight sharing</h4><blockquote>
+<p>两者的关键作用就是减少参数数量，使运算变得简洁、高效，能够在超大规模数据集上运算</p>
+</blockquote>
+<p>local connectivity(局部连接): 对于局部连接而言：层间神经只有局部范围内的连接，在这个范围内采用全连接的方式，超过这个范围的神经元则没有连接；连接与连接之间独立参数，相比于去全连接减少了感受域外的连接，有效减少参数规模。</p>
+<p>weight sharing(权值共享): 从图像局部学习到的信息应用到图像的其他部位去。权值共享意味着每一个过滤器在遍历整个图像的时候，过滤器的参数(即过滤器的参数的值)是固定不变的</p>
+<p>参考：<a href="https://blog.csdn.net/malvas/article/details/86647781">weight sharing</a></p>
+<h4 id="感受野-Receptive-fields"><a href="#感受野-Receptive-fields" class="headerlink" title="感受野(Receptive fields)"></a>感受野(Receptive fields)</h4><ul>
+<li>若目标相对感受野过小，那训练参数只有少部分是对应于训练目标的，则在测试环节，也很难检测出类似的目标；</li>
+<li>若目标相对感受野过大，那训练的参数都是对应于整个对象的局部信息，是不够利于检测小目标的。</li>
+</ul>
+<h4 id="池化层-Pooling-layer"><a href="#池化层-Pooling-layer" class="headerlink" title="池化层(Pooling layer)"></a>池化层(Pooling layer)</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/26.png" class>
+<h4 id="总体框架"><a href="#总体框架" class="headerlink" title="总体框架"></a>总体框架</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/27.png" class>
+<h3 id="5-Training-neural-networks"><a href="#5-Training-neural-networks" class="headerlink" title="5 Training neural networks"></a>5 Training neural networks</h3><h4 id="梯度下降训练CNN"><a href="#梯度下降训练CNN" class="headerlink" title="梯度下降训练CNN"></a>梯度下降训练CNN</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/28.png" class>
+<h4 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h4><blockquote>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/21407711?refer=intelligentunit">反向传播-cs231n</a></p>
+</blockquote>
+<ol>
+<li>Forward data through the network, get loss</li>
+<li>Backprop to calculate the gradients</li>
+<li>Update the parameters using the gradient</li>
+<li>Go to step 1 if not converged</li>
+</ol>
+<h4 id="随机梯度下降法-SGD"><a href="#随机梯度下降法-SGD" class="headerlink" title="随机梯度下降法(SGD)"></a>随机梯度下降法(SGD)</h4><blockquote>
+<p>参考：<a href="https://blog.csdn.net/weixin_41803874/article/details/114016587">随机梯度下降详解</a></p>
+</blockquote>
+<p>仅计算一批随机采样图像上的损失和梯度。</p>
+<h4 id="超参数-hyper-parameters"><a href="#超参数-hyper-parameters" class="headerlink" title="超参数(hyper-parameters)"></a>超参数(hyper-parameters)</h4><p>算法运行前需要决定的参数。</p>
+<p>选择依据：</p>
+<ol>
+<li>Train for original model</li>
+<li>Validate to find hyperparameters</li>
+<li>Test to understand generalizability</li>
+</ol>
+<h4 id="过拟合-overfitting"><a href="#过拟合-overfitting" class="headerlink" title="过拟合(overfitting)"></a>过拟合(overfitting)</h4><p>把噪音点也拟合上了，过分依赖数据集。</p>
+<p>防止：</p>
+<ol>
+<li><p>Cross validation(验证) and early stop</p>
+</li>
+<li><p>Regularization(正则化) or dropout</p>
+<p><strong>正则化</strong>：在损失函数中给每个参数 w 加上权重，引入模型复杂度指标，从而抑制模型噪声，减小过拟合。 </p>
+<p><strong>dropout</strong>：在前向传播的时候，让某个神经元的激活值以一定的概率p停止工作，这样可以使模型泛化性更强，因为它不会太依赖某些局部的特征</p>
+</li>
+<li><p>Data augmentation(数据增强)</p>
+<blockquote>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/41679153">数据增强(Data Augmentation)</a></p>
+</blockquote>
+<p>​    为了获得更多的数据，我们只要对现有的数据集进行微小的改变。比如旋转（flips）、移位（translations）、旋转（rotations）等微小的改变。我们的网络会认为这是不同的图片。</p>
+</li>
+</ol>
+<h4 id="批标准化-Batch-Normalization"><a href="#批标准化-Batch-Normalization" class="headerlink" title="批标准化(Batch Normalization)"></a>批标准化(Batch Normalization)</h4><blockquote>
+<p>参考<a href="https://www.cnblogs.com/guoyaohua/p/8724433.html">深入理解BN</a></p>
+</blockquote>
+<p>​    目的：Reduce internal covariate shift(<a href="https://zhuanlan.zhihu.com/p/480425962">内部协变量偏移</a>)</p>
+<p>​    神经网络的深度增加，每层特征值分布会逐渐的向激活函数的输出区间的上下两端（激活函数饱和区间）靠近，这样继续下去就会导致梯度消失。BN就是通过方法将<strong>该层特征值分布重新拉回标准正态分布</strong>，特征值将落在激活函数对于输入较为敏感的区间，输入的小变化可导致损失函数较大的变化，使得梯度变大，避免梯度消失，同时也可加快收敛。</p>
+<p>​    训练时的使用方法：对每个隐层加上一层BN。</p>
+<h3 id="6-Network-architectures"><a href="#6-Network-architectures" class="headerlink" title="6 Network architectures"></a>6 Network architectures</h3><blockquote>
+<p>以前发展不好：</p>
+<ul>
+<li>数据集过小导致过拟合</li>
+<li>计算能力不够</li>
+</ul>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_42076902/article/details/123864381">AlexNet</a></p>
+<p><a href="https://blog.csdn.net/qq_45649076/article/details/120494328">ResNet</a></p>
+<p><a href="https://blog.csdn.net/qq_44766883/article/details/112011420">DenseNet</a>：互相连接所有的层</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/29.png" class>
+<p><a href="https://blog.csdn.net/qq_47233366/article/details/123029998">MobileNets</a></p>
+<p><a href="https://blog.csdn.net/fengmaomao1991/article/details/121247163">Neural Architecture Search</a>(神经架构搜索)</p>
+<h2 id="Lec-10"><a href="#Lec-10" class="headerlink" title="Lec 10"></a>Lec 10</h2><h2 id="Lec-11"><a href="#Lec-11" class="headerlink" title="Lec 11"></a>Lec 11</h2><h2 id="Lec-12"><a href="#Lec-12" class="headerlink" title="Lec 12"></a>Lec 12</h2><h2 id="Lec-13"><a href="#Lec-13" class="headerlink" title="Lec 13"></a>Lec 13</h2><h1 id="Lab"><a href="#Lab" class="headerlink" title="Lab"></a>Lab</h1><h2 id="Lab-1"><a href="#Lab-1" class="headerlink" title="Lab 1"></a>Lab 1</h2><h2 id="Lab-2"><a href="#Lab-2" class="headerlink" title="Lab 2"></a>Lab 2</h2><h2 id="Lab-3"><a href="#Lab-3" class="headerlink" title="Lab 3"></a>Lab 3</h2><h2 id="Lab-4"><a href="#Lab-4" class="headerlink" title="Lab 4"></a>Lab 4</h2><h2 id="Lab-5"><a href="#Lab-5" class="headerlink" title="Lab 5"></a>Lab 5</h2><h2 id="Lab-6"><a href="#Lab-6" class="headerlink" title="Lab 6"></a>Lab 6</h2>]]></content>
+      <categories>
+        <category>CV</category>
+        <category>courses</category>
+      </categories>
+  </entry>
+</search>

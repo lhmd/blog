@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe:300,300italic,400,400italic,700,700italic%7CNoto+Sans+SC:300,300italic,400,400italic,700,700italic%7CComfortaa:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lhmd.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"flipBounceXIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="接触计算机视觉相关的第一门课程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机视觉导论">
+<meta property="og:url" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/index.html">
+<meta property="og:site_name" content="罹魂梦蝶の空間">
+<meta property="og:description" content="接触计算机视觉相关的第一门课程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/1.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/2.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/3.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/4.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/5.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/6.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/7.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/8.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/9.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/10.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/11.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/12.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/13.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/14.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/15.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/16.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/17.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/18.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/19.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/20.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/21.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/22.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/23.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/24.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/25.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/26.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/27.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/28.png">
+<meta property="og:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/29.png">
+<meta property="article:published_time" content="2022-11-10T02:08:56.000Z">
+<meta property="article:modified_time" content="2022-11-19T07:44:15.259Z">
+<meta property="article:author" content="lhmd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/1.png">
+
+
+<link rel="canonical" href="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/","path":"2022/11/10/计算机视觉导论/","title":"计算机视觉导论"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机视觉导论 | 罹魂梦蝶の空間</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">罹魂梦蝶の空間</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-course"><a href="/categories/course/" rel="section"><i class="fa fa-sitemap fa-fw"></i>course</a></li><li class="menu-item menu-item-勤创"><a href="/categories/%E5%8B%A4%E5%88%9B%E7%9B%B8%E5%85%B3/" rel="section"><i class="fa fa-sitemap fa-fw"></i>勤创</a></li><li class="menu-item menu-item-算法"><a href="/categories/%E7%AE%97%E6%B3%95/" rel="section"><i class="fa fa-sitemap fa-fw"></i>算法</a></li><li class="menu-item menu-item-cv"><a href="/categories/CV/" rel="section"><i class="fa fa-sitemap fa-fw"></i>CV</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture"><span class="nav-text">Lecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-1-Introduction"><span class="nav-text">Lec 1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CV%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="nav-text">CV主要任务：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Review-of-Linear-Algebra"><span class="nav-text">Review of Linear Algebra</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-2"><span class="nav-text">Lec 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-3"><span class="nav-text">Lec 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-4"><span class="nav-text">Lec 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-5"><span class="nav-text">Lec 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-6"><span class="nav-text">Lec 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-7-Structure-from-Motion"><span class="nav-text">Lec 7 Structure from Motion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Camera-calibration"><span class="nav-text">1 Camera calibration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Two-frame-structure-from-motion"><span class="nav-text">2 Two-frame structure from motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Multi-frame-structure-from-motion"><span class="nav-text">3 Multi-frame structure from motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-A-modern-SfM-system-COLMAP"><span class="nav-text">4 A modern SfM system: COLMAP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-8-Depth-estimation-and-3D-reconstruction"><span class="nav-text">Lec 8 Depth estimation and 3D reconstruction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Depth-estimation"><span class="nav-text">1 Depth estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3D-reconstruction"><span class="nav-text">2 3D reconstruction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-9-Deep-Learning"><span class="nav-text">Lec 9 Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Machine-learning"><span class="nav-text">1 Machine learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Linear-classifier"><span class="nav-text">2 Linear classifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Neural-networks"><span class="nav-text">3 Neural networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Convolutional-neural-networks%E2%80%94%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-text">4 Convolutional neural networks—卷积神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Training-neural-networks"><span class="nav-text">5 Training neural networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Network-architectures"><span class="nav-text">6 Network architectures</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-10"><span class="nav-text">Lec 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-11"><span class="nav-text">Lec 11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-12"><span class="nav-text">Lec 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lec-13"><span class="nav-text">Lec 13</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab"><span class="nav-text">Lab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab-1"><span class="nav-text">Lab 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab-2"><span class="nav-text">Lab 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab-3"><span class="nav-text">Lab 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab-4"><span class="nav-text">Lab 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab-5"><span class="nav-text">Lab 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab-6"><span class="nav-text">Lab 6</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lhmd"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">lhmd</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lhmd" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lhmd" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zjuwjwang@gmail.com" title="E-Mail → mailto:zjuwjwang@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+      <a target="_blank" rel="noopener" href="https://github.com/lhmd" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="lhmd">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罹魂梦蝶の空間">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机视觉导论 | 罹魂梦蝶の空間">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机视觉导论
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-10 10:08:56" itemprop="dateCreated datePublished" datetime="2022-11-10T10:08:56+08:00">2022-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-19 15:44:15" itemprop="dateModified" datetime="2022-11-19T15:44:15+08:00">2022-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CV/" itemprop="url" rel="index"><span itemprop="name">CV</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CV/courses/" itemprop="url" rel="index"><span itemprop="name">courses</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>接触计算机视觉相关的第一门课程。</p>
+<span id="more"></span>
+<p>[toc]</p>
+<h1 id="Lecture"><a href="#Lecture" class="headerlink" title="Lecture"></a>Lecture</h1><h2 id="Lec-1-Introduction"><a href="#Lec-1-Introduction" class="headerlink" title="Lec 1 Introduction"></a>Lec 1 Introduction</h2><h3 id="CV主要任务："><a href="#CV主要任务：" class="headerlink" title="CV主要任务："></a>CV主要任务：</h3><ul>
+<li>三维重建</li>
+<li>图像理解</li>
+<li>图像合成</li>
+</ul>
+<h3 id="Review-of-Linear-Algebra"><a href="#Review-of-Linear-Algebra" class="headerlink" title="Review of Linear Algebra"></a>Review of Linear Algebra</h3><p>省略。。。</p>
+<h2 id="Lec-2"><a href="#Lec-2" class="headerlink" title="Lec 2"></a>Lec 2</h2><h2 id="Lec-3"><a href="#Lec-3" class="headerlink" title="Lec 3"></a>Lec 3</h2><h2 id="Lec-4"><a href="#Lec-4" class="headerlink" title="Lec 4"></a>Lec 4</h2><h2 id="Lec-5"><a href="#Lec-5" class="headerlink" title="Lec 5"></a>Lec 5</h2><h2 id="Lec-6"><a href="#Lec-6" class="headerlink" title="Lec 6"></a>Lec 6</h2><h2 id="Lec-7-Structure-from-Motion"><a href="#Lec-7-Structure-from-Motion" class="headerlink" title="Lec 7 Structure from Motion"></a>Lec 7 Structure from Motion</h2><blockquote>
+<p>Target: recover camera poses and 3D structure of a scene from its images</p>
+</blockquote>
+<h3 id="1-Camera-calibration"><a href="#1-Camera-calibration" class="headerlink" title="1 Camera calibration"></a>1 Camera calibration</h3><h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><p>参考文献：<a target="_blank" rel="noopener" href="https://blog.csdn.net/fengye2two/article/details/80686409/">图像处理——相机标定</a></p>
+<blockquote>
+<p>世界坐标系（world coordinate）(<em>xw,yw,zw</em>)，也称为测量坐标系，是一个三维直角坐标系，以其为基准可以描述相机和待测物体的空间位置。世界坐标系的位置可以根据实际情况自由确定。世界坐标系的最小单位为mm。</p>
+<p>相机坐标系（camera coordinate）(<em>xc,yc,zc</em>)，也是一个三维直角坐标系，原点位于镜头光心处，xc、yc轴分别与像面的两边平行，zc轴为镜头光轴，与像平面垂直。相机坐标系的最小单位为mm。</p>
+<p>图像坐标系（image coordinate）(<em>x</em>,<em>y</em>)，是像平面上的二维直角坐标系。图像坐标系的原点为镜头光轴与像平面的交点（也称主点，principal point），它的x轴与相机坐标系的xc轴平行，它的y轴与相机坐标系的yc轴平行。图像坐标系的最小单位为mm。</p>
+<p>像素坐标系（pixel coordinate）(u,v)，是图像处理工作中常用的二维直角坐标系，反映了相机CCD/CMOS芯片中像素的排列情况。它的原点位于图像左上角，横坐标u表示像素所在的列，纵坐标v表示像素所在的行。像素坐标系与图像坐标系可以简单理解为平移关系，它们同处于像平面。像素坐标系的x轴与图像坐标系的u轴平行，像素坐标系的y轴与图像坐标系的v轴平行。像素坐标系的最小单位为像素。</p>
+</blockquote>
+<p>变换过程：</p>
+<p>世界=》相机=》图像=》像素</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/1.png" class>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/2.png" class>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/3.png" class>
+<p>so, it is similar to lab2.</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/4.png" class>
+<p>世界直接转换为像素：</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/5.png" class>
+<p>解方程时：</p>
+<ul>
+<li>找特征点，建立方程求解未知数$p$</li>
+</ul>
+<blockquote>
+<p>具体查看参考文献和课程PPT</p>
+</blockquote>
+<h4 id="PnP问题"><a href="#PnP问题" class="headerlink" title="PnP问题"></a>PnP问题</h4><p>参考文献：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/399140251">PnP问题各种算法总结分析</a></p>
+<blockquote>
+<p>问题描述：已知n个3D点的坐标(相对世界坐标系)以及这些点的像素坐标时，如何估计相机的位姿</p>
+</blockquote>
+<h5 id="Direct-Linear-Transform-DLT"><a href="#Direct-Linear-Transform-DLT" class="headerlink" title="Direct Linear Transform (DLT)"></a>Direct Linear Transform (DLT)</h5><p>前面我们通过解方程的形式解出了这个方程，这种方法就叫做DLT。</p>
+<h5 id="P3P"><a href="#P3P" class="headerlink" title="P3P"></a>P3P</h5><p>至少三个对应关系可以解出相机坐标，还需要一个对应关系使这个解是特解。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/6.png" class>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/7.png" class>
+<h5 id="EPnP"><a href="#EPnP" class="headerlink" title="EPnP"></a>EPnP</h5><p>Main steps: </p>
+<ol>
+<li>Represent each point as the linear combination of 4 control points c~i~. </li>
+<li><p>Construct a linear system in the control-point coordinate.</p>
+</li>
+<li><p>Solve the equation.</p>
+</li>
+</ol>
+<h3 id="2-Two-frame-structure-from-motion"><a href="#2-Two-frame-structure-from-motion" class="headerlink" title="2 Two-frame structure from motion"></a>2 Two-frame structure from motion</h3><ol>
+<li>Assume Camera Matrix 𝐾 is known for each camera </li>
+<li>Find a few Reliable Corresponding Points</li>
+<li>Find Relative Camera Position 𝐭 and Orientation 𝑅</li>
+<li>Find 3D position of scene points</li>
+</ol>
+<p>详细讲解：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/472205819">对极几何—知乎</a></p>
+<p>​                    <a target="_blank" rel="noopener" href="https://xhy3054.github.io/epipolar-geometry/">对极几何—github</a></p>
+<h3 id="3-Multi-frame-structure-from-motion"><a href="#3-Multi-frame-structure-from-motion" class="headerlink" title="3 Multi-frame structure from motion"></a>3 Multi-frame structure from motion</h3><ol>
+<li>Initialize camera motion and scene structure </li>
+<li>For each additional view - Determine projection matrix of new camera using all the<br> known 3D points that are visible in its image - Refine and extend structure: compute new 3D points, reoptimize existing points that are also seen by this camera</li>
+<li>Refine structure and motion: Bundle Adjustment</li>
+</ol>
+<h3 id="4-A-modern-SfM-system-COLMAP"><a href="#4-A-modern-SfM-system-COLMAP" class="headerlink" title="4 A modern SfM system: COLMAP"></a>4 A modern SfM system: COLMAP</h3><blockquote>
+<p>sfM: Structure-from-Motion</p>
+<p>MVS: Multi-View Stereo</p>
+</blockquote>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/8.png" class>
+<h2 id="Lec-8-Depth-estimation-and-3D-reconstruction"><a href="#Lec-8-Depth-estimation-and-3D-reconstruction" class="headerlink" title="Lec 8 Depth estimation and 3D reconstruction"></a>Lec 8 Depth estimation and 3D reconstruction</h2><h3 id="1-Depth-estimation"><a href="#1-Depth-estimation" class="headerlink" title="1 Depth estimation"></a>1 Depth estimation</h3><h4 id="1-1-Introduction"><a href="#1-1-Introduction" class="headerlink" title="1.1 Introduction"></a>1.1 Introduction</h4><p>​    深度传感器顾名思义是用来探测环境物体与传感器之间的距离的。它的输出主要可以表示为深度图(depth map)和点云(point cloud)这两种形式。</p>
+<p>​    深度图像（depth image)也被称为距离影像（range image），是指将从图像采集器到场景中各点的距离（深度）作为像素值的图像，它直接反映了景物可见表面的几何形状。深度图像经过坐标转换可以计算为点云数据，有规则及必要信息的点云数据也可以反算为深度图像数据。<br>深度数据流所提供的图像帧中，每一个像素点代表的是在深度感应器的视野中，该特定的（x, y）坐标处物体到离摄像头平面最近的物体到该平面的距离（以毫米为单位）。</p>
+<ul>
+<li>被动测距传感(Passive depth sensing)</li>
+</ul>
+<blockquote>
+<p>被动测距传感=两个相隔一定距离的相机获得两幅图像+立体匹配+三角原理计算视差（disparity）</p>
+</blockquote>
+<p>​        两个相隔一定距离的摄像机同时获取同一场景的两幅图像，通过立体匹配算法找到两幅图像中对应的像素点，随后根据三角原理计算出视差信息，而视差信息通过转换可用于表征场景中物体的深度信息。基于立体匹配算法，还可通过拍摄同一场景下不同角度的一组图像来获得该场景的深度图像。除此之外，场景深度信息还可以通过对图像的光度特征、明暗特征等特征进行分析间接估算得到。</p>
+<ul>
+<li>主动测距传感(Active depth sensing)</li>
+</ul>
+<p>​        主动测距传感相比较于被动测距传感最明显的特征是：设备本身需要发射能量来完成深度信息的采集。这也就保证了深度图像的获取独立于彩色图像的获取。近年来，主动深度传感在市面上的应用愈加丰富。主动深度传感的方法主要包括了TOF（Time of Flight）、结构光、激光扫描等。</p>
+<h4 id="1-2-Stereo-matching"><a href="#1-2-Stereo-matching" class="headerlink" title="1.2 Stereo matching"></a>1.2 Stereo matching</h4><blockquote>
+<p>参考资料<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/161276985">3D视觉之立体匹配</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Android_WPF/article/details/126434543">立体匹配算法</a></p>
+</blockquote>
+<p>最简单的算法：</p>
+<ul>
+<li>For each pixel in the first image <ul>
+<li>Find corresponding epipolar line in the right image</li>
+<li>Search along epipolar line and pick the best match</li>
+</ul>
+</li>
+<li>Simplest case: epipolar lines are horizontal scanlines</li>
+</ul>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/9.png" class>
+<p>这样就找到了两个相同的点，然后计算深度。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/10.png" class>
+<p>如果视角不在同一水平线上，就先把他们转到同一水平线。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/11.png" class>
+<p>Stereo as energy minimization：让当前像素的代价聚合过程受多个方向(或路径)上所有像素的影响，方向越多参与影响当前像素的邻域像素就越多</p>
+<p>动态规划：</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/12.png" class>
+<p>Choosing the stereo baseline：</p>
+<ul>
+<li>Too small: large depth error </li>
+<li>Too large: difficult search problem</li>
+</ul>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/13.png" class>
+<h4 id="1-3-Multi-view-stereo"><a href="#1-3-Multi-view-stereo" class="headerlink" title="1.3 Multi-view stereo"></a>1.3 Multi-view stereo</h4><p>Plane-Sweep: <a target="_blank" rel="noopener" href="https://blog.csdn.net/xuangenihao/article/details/81392684">平面扫描算法</a></p>
+<p>PatchMatch: <a href="PatchMatch">PatchMatch</a></p>
+<ol>
+<li>Initialize pixels with random patch offsets</li>
+<li>Check if neighbors have better patch offsets</li>
+<li>Search in concentric radius around the current offset for better better patch offsets</li>
+<li>Go to Step 2 until converge.</li>
+</ol>
+<h3 id="2-3D-reconstruction"><a href="#2-3D-reconstruction" class="headerlink" title="2 3D reconstruction"></a>2 3D reconstruction</h3><h4 id="2-1-3D-representations"><a href="#2-1-3D-representations" class="headerlink" title="2.1 3D representations"></a>2.1 3D representations</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/14.png" class>
+<ul>
+<li><p>点云</p>
+</li>
+<li><p>mesh 用G(E, V)表示</p>
+</li>
+<li><p>voxel</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/15.png" class>
+</li>
+<li><p>SDF(Signed Distance Function)</p>
+<ul>
+<li>The distance of a point to the shape boundary</li>
+<li>The distance is defined by a metric, usually the Euclidean distance</li>
+</ul>
+<p>Truncated Signed Distance Function (TSDF): Truncation SDF’s distance value to [−1, 1]</p>
+</li>
+</ul>
+<h4 id="2-2-3D-surface-reconstruction"><a href="#2-2-3D-surface-reconstruction" class="headerlink" title="2.2 3D surface reconstruction"></a>2.2 3D surface reconstruction</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qinqinxiansheng/article/details/119449196">KinectFusion</a></p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/16.png" class>
+<p><strong><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8641e0db0367">泊松重建</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38060850/article/details/109143025"><strong>Marching Cubes算法</strong></a></p>
+<p>视频介绍Marching Cubes算法: </p>
+<iframe src="//player.bilibili.com/player.html?aid=79262663&bvid=BV1yJ411r73v&cid=135644481&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/whuawell/article/details/74998280">Marching Squares</a> 基本和Marching cubes 类似。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/17.png" class>
+<p><strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/jiankangyq/article/details/121808174">COLMAP</a></strong>: 一种通用的运动结构 (SfM) 和多视图立体 (MVS) 管道。</p>
+<h4 id="2-3-Texture-mapping"><a href="#2-3-Texture-mapping" class="headerlink" title="2.3 Texture mapping"></a>2.3 Texture mapping</h4><blockquote>
+<p>Surface lives in 3D world space</p>
+<p>Every 3D surface point also has a place where it goes in the 2D image (texture).</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/364045620">纹理映射(Texture mapping)</a></p>
+<h2 id="Lec-9-Deep-Learning"><a href="#Lec-9-Deep-Learning" class="headerlink" title="Lec 9 Deep Learning"></a>Lec 9 Deep Learning</h2><h3 id="1-Machine-learning"><a href="#1-Machine-learning" class="headerlink" title="1 Machine learning"></a>1 Machine learning</h3><blockquote>
+<p>传统程序是给电脑输入和程序，电脑给出输出。</p>
+<p>机器学习是给电脑输入和输出，电脑给出程序。</p>
+</blockquote>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li><p>Model: $x$和$y$之间关系的数学表示</p>
+</li>
+<li><p>Supervised learning(监督学习): 可以由训练资料中学到或建立一个模式（函数/learning model），并且依次模式推测出新的实例。</p>
+<p>labeled data: exisitng (x,y) pairs, called training data.</p>
+</li>
+<li><p>机器学习的两个阶段：</p>
+<ul>
+<li>训练(Training)</li>
+<li>测试(Testing)</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/18.png" class>
+<h3 id="2-Linear-classifier"><a href="#2-Linear-classifier" class="headerlink" title="2 Linear classifier"></a>2 Linear classifier</h3><h4 id="CLassification-model"><a href="#CLassification-model" class="headerlink" title="CLassification model"></a>CLassification model</h4><blockquote>
+<p>输入是一张图片</p>
+<p>输出是每个分类的对应分数</p>
+</blockquote>
+<p>有两部分组成：</p>
+<ul>
+<li>评分函数</li>
+<li>损失函数</li>
+</ul>
+<h4 id="Linear-classifier"><a href="#Linear-classifier" class="headerlink" title="Linear classifier"></a>Linear classifier</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/19.png" class>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/20.png" class>
+<p>将一张照片里面的所有像素变成一个向量。</p>
+<p>$f(x_i,W,b) = Wx_i + b$</p>
+<p>参数<strong>W</strong>被称为<strong>权重（weights）</strong>，<strong>b</strong>被称为<strong>偏差向量（bias vector）</strong>。</p>
+<ul>
+<li>首先，一个单独的矩阵乘法$Wx_i$就高效地并行评估10个不同的分类器（每个分类器针对一个分类），其中每个类的分类器就是W的一个行向量。</li>
+<li>训练数据用来学习$W$和$b$</li>
+<li>一张图像可看做高维空间的一个点，每个分类就是把这些点划分成若干个区域。</li>
+</ul>
+<h4 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h4><blockquote>
+<p>判断一个权重矩阵是否足够好</p>
+<p>回归问题使用均方误差(MSE)</p>
+<p>分类问题使用交叉熵(Cross Entropy Loss)</p>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/xg123321123/article/details/80781611">简单谈谈Cross Entropy Loss</a></p>
+</blockquote>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/21.png" class>
+<p>Softmax: 把K个实值转换为另外K个实值并使K个实值之和为1的函数。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/22.png" class>
+<h3 id="3-Neural-networks"><a href="#3-Neural-networks" class="headerlink" title="3 Neural networks"></a>3 Neural networks</h3><blockquote>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39910711/article/details/114849349">激活函数（Activation Function）</a></p>
+</blockquote>
+<p>​    <strong>激活函数</strong>：不使用激活函数的话，神经网络的每层都只是做<strong>线性变换</strong>，多层输入叠加后也还是线性变换。因为线性模型的表达能力通常不够，所以这时候就体现了激活函数的作用了，激活函数可以引入<strong>非线性因素</strong>。</p>
+<p>​    在神经网络每一层神经元做完线性变换后，加上一个非线性激励函数对线性变换的结果进行转换，输出就可以变成一个非线性的函数。</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/23.png" class>
+<p><strong>多层感知器</strong></p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/24.png" class>
+<p><strong>全连接神经网络</strong></p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/25.png" class>
+<h3 id="4-Convolutional-neural-networks—卷积神经网络"><a href="#4-Convolutional-neural-networks—卷积神经网络" class="headerlink" title="4 Convolutional neural networks—卷积神经网络"></a>4 Convolutional neural networks—卷积神经网络</h3><blockquote>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jiaoyangwm/article/details/80011656/">卷积神经网络超详细介绍</a></p>
+</blockquote>
+<h4 id="Convolution-local-connectivity-weight-sharing"><a href="#Convolution-local-connectivity-weight-sharing" class="headerlink" title="Convolution = local connectivity + weight sharing"></a>Convolution = local connectivity + weight sharing</h4><blockquote>
+<p>两者的关键作用就是减少参数数量，使运算变得简洁、高效，能够在超大规模数据集上运算</p>
+</blockquote>
+<p>local connectivity(局部连接): 对于局部连接而言：层间神经只有局部范围内的连接，在这个范围内采用全连接的方式，超过这个范围的神经元则没有连接；连接与连接之间独立参数，相比于去全连接减少了感受域外的连接，有效减少参数规模。</p>
+<p>weight sharing(权值共享): 从图像局部学习到的信息应用到图像的其他部位去。权值共享意味着每一个过滤器在遍历整个图像的时候，过滤器的参数(即过滤器的参数的值)是固定不变的</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/malvas/article/details/86647781">weight sharing</a></p>
+<h4 id="感受野-Receptive-fields"><a href="#感受野-Receptive-fields" class="headerlink" title="感受野(Receptive fields)"></a>感受野(Receptive fields)</h4><ul>
+<li>若目标相对感受野过小，那训练参数只有少部分是对应于训练目标的，则在测试环节，也很难检测出类似的目标；</li>
+<li>若目标相对感受野过大，那训练的参数都是对应于整个对象的局部信息，是不够利于检测小目标的。</li>
+</ul>
+<h4 id="池化层-Pooling-layer"><a href="#池化层-Pooling-layer" class="headerlink" title="池化层(Pooling layer)"></a>池化层(Pooling layer)</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/26.png" class>
+<h4 id="总体框架"><a href="#总体框架" class="headerlink" title="总体框架"></a>总体框架</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/27.png" class>
+<h3 id="5-Training-neural-networks"><a href="#5-Training-neural-networks" class="headerlink" title="5 Training neural networks"></a>5 Training neural networks</h3><h4 id="梯度下降训练CNN"><a href="#梯度下降训练CNN" class="headerlink" title="梯度下降训练CNN"></a>梯度下降训练CNN</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/28.png" class>
+<h4 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h4><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21407711?refer=intelligentunit">反向传播-cs231n</a></p>
+</blockquote>
+<ol>
+<li>Forward data through the network, get loss</li>
+<li>Backprop to calculate the gradients</li>
+<li>Update the parameters using the gradient</li>
+<li>Go to step 1 if not converged</li>
+</ol>
+<h4 id="随机梯度下降法-SGD"><a href="#随机梯度下降法-SGD" class="headerlink" title="随机梯度下降法(SGD)"></a>随机梯度下降法(SGD)</h4><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41803874/article/details/114016587">随机梯度下降详解</a></p>
+</blockquote>
+<p>仅计算一批随机采样图像上的损失和梯度。</p>
+<h4 id="超参数-hyper-parameters"><a href="#超参数-hyper-parameters" class="headerlink" title="超参数(hyper-parameters)"></a>超参数(hyper-parameters)</h4><p>算法运行前需要决定的参数。</p>
+<p>选择依据：</p>
+<ol>
+<li>Train for original model</li>
+<li>Validate to find hyperparameters</li>
+<li>Test to understand generalizability</li>
+</ol>
+<h4 id="过拟合-overfitting"><a href="#过拟合-overfitting" class="headerlink" title="过拟合(overfitting)"></a>过拟合(overfitting)</h4><p>把噪音点也拟合上了，过分依赖数据集。</p>
+<p>防止：</p>
+<ol>
+<li><p>Cross validation(验证) and early stop</p>
+</li>
+<li><p>Regularization(正则化) or dropout</p>
+<p><strong>正则化</strong>：在损失函数中给每个参数 w 加上权重，引入模型复杂度指标，从而抑制模型噪声，减小过拟合。 </p>
+<p><strong>dropout</strong>：在前向传播的时候，让某个神经元的激活值以一定的概率p停止工作，这样可以使模型泛化性更强，因为它不会太依赖某些局部的特征</p>
+</li>
+<li><p>Data augmentation(数据增强)</p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/41679153">数据增强(Data Augmentation)</a></p>
+</blockquote>
+<p>​    为了获得更多的数据，我们只要对现有的数据集进行微小的改变。比如旋转（flips）、移位（translations）、旋转（rotations）等微小的改变。我们的网络会认为这是不同的图片。</p>
+</li>
+</ol>
+<h4 id="批标准化-Batch-Normalization"><a href="#批标准化-Batch-Normalization" class="headerlink" title="批标准化(Batch Normalization)"></a>批标准化(Batch Normalization)</h4><blockquote>
+<p>参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guoyaohua/p/8724433.html">深入理解BN</a></p>
+</blockquote>
+<p>​    目的：Reduce internal covariate shift(<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/480425962">内部协变量偏移</a>)</p>
+<p>​    神经网络的深度增加，每层特征值分布会逐渐的向激活函数的输出区间的上下两端（激活函数饱和区间）靠近，这样继续下去就会导致梯度消失。BN就是通过方法将<strong>该层特征值分布重新拉回标准正态分布</strong>，特征值将落在激活函数对于输入较为敏感的区间，输入的小变化可导致损失函数较大的变化，使得梯度变大，避免梯度消失，同时也可加快收敛。</p>
+<p>​    训练时的使用方法：对每个隐层加上一层BN。</p>
+<h3 id="6-Network-architectures"><a href="#6-Network-architectures" class="headerlink" title="6 Network architectures"></a>6 Network architectures</h3><blockquote>
+<p>以前发展不好：</p>
+<ul>
+<li>数据集过小导致过拟合</li>
+<li>计算能力不够</li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42076902/article/details/123864381">AlexNet</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45649076/article/details/120494328">ResNet</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44766883/article/details/112011420">DenseNet</a>：互相连接所有的层</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/29.png" class>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_47233366/article/details/123029998">MobileNets</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fengmaomao1991/article/details/121247163">Neural Architecture Search</a>(神经架构搜索)</p>
+<h2 id="Lec-10"><a href="#Lec-10" class="headerlink" title="Lec 10"></a>Lec 10</h2><h2 id="Lec-11"><a href="#Lec-11" class="headerlink" title="Lec 11"></a>Lec 11</h2><h2 id="Lec-12"><a href="#Lec-12" class="headerlink" title="Lec 12"></a>Lec 12</h2><h2 id="Lec-13"><a href="#Lec-13" class="headerlink" title="Lec 13"></a>Lec 13</h2><h1 id="Lab"><a href="#Lab" class="headerlink" title="Lab"></a>Lab</h1><h2 id="Lab-1"><a href="#Lab-1" class="headerlink" title="Lab 1"></a>Lab 1</h2><h2 id="Lab-2"><a href="#Lab-2" class="headerlink" title="Lab 2"></a>Lab 2</h2><h2 id="Lab-3"><a href="#Lab-3" class="headerlink" title="Lab 3"></a>Lab 3</h2><h2 id="Lab-4"><a href="#Lab-4" class="headerlink" title="Lab 4"></a>Lab 4</h2><h2 id="Lab-5"><a href="#Lab-5" class="headerlink" title="Lab 5"></a>Lab 5</h2><h2 id="Lab-6"><a href="#Lab-6" class="headerlink" title="Lab 6"></a>Lab 6</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>lhmd
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://lhmd.github.io/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/" title="计算机视觉导论">https://lhmd.github.io/2022/11/10/计算机视觉导论/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/09/ICS%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/" rel="prev" title="ICS速成笔记">
+                  <i class="fa fa-chevron-left"></i> ICS速成笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/18/NeRF/" rel="next" title="NeRF">
+                  NeRF <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lhmd</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">14k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">26 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+<script type="text/javascript" src="/js/click_love.js"></script>
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://unpkg.com/pdfobject@2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk@1.8.0/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"lhmd","repo":"MyBlogtalk","client_id":"0698455a5fd3328d9d96","client_secret":"e36300e8cdbb37c3962cb94e0a1ce438a65971d3","admin_user":"lhmd","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://unpkg.com/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4fa080333ea0ad53f6a73f608592f1b0"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+
+
+
+</body>
+</html>
