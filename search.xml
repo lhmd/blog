@@ -742,8 +742,8 @@
 <li>Solve R and t by perspective-n-point (PnP) algorithm</li>
 <li>Find 2D-3D correspondences: detecting keyponts using CNNs</li>
 </ol>
-<h3 id="3-Human-Pose-Estimation"><a href="#3-Human-Pose-Estimation" class="headerlink" title="3 Human Pose Estimation"></a>3 Human Pose Estimation</h3><h4 id="Markerless-MoCap"><a href="#Markerless-MoCap" class="headerlink" title="Markerless MoCap"></a>Markerless MoCap</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/44.png" class>
-<h4 id="Monocular-3D-Human-Pose-Estimation"><a href="#Monocular-3D-Human-Pose-Estimation" class="headerlink" title="Monocular 3D Human Pose Estimation"></a>Monocular 3D Human Pose Estimation</h4><p>Estimating 3D human pose using a single camera</p>
+<h3 id="3-Human-Pose-Estimation"><a href="#3-Human-Pose-Estimation" class="headerlink" title="3 Human Pose Estimation"></a>3 Human Pose Estimation</h3><h4 id="Markerless-MoCap-相机照射关键点，标记物在人身体上，Markless就是不用贴标记物"><a href="#Markerless-MoCap-相机照射关键点，标记物在人身体上，Markless就是不用贴标记物" class="headerlink" title="Markerless MoCap: 相机照射关键点，标记物在人身体上，Markless就是不用贴标记物"></a>Markerless MoCap: 相机照射关键点，标记物在人身体上，Markless就是不用贴标记物</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/44.png" class>
+<h4 id="Monocular-3D-Human-Pose-Estimation-参数化人体模型"><a href="#Monocular-3D-Human-Pose-Estimation-参数化人体模型" class="headerlink" title="Monocular 3D Human Pose Estimation: 参数化人体模型"></a>Monocular 3D Human Pose Estimation: 参数化人体模型</h4><p>Estimating 3D human pose using a single camera</p>
 <p>Using networks to regress joint locations</p>
 <h3 id="4-Depth-Estimation"><a href="#4-Depth-Estimation" class="headerlink" title="4 Depth Estimation"></a>4 Depth Estimation</h3><blockquote>
 <p>Multiview Depth Estimation: Reconstruct the dense 3D shape from a set of images and camera parameters</p>
@@ -757,8 +757,66 @@
 </blockquote>
 <img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/46.png" class>
 <h4 id="Single-view-shape-estimation"><a href="#Single-view-shape-estimation" class="headerlink" title="Single-view shape estimation"></a>Single-view shape estimation</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/47.png" class>
-<p>除了点云，mesh等方法也可应用。，</p>
-<h2 id="Lec-12"><a href="#Lec-12" class="headerlink" title="Lec 12"></a>Lec 12</h2><h2 id="Lec-13"><a href="#Lec-13" class="headerlink" title="Lec 13"></a>Lec 13</h2>]]></content>
+<p>除了点云，mesh等方法也可应用。</p>
+<h3 id="PointNet"><a href="#PointNet" class="headerlink" title="PointNet"></a>PointNet</h3><p>把点云放进神经网络，以前的神经网络都是光栅化的</p>
+<p>挑战1：点顺序不确定——最后再做pooling</p>
+<p>挑战2：位置变化不确定——估计姿态</p>
+<h2 id="Lec-12-Computational-Photography-I"><a href="#Lec-12-Computational-Photography-I" class="headerlink" title="Lec 12 Computational Photography I"></a>Lec 12 Computational Photography I</h2><h3 id="High-Dynamic-Range-Imaging-HDR"><a href="#High-Dynamic-Range-Imaging-HDR" class="headerlink" title="High Dynamic Range Imaging (HDR)"></a>High Dynamic Range Imaging (HDR)</h3><h4 id="Exposure-曝光"><a href="#Exposure-曝光" class="headerlink" title="Exposure:曝光"></a>Exposure:曝光</h4><p><strong>Exposure = Gain(增益) x Irradiance(光线) x Time(时间)</strong></p>
+<ul>
+<li>Gain is controlled by the ISO </li>
+<li>Irradiance is controlled by the aperture </li>
+<li>Time is controlled by the shutter speed</li>
+</ul>
+<h4 id="Dynamic-Range"><a href="#Dynamic-Range" class="headerlink" title="Dynamic Range"></a>Dynamic Range</h4><p>The ratio between the largest and smallest values of a certain quantity.</p>
+<h4 id="HDR"><a href="#HDR" class="headerlink" title="HDR"></a>HDR</h4><p>亮的地方和暗的地方能同时拍清楚</p>
+<p>实现方法：</p>
+<ul>
+<li>Exposure bracketing: Capture multiple LDR images at different exposures(一次拍很多张)</li>
+<li>Merging: Combine them into a single HDR image(然后合在一起)</li>
+</ul>
+<h4 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/48.png" class>
+<h4 id="Tone-mapping"><a href="#Tone-mapping" class="headerlink" title="Tone mapping"></a>Tone mapping</h4><p>Display the HDR image (12-bit) on a SDR (standard dynamic range, 8-bit) device.</p>
+<blockquote>
+<p>Gamma compression</p>
+</blockquote>
+<p>X → aX^γ^, applied independently on R, G, B intend to keep more details on each parts.</p>
+<ul>
+<li><p>γ &lt; 1:  keep more datails on dart parts</p>
+</li>
+<li><p>γ &gt; 1: keep more datails on light parts</p>
+</li>
+</ul>
+<h3 id="Deblurring"><a href="#Deblurring" class="headerlink" title="Deblurring"></a>Deblurring</h3><h4 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h4><ul>
+<li>Defocus: the subject is not in the depth of view</li>
+<li>Motion blur: moving subjects or unstable camera</li>
+<li>……</li>
+</ul>
+<h4 id="Modeling-Image-Blur"><a href="#Modeling-Image-Blur" class="headerlink" title="Modeling Image Blur"></a>Modeling Image Blur</h4><p>The blurring process can be described by convolution. H is called blur kernel.</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/49.png" class>
+<p>Deblurring = Deconvolution</p>
+<ul>
+<li>NBID: Non-blind image deconvolution, the blur kernel is known.</li>
+<li>BID: Blind image deconvolution, the blur kernel is also unknown.</li>
+</ul>
+<h4 id="NBID"><a href="#NBID" class="headerlink" title="NBID"></a>NBID</h4><img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/50.png" class>
+<ul>
+<li>G: The captured image (known) </li>
+<li>F: Image to be solved (unknown) </li>
+<li>H: Blur kernel (known)</li>
+</ul>
+<p>Inverse Filter: will also amplify noise</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/51.png" class>
+<p>Wiener Filter: Suppress high frequency when reverse filtering</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/52.png" class>
+<p>Deconvolution by optimization</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/53.png" class>
+<p>Deconvolution is ill-posed, these are several sets of solutions have the same MSE.</p>
+<p>Objective function = likelihood function + regular term</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/54.png" class>
+<h4 id="BID"><a href="#BID" class="headerlink" title="BID"></a>BID</h4><p>Blur kernel is non-negative and sparse.</p>
+<p>Optimized objective function:</p>
+<img src="/2022/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AF%BC%E8%AE%BA/55.png" class>
+<h3 id="Colorization-黑白变彩色"><a href="#Colorization-黑白变彩色" class="headerlink" title="Colorization(黑白变彩色)"></a>Colorization(黑白变彩色)</h3><h3 id="Super-Resolution"><a href="#Super-Resolution" class="headerlink" title="Super Resolution"></a>Super Resolution</h3><h2 id="Lec-13-Computational-Photography-II"><a href="#Lec-13-Computational-Photography-II" class="headerlink" title="Lec 13 Computational Photography II"></a>Lec 13 Computational Photography II</h2><h3 id="Image-based-Rendering"><a href="#Image-based-Rendering" class="headerlink" title="Image-based Rendering"></a>Image-based Rendering</h3><h3 id="Neural-Rendering"><a href="#Neural-Rendering" class="headerlink" title="Neural Rendering"></a>Neural Rendering</h3>]]></content>
       <categories>
         <category>CV</category>
         <category>courses</category>
