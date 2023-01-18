@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lhmd.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"flipBounceXIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Stanford CS106L 课程笔记。">
+    <meta name="description" content="Stanford CS106L: Standard C++ Programming课程笔记。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS106L课程笔记">
 <meta property="og:url" content="https://lhmd.github.io/2023/01/18/CS106L%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="罹魂梦蝶の空間">
-<meta property="og:description" content="Stanford CS106L 课程笔记。">
+<meta property="og:description" content="Stanford CS106L: Standard C++ Programming课程笔记。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-18T01:48:06.000Z">
-<meta property="article:modified_time" content="2023-01-18T03:55:59.480Z">
+<meta property="article:modified_time" content="2023-01-18T04:04:51.276Z">
 <meta property="article:author" content="lhmd">
 <meta name="twitter:card" content="summary">
 
@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,7 +253,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-01-18 09:48:06 / 修改时间：11:55:59" itemprop="dateCreated datePublished" datetime="2023-01-18T09:48:06+08:00">2023-01-18</time>
+      <time title="创建时间：2023-01-18 09:48:06 / 修改时间：12:04:51" itemprop="dateCreated datePublished" datetime="2023-01-18T09:48:06+08:00">2023-01-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,7 +297,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Stanford CS106L 课程笔记。</p>
+        <p>Stanford CS106L: Standard C++ Programming课程笔记。</p>
 <span id="more"></span>
 <h1 id="Lec1-Welcome-to-CS-106L"><a href="#Lec1-Welcome-to-CS-106L" class="headerlink" title="Lec1 Welcome to CS 106L!"></a>Lec1 Welcome to CS 106L!</h1><h2 id="Why-C-is-important"><a href="#Why-C-is-important" class="headerlink" title="Why C++ is important"></a>Why C++ is important</h2><h2 id="What-is-C"><a href="#What-is-C" class="headerlink" title="What is C++"></a>What is C++</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello World!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv)</span> </span>&#123;</span><br><span class="line">     <span class="built_in">asm</span>(<span class="string">&quot;sub $0x20,%rsp\n\t&quot;</span> <span class="comment">// assembly code!</span></span><br><span class="line">         <span class="string">&quot;movabs $0x77202c6f6c6c6548,%rax\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;mov %rax,(%rsp)\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;movl $0x646c726f, 0x8(%rsp)\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;movw $0x21, 0xc(%rsp)\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;movb $0x0,0xd(%rsp)\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;leaq (%rsp),%rax\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;mov %rax,%rdi\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;call __Z6myputsPc\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;add $0x20, %rsp\n\t&quot;</span></span><br><span class="line">     );</span><br><span class="line">     <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -507,6 +507,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/01/18/CS231n%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="next" title="CS231n课程笔记">
+                  CS231n课程笔记 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
