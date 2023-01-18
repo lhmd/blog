@@ -77,6 +77,119 @@
 <h2 id="Sneak-peek-at-streams"><a href="#Sneak-peek-at-streams" class="headerlink" title="Sneak peek at streams"></a>Sneak peek at streams</h2><blockquote>
 <p>stream: an abstraction for input/output. Streams convert between data and the string representation of data.</p>
 </blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::cout &lt;&lt; <span class="number">5</span> &lt;&lt; std::endl; <span class="comment">// prints 5 </span></span><br><span class="line"><span class="comment">// use a stream to print any primitive type!</span></span><br><span class="line">std::cout &lt;&lt; <span class="string">&quot;Frankie&quot;</span> &lt;&lt; std::endl; </span><br><span class="line"><span class="comment">// Mix types!</span></span><br><span class="line">std::cout &lt;&lt; <span class="string">&quot;Frankie is &quot;</span> &lt;&lt; <span class="number">21</span> &lt;&lt; std::endl;</span><br><span class="line"><span class="comment">// structs?</span></span><br><span class="line">Student s = &#123;<span class="string">&quot;Frankie&quot;</span>, <span class="string">&quot;MN&quot;</span>, <span class="number">21</span>&#125;;</span><br><span class="line">std::cout &lt;&lt; s.name &lt;&lt; s.age &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+<h2 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h2><ul>
+<li>Everything with a name in your program has a type</li>
+<li>Strong type systems prevent errors before your code runs!</li>
+<li>Structs are a way to bundle a bunch of variables of many types </li>
+<li>std::pair is a type of struct that had been defined for you and is in the STL</li>
+<li>So you access it through the std:: namespace (std::pair) </li>
+<li>auto is a keyword that tells the compiler to deduce the type of a variable, it should be used when the type is obvious or very  cumbersome to write out</li>
+</ul>
+<h1 id="Lec3-Streams"><a href="#Lec3-Streams" class="headerlink" title="Lec3 Streams"></a>Lec3 Streams</h1><blockquote>
+<p>stream: an abstraction for input/output. Streams convert between data and the string representation of data.</p>
+</blockquote>
+<h2 id="Input-streams"><a href="#Input-streams" class="headerlink" title="Input streams"></a>Input streams</h2><blockquote>
+<p>std::cin is an input stream. It has type std::istream</p>
+</blockquote>
+<ul>
+<li>Have type std::istream</li>
+<li>Can only receive strings using the <code>&gt;&gt;</code> operator<ul>
+<li>Receives a string from the stream and converts it to data </li>
+</ul>
+</li>
+<li>std::cin is the input stream that gets input from the console</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br><span class="line">string str;</span><br><span class="line">std::cin &gt;&gt; x &gt;&gt; str;</span><br><span class="line"><span class="comment">//reads exactly one int then 1 string from console</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>First call to std::cin &gt;&gt; creates a command line prompt  that allows the user to type until they hit enter</li>
+<li><strong>Each <code>&gt;&gt;</code> ONLY reads until the next whitespace</strong><ul>
+<li><strong>Whitespace = tab, space, newline</strong></li>
+</ul>
+</li>
+<li>Everything after the first whitespace gets saved and used the  next time std::cin &gt;&gt; is called</li>
+<li>If there is nothing waiting in the buffer, std::cin &gt;&gt; creates a new command line prompt</li>
+<li>Whitespace is eaten: it won’t show up in output</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="type">int</span> x;</span><br><span class="line">std::cin &gt;&gt; str &gt;&gt; x;</span><br><span class="line"><span class="comment">//what happens if input is &quot;blah blah&quot;?</span></span><br><span class="line">std::cout &lt;&lt; str &lt;&lt; x;</span><br><span class="line"><span class="comment">//once an error is detected, the input stream’s</span></span><br><span class="line"><span class="comment">//fail bit is set, and it will no longer accept </span></span><br><span class="line"><span class="comment">//input</span></span><br></pre></td></tr></table></figure>
+<p><strong>To read a whole line, use  std::getline(istream&amp; stream, string&amp; line);</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::string line;</span><br><span class="line">std::<span class="built_in">getline</span>(cin, line); <span class="comment">//now line has changed!</span></span><br><span class="line"><span class="comment">//say the user entered “Hello World 42!” </span></span><br><span class="line">std::cout &lt;&lt; line &lt;&lt; std::endl; </span><br><span class="line"><span class="comment">//should print out“Hello World 42!”</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&gt;&gt;</code> reads up to the next whitespace character and does not go past that whitespace character.</li>
+<li><code>getline</code> reads up to the next delimiter (by default, ‘\n’), and does go past that delimiter.</li>
+</ul>
+<h2 id="Output-streams"><a href="#Output-streams" class="headerlink" title="Output streams"></a>Output streams</h2><blockquote>
+<p>std::cout is an output  stream. It has type std::ostream</p>
+</blockquote>
+<ul>
+<li>Can only send data using the &lt;&lt; operator<ul>
+<li>Converts any type into string and sends it to the stream</li>
+</ul>
+</li>
+<li>std::cout is the output stream that goes to the console</li>
+</ul>
+<h2 id="File-streams"><a href="#File-streams" class="headerlink" title="File streams"></a>File streams</h2><h3 id="Input-File-Streams"><a href="#Input-File-Streams" class="headerlink" title="Input File Streams"></a>Input File Streams</h3><ul>
+<li>Have type std::ifstream</li>
+<li>Only send data using the &gt;&gt; operator<ul>
+<li>Receives strings from a file and converts it to data of any type</li>
+</ul>
+</li>
+<li>Must initialize your own ifstream object linked to your file</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::ifstream <span class="title">in</span><span class="params">(“out.txt”)</span></span>;</span><br><span class="line"><span class="comment">// in is now an ifstream that reads from out.txt</span></span><br><span class="line">string str;</span><br><span class="line">in &gt;&gt; str; <span class="comment">// first word in out.txt goes into str</span></span><br></pre></td></tr></table></figure>
+<h3 id="Output-File-Streams"><a href="#Output-File-Streams" class="headerlink" title="Output File Streams"></a>Output File Streams</h3><ul>
+<li>Have type std::ofstream</li>
+<li>Only send data using the &lt;&lt; operator<ul>
+<li>Converts data of any type into a string and sends it to the file stream</li>
+</ul>
+</li>
+<li>Must initialize your own ofstream object linked to your file</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::ofstream <span class="title">out</span><span class="params">(“out.txt”)</span></span>;</span><br><span class="line"><span class="comment">// out is now an ofstream that outputs to out.txt</span></span><br><span class="line">out &lt;&lt; <span class="number">5</span> &lt;&lt; std::endl; <span class="comment">// out.txt contains 5</span></span><br></pre></td></tr></table></figure>
+<h2 id="string-streams"><a href="#string-streams" class="headerlink" title="string streams"></a>string streams</h2><ul>
+<li>Input stream: std::istringstream<ul>
+<li>Give any data type to the istringstream, it’ll store it as a  string!</li>
+</ul>
+</li>
+<li>Output stream: std::ostringstream<ul>
+<li>Make an ostringstream out of a string, read from it  word/type by word/type</li>
+</ul>
+</li>
+<li>The same as the other i/ostreams you’ve seen!</li>
+</ul>
+<h3 id="ostringstreams"><a href="#ostringstreams" class="headerlink" title="ostringstreams"></a>ostringstreams</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">string <span class="title">judgementCall</span><span class="params">(<span class="type">int</span> age, string name, <span class="type">bool</span> lovesCpp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::ostringstream formatter;</span><br><span class="line">    formatter &lt;&lt; name &lt;&lt;<span class="string">&quot;, age &quot;</span> &lt;&lt; age;</span><br><span class="line">    <span class="keyword">if</span>(lovesCpp) formatter &lt;&lt; <span class="string">&quot;, rocks.&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> formatter &lt;&lt; <span class="string">&quot; could be better&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> formatter.<span class="built_in">str</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="istringstreams"><a href="#istringstreams" class="headerlink" title="istringstreams"></a>istringstreams</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">Student <span class="title">reverseJudgementCall</span><span class="params">(string judgement)</span></span>&#123; </span><br><span class="line">    <span class="comment">//input: “Frankie age 22, rocks”</span></span><br><span class="line">    std::istringstream converter;</span><br><span class="line">    string fluff; <span class="type">int</span> age; <span class="type">bool</span> lovesCpp; string name;</span><br><span class="line">    converter &gt;&gt; name;</span><br><span class="line">    converter &gt;&gt; fluff;</span><br><span class="line">    converter &gt;&gt; age;</span><br><span class="line">    converter &gt;&gt; fluff;</span><br><span class="line">    string cool;</span><br><span class="line">    converter &gt;&gt; cool;</span><br><span class="line">    <span class="keyword">if</span>(cool == <span class="string">&quot;rocks&quot;</span>) <span class="keyword">return</span> Student&#123;name, age, <span class="string">&quot;bliss&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> Student&#123;name, age, <span class="string">&quot;misery&quot;</span>&#125;;</span><br><span class="line">&#125;<span class="comment">// returns: &#123;“Frankie”, 22, “bliss”&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Recap-1"><a href="#Recap-1" class="headerlink" title="Recap"></a>Recap</h2><ul>
+<li>Streams convert between data of any type and the string  representation of that data.</li>
+<li>Streams have an endpoint: console for cin/cout, files for i/o fstreams,  string variables for i/o streams where they read in a string from or  output a string to. </li>
+<li>To send data (in string form) to a stream, use stream_name &lt;&lt;  data.</li>
+<li>To extract data from a stream, use stream_name &gt;&gt; data, and the stream will try to convert a string to whatever type data is.</li>
+</ul>
+<h1 id="Lec3-5-Initialization-amp-References"><a href="#Lec3-5-Initialization-amp-References" class="headerlink" title="Lec3.5 Initialization &amp; References"></a>Lec3.5 Initialization &amp; References</h1><h2 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h2><blockquote>
+<p>Initialization: How we provide initial values to variables</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Recall: Two ways to initialize a struct</span></span><br><span class="line">Student s;</span><br><span class="line">s.name = <span class="string">&quot;Frankie&quot;</span>; </span><br><span class="line">s.state = <span class="string">&quot;MN&quot;</span>;</span><br><span class="line">s.age = <span class="number">21</span>; </span><br><span class="line"><span class="comment">//is the same as ...</span></span><br><span class="line">Student s = &#123;<span class="string">&quot;Frankie&quot;</span>, <span class="string">&quot;MN&quot;</span>, <span class="number">21</span>&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Multiple ways to initialize a pair</span></span><br><span class="line">std::pair&lt;<span class="type">int</span>, string&gt; numSuffix1 = &#123;<span class="number">1</span>,<span class="string">&quot;st&quot;</span>&#125;;</span><br><span class="line">std::pair&lt;<span class="type">int</span>, string&gt; numSuffix2;</span><br><span class="line">numSuffix2.first = <span class="number">2</span>;</span><br><span class="line">numSuffix2.second = <span class="string">&quot;nd&quot;</span>;</span><br><span class="line">std::pair&lt;<span class="type">int</span>, string&gt; numSuffix2 = std::<span class="built_in">make_pair</span>(<span class="number">3</span>, <span class="string">&quot;rd&quot;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Initialization of vectors</span></span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">vec1</span><span class="params">(<span class="number">3</span>,<span class="number">5</span>)</span></span>; </span><br><span class="line"><span class="comment">// makes &#123;5, 5, 5&#125;, not &#123;3, 5&#125;!</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; vec2;</span><br><span class="line">vec2 = &#123;<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">// initialize vec2 to &#123;3, 5&#125; after its declared</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Uniform initialization: curly bracket initialization.  Available for all types,  immediate initialization on declaration(统一初始化：声明时用花括号定义)</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; vec&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line">std::pair&lt;<span class="type">int</span>, string&gt; numSuffix1&#123;<span class="number">1</span>,<span class="string">&quot;st&quot;</span>&#125;;</span><br><span class="line">Student s&#123;<span class="string">&quot;Frankie&quot;</span>, <span class="string">&quot;MN&quot;</span>, <span class="number">21</span>&#125;;</span><br><span class="line"><span class="comment">// less common/nice for primitive types, but possible!</span></span><br><span class="line"><span class="type">int</span> x&#123;<span class="number">5</span>&#125;;</span><br><span class="line">string f&#123;<span class="string">&quot;Frankie&quot;</span>&#125;;</span><br><span class="line"><span class="comment">//Careful with Vector initialization!</span></span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">vec1</span><span class="params">(<span class="number">3</span>,<span class="number">5</span>)</span></span>; </span><br><span class="line"><span class="comment">// makes &#123;5, 5, 5&#125;, not &#123;3, 5&#125;!</span></span><br><span class="line"><span class="comment">//uses a std::initializer_list (more later)</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; vec2&#123;<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">// makes &#123;3, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//TLDR: use uniform  initialization to initialize every  field of your non-primitive  typed variables - but be  careful not to use vec(n, k)!</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>auto:  use it to reduce long type names</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::pair&lt;<span class="type">bool</span>, std::pair&lt;<span class="type">double</span>, <span class="type">double</span>&gt;&gt; result = <span class="built_in">quadratic</span>(a, b, c);</span><br><span class="line"><span class="comment">//It can be write as below</span></span><br><span class="line"><span class="keyword">auto</span> result = <span class="built_in">quadratic</span>(a, b, c);</span><br></pre></td></tr></table></figure>
+<p><strong>Don’t overuse auto!</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A better way to use quadratic</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="keyword">auto</span> a, b, c;</span><br><span class="line">     std::cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">     <span class="keyword">auto</span> [found, solutions] = <span class="built_in">quadratic</span>(a, b, c);</span><br><span class="line">     <span class="keyword">if</span> (found) &#123;</span><br><span class="line">         <span class="keyword">auto</span> [x1, x2] = solutions;</span><br><span class="line">         std::cout &lt;&lt; x1 &lt;&lt; “ ” &lt;&lt; x2 &lt;&lt; endl;</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         std::cout &lt;&lt; “No solutions found!” &lt;&lt; endl;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//This is better is because it’s semantically clearer: variables have clear names</span></span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><blockquote>
+<p>Reference: An alias  (another name) for a named variable</p>
+</blockquote>
+<p><strong>References in 106B</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">changeX</span><span class="params">(<span class="type">int</span>&amp; x)</span></span>&#123; <span class="comment">//changes to x will persist</span></span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">keepX</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> a = <span class="number">100</span>;</span><br><span class="line"><span class="type">int</span> b = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">changeX</span>(a); <span class="comment">//a becomes a reference to x</span></span><br><span class="line"><span class="built_in">keepX</span>(b); <span class="comment">//b becomes a copy of x</span></span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl; <span class="comment">//0</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl; <span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+<p><strong>References in 106L: References to variables</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; original&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; copy = original;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt;&amp; ref = original;</span><br><span class="line">original.<span class="built_in">push_back</span>(<span class="number">3</span>);</span><br><span class="line">copy.<span class="built_in">push_back</span>(<span class="number">4</span>);</span><br><span class="line">ref.<span class="built_in">push_back</span>(<span class="number">5</span>);</span><br><span class="line">cout &lt;&lt; original &lt;&lt; endl; <span class="comment">// &#123;1, 2, 3, 5&#125;</span></span><br><span class="line">cout &lt;&lt; copy &lt;&lt; endl; <span class="comment">// &#123;1, 2, 4&#125;</span></span><br><span class="line">cout &lt;&lt; ref &lt;&lt; endl; <span class="comment">// &#123;1, 2, 3, 5&#125;</span></span><br><span class="line"><span class="comment">//“=” automatically makes a copy! Must use &amp; to avoid this.</span></span><br></pre></td></tr></table></figure>
+<p><strong>Reference-copy bug</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//bug</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [num1, num2]: nums) &#123;</span><br><span class="line">        num1++;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//fixed</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [num1, num2]: nums) &#123;</span><br><span class="line">        num1++;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>courses</category>
