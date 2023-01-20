@@ -1688,7 +1688,9 @@
   <entry>
     <title>CS106L Midquarter Review</title>
     <url>/2023/01/20/CS106L-Midquarter-Review/</url>
-    <content><![CDATA[<h1 id="Midquarter-Review"><a href="#Midquarter-Review" class="headerlink" title="Midquarter Review"></a>Midquarter Review</h1><h2 id="stream"><a href="#stream" class="headerlink" title="stream"></a>stream</h2><blockquote>
+    <content><![CDATA[<p>Midquarter review of Stanford CS106L.</p>
+<span id="more"></span>
+<h2 id="stream"><a href="#stream" class="headerlink" title="stream"></a>stream</h2><blockquote>
 <p>stream: an abstraction for input/output. Streams  convert between data and the string representation of data.</p>
 </blockquote>
 <h3 id="Output-Streams"><a href="#Output-Streams" class="headerlink" title="Output Streams"></a>Output Streams</h3><ul>
