@@ -56,7 +56,6 @@
 <p>引言：<em>CS106B/X</em> 和 <em>CS106L</em> 是配套课程，学习完前一个再学习 <em>CS106L</em> 才是正确的路径。但是浙江大学的《数据结构基础》课程已经包括了 <em>CS106B</em> 中除 <em>C++ Class</em> 和 <em>Huffman Coding</em> 之外的其他内容，所以对于 <em>CS106B</em> 的内容仅做简单补充。</p>
 <p>此笔记基于 <em>CS 106L, Fall ‘21</em></p>
 </blockquote>
-<p>[toc]</p>
 <h1 id="Lec1-Welcome-to-CS-106L"><a href="#Lec1-Welcome-to-CS-106L" class="headerlink" title="Lec1 Welcome to CS 106L!"></a>Lec1 Welcome to CS 106L!</h1><h2 id="Why-C-is-important"><a href="#Why-C-is-important" class="headerlink" title="Why C++ is important"></a>Why C++ is important</h2><h2 id="What-is-C"><a href="#What-is-C" class="headerlink" title="What is C++"></a>What is C++</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Hello World!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv)</span> </span>&#123;</span><br><span class="line">     <span class="built_in">asm</span>(<span class="string">&quot;sub $0x20,%rsp\n\t&quot;</span> <span class="comment">// assembly code!</span></span><br><span class="line">         <span class="string">&quot;movabs $0x77202c6f6c6c6548,%rax\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;mov %rax,(%rsp)\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;movl $0x646c726f, 0x8(%rsp)\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;movw $0x21, 0xc(%rsp)\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;movb $0x0,0xd(%rsp)\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;leaq (%rsp),%rax\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;mov %rax,%rdi\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;call __Z6myputsPc\n\t&quot;</span></span><br><span class="line">         <span class="string">&quot;add $0x20, %rsp\n\t&quot;</span></span><br><span class="line">     );</span><br><span class="line">     <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="Lec2-Types-and-Structs"><a href="#Lec2-Types-and-Structs" class="headerlink" title="Lec2 Types and Structs"></a>Lec2 Types and Structs</h1><blockquote>
@@ -1399,6 +1398,20 @@
       </categories>
   </entry>
   <entry>
+    <title>ICS速成笔记</title>
+    <url>/2022/11/09/ICS%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>大一暑学期计算机系统概论考前复习速成。</p>
+<span id="more"></span>
+<div class="pdf-container" data-target="/pdf/ICS速成笔记.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+      <tags>
+        <tag>ICS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Complete Binary Search Tree</title>
     <url>/2022/10/30/Complete-Binary-Search-Tree/</url>
     <content><![CDATA[<h3 id="Complete-Binary-Search-Tree"><a href="#Complete-Binary-Search-Tree" class="headerlink" title="Complete Binary Search Tree"></a><a href="https://pintia.cn/problem-sets/1582215244956827648/exam/problems/1582215245019742217">Complete Binary Search Tree</a></h3><span id="more"></span>
@@ -1411,20 +1424,6 @@
       <tags>
         <tag>递归</tag>
         <tag>c++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ICS速成笔记</title>
-    <url>/2022/11/09/ICS%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>大一暑学期计算机系统概论考前复习速成。</p>
-<span id="more"></span>
-<div class="pdf-container" data-target="/pdf/ICS速成笔记.pdf" data-height="500px"></div>
-]]></content>
-      <categories>
-        <category>course</category>
-      </categories>
-      <tags>
-        <tag>ICS</tag>
       </tags>
   </entry>
   <entry>
