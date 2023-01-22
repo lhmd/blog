@@ -1,238 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CS106L Midquarter Review</title>
-    <url>/2023/01/20/CS106L-Midquarter-Review/</url>
-    <content><![CDATA[<p>Midquarter review of Stanford CS106L.</p>
-<span id="more"></span>
-<h2 id="stream"><a href="#stream" class="headerlink" title="stream"></a>stream</h2><blockquote>
-<p>stream: an abstraction for input/output. Streams  convert between data and the string representation of data.</p>
-</blockquote>
-<h3 id="Output-Streams"><a href="#Output-Streams" class="headerlink" title="Output Streams"></a>Output Streams</h3><ul>
-<li>Have type <code>std::ostream</code></li>
-<li>Can only send data using the <code>&lt;&lt;</code> operator<ul>
-<li>Converts any type into string and sends it to the stream</li>
-</ul>
-</li>
-<li><code>std::cout</code> is the output stream that goes to the console</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::cout &lt;&lt; <span class="number">5</span> &lt;&lt; std::endl; </span><br><span class="line"><span class="comment">// converts int value 5 to string “5”</span></span><br><span class="line"><span class="comment">// sends “5” to the console output stream</span></span><br></pre></td></tr></table></figure>
-<h3 id="Output-File-Streams"><a href="#Output-File-Streams" class="headerlink" title="Output File Streams"></a>Output File Streams</h3><ul>
-<li>Have type <code>std::ofstream</code></li>
-<li>Only receive data using the <code>&lt;&lt;</code> operator<ul>
-<li>Converts data of any type into a string and sends it to the  file stream</li>
-</ul>
-</li>
-<li>Must initialize your own <code>ofstream</code> object linked to your file</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::ofstream <span class="title">out</span><span class="params">(“out.txt”, std::ofstream::out)</span></span>;</span><br><span class="line"><span class="comment">// out is now an ofstream that outputs to out.txt</span></span><br><span class="line">out &lt;&lt; <span class="number">5</span> &lt;&lt; std::endl; <span class="comment">// out.txt contains 5</span></span><br></pre></td></tr></table></figure>
-<h3 id="Input-Streams"><a href="#Input-Streams" class="headerlink" title="Input Streams"></a>Input Streams</h3><ul>
-<li>Have type <code>std::istream</code></li>
-<li>Can only receive data using the <code>&gt;&gt;</code> operator<ul>
-<li>Receives a string from the stream and converts it to data</li>
-</ul>
-</li>
-<li><code>std::cin</code> is the output stream that gets input from the console</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br><span class="line">string str;</span><br><span class="line">std::cin &gt;&gt; x &gt;&gt; str;</span><br><span class="line"><span class="comment">//reads exactly one int then 1 string from console</span></span><br></pre></td></tr></table></figure>
-<h3 id="Nitty-Gritty-Details-std-cin"><a href="#Nitty-Gritty-Details-std-cin" class="headerlink" title="Nitty Gritty Details: std::cin"></a>Nitty Gritty Details: std::cin</h3><ul>
-<li>First call to std::cin &gt;&gt; creates a command line prompt  that allows the user to type until they hit enter</li>
-<li>Each &gt;&gt; ONLY reads until the next whitespace<ul>
-<li>Whitespace = tab, space, newline</li>
-</ul>
-</li>
-<li>Everything after the first whitespace gets saved and used the  next time std::cin &gt;&gt; is called<ul>
-<li>The place its saved is called a buffer!</li>
-</ul>
-</li>
-<li>If there is nothing waiting in the buffer, std::cin &gt;&gt; creates a new command line prompt</li>
-<li>Whitespace is eaten: it won’t show up in output</li>
-</ul>
-<h3 id="Stringstreams"><a href="#Stringstreams" class="headerlink" title="Stringstreams"></a>Stringstreams</h3><ul>
-<li>Input stream: std::istringstream<ul>
-<li>Give any data type to the istringstream, it’ll store it as a  string!</li>
-</ul>
-</li>
-<li>Output stream: std::ostringstream<ul>
-<li>Make an ostringstream out of a string, read from it  word/type by word/type!</li>
-</ul>
-</li>
-<li>The same as the other i/ostreams you’ve seen</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ostringstreams</span></span><br><span class="line"><span class="function">string <span class="title">judgementCall</span><span class="params">(<span class="type">int</span> age, string name, <span class="type">bool</span> lovesCpp)</span> </span>&#123;</span><br><span class="line">    std::ostringstream formatter;</span><br><span class="line">    formatter &lt;&lt; name &lt;&lt;<span class="string">&quot;, age &quot;</span> &lt;&lt; age;</span><br><span class="line">    <span class="keyword">if</span>(lovesCpp) formatter &lt;&lt; <span class="string">&quot;, rocks.&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> formatter &lt;&lt; <span class="string">&quot; could be better&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> formatter.<span class="built_in">str</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//istringstreams</span></span><br><span class="line"><span class="function">Student <span class="title">reverseJudgementCall</span><span class="params">(string judgement)</span> </span>&#123;</span><br><span class="line">    std::istringstream converter;</span><br><span class="line">    string fluff; <span class="type">int</span> age; <span class="type">bool</span> lovesCpp; string name;</span><br><span class="line">    converter &gt;&gt; name;</span><br><span class="line">    converter &gt;&gt; fluff;</span><br><span class="line">    converter &gt;&gt; age;</span><br><span class="line">    converter &gt;&gt; fluff;</span><br><span class="line">    string cool;</span><br><span class="line">    converter &gt;&gt; cool;</span><br><span class="line">    <span class="keyword">if</span>(fluff == <span class="string">&quot;rocks&quot;</span>) <span class="keyword">return</span> Student&#123;name, age, <span class="string">&quot;bliss&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> Student&#123;name, age, <span class="string">&quot;misery&quot;</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><h3 id="References-to-variables"><a href="#References-to-variables" class="headerlink" title="References to variables"></a>References to variables</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; original&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; copy = original;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt;&amp; ref = original;</span><br><span class="line">original.<span class="built_in">push_back</span>(<span class="number">3</span>);</span><br><span class="line">copy.<span class="built_in">push_back</span>(<span class="number">4</span>);</span><br><span class="line">ref.<span class="built_in">push_back</span>(<span class="number">5</span>);</span><br><span class="line">cout &lt;&lt; original &lt;&lt; endl; <span class="comment">// &#123;1, 2, 3, 5&#125;</span></span><br><span class="line">cout &lt;&lt; copy &lt;&lt; endl; <span class="comment">// &#123;1, 2, 4&#125;</span></span><br><span class="line">cout &lt;&lt; ref &lt;&lt; endl; <span class="comment">// &#123;1, 2, 3, 5&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="The-classic-reference-copy-bug"><a href="#The-classic-reference-copy-bug" class="headerlink" title="The classic reference-copy bug:"></a>The classic reference-copy bug:</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">auto</span> [num1, num2] = nums[i];<span class="comment">//This creates a copy of the course</span></span><br><span class="line">        num1++;</span><br><span class="line">        num2++;<span class="comment">//This is updating that same copy!</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//The classic reference-copy bug, fixed:</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [num1, num2]: nums) &#123;</span><br><span class="line">        num1++;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="The-classic-reference-rvalue-error"><a href="#The-classic-reference-rvalue-error" class="headerlink" title="The classic reference-rvalue error"></a>The classic reference-rvalue error</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [num1, num2]: nums) &#123;</span><br><span class="line">        num1++;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">shift</span>(&#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;&#125;); </span><br><span class="line"><span class="comment">// &#123;&#123;1, 1&#125;&#125; is an rvalue, it can’t be referenced</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>l-values<ul>
-<li>l-values can appear on the left or  right of an =</li>
-<li><code>x</code> is an l-value</li>
-<li>l-values have names</li>
-<li>l-values are not temporary</li>
-</ul>
-</li>
-<li>r-values<ul>
-<li>r-values can ONLY appear on the  right of an =</li>
-<li><code>3</code> is an r-value</li>
-<li>r-values don’t have names</li>
-<li>r-values are temporary</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//The classic reference-rvalue error, fixed</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [num1, num2]: nums) &#123;</span><br><span class="line">        num1++;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">auto</span> my_nums = &#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="built_in">shift</span>(my_nums);</span><br></pre></td></tr></table></figure>
-<h3 id="const-indicates-a-variable-can’t-be-modified"><a href="#const-indicates-a-variable-can’t-be-modified" class="headerlink" title="const indicates a variable can’t be modified"></a>const indicates a variable can’t be modified</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; vec&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt; c_vec&#123;<span class="number">7</span>, <span class="number">8</span>&#125;; <span class="comment">// a const variable</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt;&amp; ref = vec; <span class="comment">// a regular reference</span></span><br><span class="line"><span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt;&amp; c_ref = vec; <span class="comment">// a const reference</span></span><br><span class="line">vec.<span class="built_in">push_back</span>(<span class="number">3</span>); <span class="comment">// OKAY</span></span><br><span class="line">c_vec.<span class="built_in">push_back</span>(<span class="number">3</span>); <span class="comment">// BAD - const</span></span><br><span class="line">ref.<span class="built_in">push_back</span>(<span class="number">3</span>); <span class="comment">// OKAY</span></span><br><span class="line">c_ref.<span class="built_in">push_back</span>(<span class="number">3</span>); <span class="comment">// BAD - const</span></span><br></pre></td></tr></table></figure>
-<h3 id="const-amp-subtleties"><a href="#const-amp-subtleties" class="headerlink" title="const &amp; subtleties"></a>const &amp; subtleties</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; vec&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt; c_vec&#123;<span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt;&amp; ref = vec;</span><br><span class="line"><span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt;&amp; c_ref = vec;</span><br><span class="line"><span class="keyword">auto</span> copy = c_ref; <span class="comment">// a non-const copy</span></span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> copy = c_ref; <span class="comment">// a const copy</span></span><br><span class="line"><span class="keyword">auto</span>&amp; a_ref = ref; <span class="comment">// a non-const reference</span></span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span>&amp; c_aref = ref; <span class="comment">// a const reference</span></span><br></pre></td></tr></table></figure>
-<h2 id="Containers-and-Iterators"><a href="#Containers-and-Iterators" class="headerlink" title="Containers and Iterators"></a>Containers and Iterators</h2><h3 id="Simple-Sequence-Containers"><a href="#Simple-Sequence-Containers" class="headerlink" title="Simple  Sequence Containers"></a>Simple  Sequence Containers</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TB</span><br><span class="line">A[Sequence Containers]--&gt;B[Simple]</span><br><span class="line">A--&gt;C[Adaptors]</span><br><span class="line">B--&gt;d[vector]</span><br><span class="line">B--&gt;e[deque]</span><br><span class="line">B--&gt;f[list]</span><br><span class="line">B--&gt;q[tuple]</span><br><span class="line">C--&gt;p[stack]</span><br><span class="line">C--&gt;o[queue]</span><br><span class="line">C--&gt;m[priority_queue]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TB</span><br><span class="line">A[Associative Containers]--&gt;B[Ordered]</span><br><span class="line">A--&gt;C[Unordered]</span><br><span class="line">B--&gt;set</span><br><span class="line">B--&gt;map</span><br><span class="line">C--&gt;unordered_set</span><br><span class="line">C--&gt;unordered_map</span><br></pre></td></tr></table></figure>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>What you want to do</th>
-<th>std::vector</th>
-<th>std::deque</th>
-<th>std::list</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Insert/remove in the front</td>
-<td>Slow</td>
-<td>Fast</td>
-<td>Fast</td>
-</tr>
-<tr>
-<td><strong>Insert/remove in the back</strong></td>
-<td>Super Fast</td>
-<td>Very Fast</td>
-<td>Fast</td>
-</tr>
-<tr>
-<td><strong>Indexed Access</strong></td>
-<td>Super Fast</td>
-<td>Fast</td>
-<td>Impossible</td>
-</tr>
-<tr>
-<td>Insert/remove in the middle</td>
-<td>Slow</td>
-<td>Fast</td>
-<td>Very Fast</td>
-</tr>
-<tr>
-<td>Memory usage</td>
-<td>Low</td>
-<td>High</td>
-<td>High</td>
-</tr>
-<tr>
-<td>Combining (splicing/joining)</td>
-<td>Slow</td>
-<td>Very Slow</td>
-<td>Fast</td>
-</tr>
-<tr>
-<td>Stability (iterators/concurrency)</td>
-<td>Bad</td>
-<td>Very Bad</td>
-<td>Good</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="Container-Adaptors"><a href="#Container-Adaptors" class="headerlink" title="Container Adaptors"></a>Container Adaptors</h3><blockquote>
-<p>What is a container adaptor? <code>std::stack and std::queue</code></p>
-</blockquote>
-<p>Container adaptors are wrappers in C++</p>
-<ul>
-<li>Container adaptors provide a different interface for sequence containers. </li>
-<li>You can choose what the underlying container is</li>
-<li>For instance, let’s choose a deque as our underlying container, and let’s implement a  queue</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::queue&lt;<span class="type">int</span>&gt; stack_deque; <span class="comment">// Container = std::deque</span></span><br><span class="line">std::queue&lt;<span class="type">int</span>, std::list&lt;<span class="type">int</span>&gt;&gt; stack_list;<span class="comment">// Container = std::list</span></span><br></pre></td></tr></table></figure>
-<h3 id="Associative-Containers"><a href="#Associative-Containers" class="headerlink" title="Associative Containers"></a>Associative Containers</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//set</span></span><br><span class="line">std::set&lt;<span class="type">int</span>&gt; s;<span class="comment">//Create an empty set</span></span><br><span class="line">s.<span class="built_in">insert</span>(k);<span class="comment">//Add a value k to the set</span></span><br><span class="line">s.<span class="built_in">erase</span>(k);<span class="comment">//Remove value k from the set</span></span><br><span class="line"><span class="keyword">if</span> (s.<span class="built_in">count</span>(k))...<span class="comment">//Check if a value k is in the set</span></span><br><span class="line"><span class="keyword">if</span> (vec.<span class="built_in">empty</span>())...<span class="comment">//Check if vector is empty</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//map</span></span><br><span class="line">std::map&lt;<span class="type">int</span>, <span class="type">char</span>&gt; m;<span class="comment">//Create an empty map</span></span><br><span class="line">m.<span class="built_in">insert</span>(&#123;k, v&#125;);</span><br><span class="line">m[k] = v;<span class="comment">//Add key k with value v into the map</span></span><br><span class="line">m.<span class="built_in">erase</span>(k);<span class="comment">//Remove key k from the map</span></span><br><span class="line"><span class="keyword">if</span> (m.<span class="built_in">count</span>(k)) ...<span class="comment">//Check if key k is in the map</span></span><br><span class="line"><span class="keyword">if</span> (m.<span class="built_in">empty</span>()) ...<span class="comment">//Check if the map is empty</span></span><br><span class="line"><span class="comment">//Retrieve or overwrite value associated with key k (error if key isn’t in map)</span></span><br><span class="line"><span class="type">char</span> c = m.<span class="built_in">at</span>(k);</span><br><span class="line">m.<span class="built_in">at</span>(k) = v;</span><br><span class="line"><span class="comment">//Retrieve or overwrite value associated with key k (auto-insert if key isn’t in map)</span></span><br><span class="line"><span class="type">char</span> c = m[k];</span><br><span class="line">m[k] = v;</span><br></pre></td></tr></table></figure>
-<h3 id="STL-Iterators"><a href="#STL-Iterators" class="headerlink" title="STL Iterators"></a>STL Iterators</h3><ul>
-<li>Iterators are objects that point to elements inside containers.</li>
-<li>Each STL container has its own iterator, but all of these iterators exhibit a similar  behavior!</li>
-<li>Generally, STL iterators support the following operations:</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::set&lt;type&gt; s = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">std::set::iterator iter = s.<span class="built_in">begin</span>(); <span class="comment">// at 0</span></span><br><span class="line">++iter; <span class="comment">// at 1</span></span><br><span class="line">*iter; <span class="comment">// 1</span></span><br><span class="line">(iter != s.<span class="built_in">end</span>()); <span class="comment">// can compare </span></span><br><span class="line">iterator equality</span><br><span class="line"><span class="keyword">auto</span> second_iter = iter; <span class="comment">// &quot;copy construction&quot;</span></span><br></pre></td></tr></table></figure>
-<p>Why ++iter and not iter++?</p>
-<p><strong>Answer</strong>: ++iter returns the value after being incremented! iter++ returns the previous value and then increments it. (wastes  just a bit of time)</p>
-<h3 id="Looping-over-collections"><a href="#Looping-over-collections" class="headerlink" title="Looping over collections"></a>Looping over collections</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//初始</span></span><br><span class="line">std::set&lt;<span class="type">int</span>&gt; set&#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> iter = set.<span class="built_in">begin</span>(); iter != set.<span class="built_in">end</span>(); ++iter) &#123;</span><br><span class="line">    <span class="type">const</span> <span class="keyword">auto</span>&amp; elem = *iter;</span><br><span class="line">    cout &lt;&lt; elem &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">std::map&lt;<span class="type">int</span>&gt; map&#123;&#123;<span class="number">1</span>, <span class="number">6</span>&#125;, &#123;<span class="number">1</span>, <span class="number">8</span>&#125;, &#123;<span class="number">0</span>, <span class="number">3</span>&#125;, &#123;<span class="number">3</span>, <span class="number">9</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> iter = map.<span class="built_in">begin</span>(); iter != map.<span class="built_in">end</span>(); ++iter) &#123;</span><br><span class="line">    <span class="type">const</span> <span class="keyword">auto</span>&amp; [key, value] = *iter; <span class="comment">// structured binding!</span></span><br><span class="line">    cout &lt;&lt; key &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; value &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//改进</span></span><br><span class="line">std::set&lt;<span class="type">int</span>&gt; set&#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; elem : set) &#123;</span><br><span class="line">    cout &lt;&lt; elem &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">std::map&lt;<span class="type">int</span>&gt; map&#123;&#123;<span class="number">1</span>, <span class="number">6</span>&#125;, &#123;<span class="number">1</span>, <span class="number">8</span>&#125;, &#123;<span class="number">0</span>, <span class="number">3</span>&#125;, &#123;<span class="number">3</span>, <span class="number">9</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; [key, value] : map) &#123;</span><br><span class="line">    cout &lt;&lt; key &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; value &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Pointers"><a href="#Pointers" class="headerlink" title="Pointers"></a>Pointers</h3><ul>
-<li>When variables are created, they’re given  an address in memory.</li>
-<li>Pointers are objects that store an address  and type of a variable.</li>
-</ul>
-<h2 id="classes"><a href="#classes" class="headerlink" title="classes"></a>classes</h2><blockquote>
-<p>A programmerdefined custom type. An  abstraction of an object or data type.</p>
-</blockquote>
-<h3 id="Sections"><a href="#Sections" class="headerlink" title="Sections"></a>Sections</h3><ul>
-<li>Public section:<ul>
-<li>Users of the Student object can  directly access anything here!</li>
-<li>Defines interface for interacting with  the private member variables</li>
-</ul>
-</li>
-<li>Private section:<ul>
-<li>Usually contains all member  variables</li>
-<li>Users can’t access or modify  anything in the private section</li>
-</ul>
-</li>
-</ul>
-<h3 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a>Constructors</h3><ul>
-<li>Define how the member variables of an object is initialized</li>
-<li>What gets called when you first create a Student object</li>
-<li>Overloadable</li>
-</ul>
-<h3 id="Destructors"><a href="#Destructors" class="headerlink" title="Destructors"></a>Destructors</h3><ul>
-<li>Arrays are memory WE allocate, so we need to give instructions for when to  deallocate that memory!</li>
-<li>When we are done using our array, we need to <code>delete []</code> it!</li>
-</ul>
-<h3 id="Template-classes"><a href="#Template-classes" class="headerlink" title="Template classes"></a>Template classes</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//mypair.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> “mypair.h”</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">First</span>, <span class="keyword">typename</span> Second&gt;</span><br><span class="line">First MyPair&lt;First, Second&gt;::<span class="built_in">getFirst</span>()&#123;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">Second</span>, <span class="keyword">typename</span> First&gt;</span><br><span class="line">    Second MyPair&lt;First, Second&gt;::<span class="built_in">getSecond</span>()&#123;</span><br><span class="line">    <span class="keyword">return</span> second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Member-Types"><a href="#Member-Types" class="headerlink" title="Member Types"></a>Member Types</h3><ul>
-<li>Sometimes, we need a name for a type that is dependent on  our template types</li>
-<li>iterator is a member type of vector</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//vector.h</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">class</span> <span class="title class_">vector</span> &#123;</span><br><span class="line">    <span class="keyword">using</span> iterator = … <span class="comment">// something internal</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">    iterator front;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vector.cpp</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">typename</span> vector&lt;T&gt;::iterator vector&lt;T&gt;::<span class="built_in">insert</span>(iterator pos, intvalue) &#123;...&#125;</span><br><span class="line"><span class="comment">//iterator is a nested type in namespace vector&lt;T&gt;::</span></span><br></pre></td></tr></table></figure>
-<p><strong>Aside: Type Aliases</strong></p>
-<ul>
-<li>You can use using type_name = type in application  code as well!</li>
-<li>When using it in a class interface, it defines a nested type, like  vector::iterator</li>
-<li>When using it in application code, like main.cpp, it just creates another name for type within that scope (until the  next unmatched })</li>
-</ul>
-<p><strong>Summary</strong></p>
-<ul>
-<li>Used to make sure your clients have a standardized way to  access important types</li>
-<li>Lives in your namespace: <code>vector&lt;T&gt;::iterator</code></li>
-<li>After class specifier, you can use the alias directly (e.g. inside  function arguments, inside function body)</li>
-<li>Before class specifier, use typename.</li>
-</ul>
-<h3 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h3><p><strong>Template classes</strong></p>
-<ul>
-<li>Add <code>template&lt;typename T1, typename T2 ...&gt;</code> before class definition in .h</li>
-<li>Add <code>template&lt;typename T1, typename T2 ...&gt;</code> before all  function signature in .cpp</li>
-<li>When returning nested types (like iterator types), put <code>template&lt;typename T1, typename T2 ...&gt;::member_type</code> as return type, not  just <code>member_type</code></li>
-<li>Templates don’t emit code until instantiated, so <code>#include</code> the  .cpp file in the .h file, not the other way around</li>
-</ul>
-<p><strong>Const and Const-correctness</strong></p>
-<ul>
-<li>Use const parameters and variables wherever you can in application code</li>
-<li>Every member function of a class that doesn’t change its member variables should be marked <code>const</code></li>
-<li>auto will drop all const and &amp;, so be sure to specify</li>
-<li>Make iterators and const_iterators for all your classes!<ul>
-<li><strong>const iterator</strong> = cannot increment the iterator, can dereference and change underlying value</li>
-<li><strong>const_iterator</strong> = can increment the iterator, cannot dereference and change underlying value</li>
-<li><strong>const const_iterator</strong> = cannot increment iterator, cannot dereference and change underlying value</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>course</category>
-      </categories>
-  </entry>
-  <entry>
     <title>11/25签到推</title>
     <url>/2022/11/25/11-25%E7%AD%BE%E5%88%B0%E6%8E%A8/</url>
     <content><![CDATA[<p>微信公众号例会签到推。</p>
@@ -933,6 +701,688 @@
 </li>
 <li>When the meaning isn’t obvious, give it a normal name instead</li>
 </ol>
+<h1 id="Lec12-Special-Member-Function"><a href="#Lec12-Special-Member-Function" class="headerlink" title="Lec12 Special Member Function"></a>Lec12 Special Member Function</h1><h2 id="Special-Member-Functions-SMFs"><a href="#Special-Member-Functions-SMFs" class="headerlink" title="Special Member Functions (SMFs)"></a>Special Member Functions (SMFs)</h2><p>These functions are generated only when they’re called (and before any  are explicitly defined by you):</p>
+<ul>
+<li>Default Constructor</li>
+<li>Copy Constructor</li>
+<li>Copy Assignment Operator</li>
+<li>Destructor</li>
+<li>Move Constructor</li>
+<li>Move Assignment Operator</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Widget</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">Widget</span>(); <span class="comment">// default constructor</span></span><br><span class="line">        <span class="built_in">Widget</span> (<span class="type">const</span> Widget&amp; w); <span class="comment">// copy constructor</span></span><br><span class="line">        Widget&amp; <span class="keyword">operator</span> = (<span class="type">const</span> Widget&amp; w); <span class="comment">// copy assignment operator</span></span><br><span class="line">        ~<span class="built_in">Widget</span>(); <span class="comment">// destructor</span></span><br><span class="line">        <span class="built_in">Widget</span> (Widget&amp;&amp; rhs); <span class="comment">// move constructor</span></span><br><span class="line">        Widget&amp; <span class="keyword">operator</span> = (Widget&amp;&amp; rhs); <span class="comment">// move assignment operator</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Default Constructor<ul>
+<li>object is created with no  parameters</li>
+<li>constructor also has no parameters</li>
+<li>all SMFs are public and inline function, meaning that wherever  it’s used is replaced with the  generated code in the function</li>
+</ul>
+</li>
+<li>Copy Constructor<ul>
+<li>another type of constructor that creates an instance of a class</li>
+<li>constructs a member-wise copy of  an object (deep copy)</li>
+</ul>
+</li>
+<li>Copy Assignment Operator<ul>
+<li>very similar to copy constructor,  except called when trying to set  one object equal to another  e.g. w1 = w2;</li>
+</ul>
+</li>
+<li>Destructor<ul>
+<li>called whenever object goes out  of scope</li>
+<li>can be used for deallocating  member variables and avoiding  memory leaks</li>
+</ul>
+</li>
+<li>Move Constructor</li>
+<li>Move Assignment Operator</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Examples:</span></span><br><span class="line"><span class="keyword">using</span> std::vector;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">func</span><span class="params">(vector&lt;<span class="type">int</span>&gt; vec0)</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec1;<span class="comment">//Default constructor creates empty vector</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec2</span><span class="params">(<span class="number">3</span>)</span></span>;<span class="comment">//Not a SMF - calls a constructor with parameters→&#123;0,0,0&#125;</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec3&#123;<span class="number">3</span>&#125;;<span class="comment">//Also not a SMF, uses initializer_list</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec4</span><span class="params">()</span></span>;<span class="comment">//A function declaration! (C++&#x27;s most vexing parse)</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec5</span><span class="params">(vec2&#125;;<span class="comment">//Copy constructor - vector created as copy of another</span></span></span></span><br><span class="line"><span class="params"><span class="function">    vector&lt;<span class="type">int</span>&gt; vec&#123;&#125;;<span class="comment">//Also the default constructor</span></span></span></span><br><span class="line"><span class="params"><span class="function">    vector&lt;<span class="type">int</span>&gt; vec&#123;vec3 + vec4&#125;;<span class="comment">//Copy constructor</span></span></span></span><br><span class="line"><span class="params"><span class="function">    vector&lt;<span class="type">int</span>&gt; vec8 = vec4;<span class="comment">//Copy constructor - vec8 is newly constructor</span></span></span></span><br><span class="line"><span class="params"><span class="function">    vec8 = vec2;<span class="comment">//Copy assignment - vec8 is an existing object</span></span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">return</span> vec8;<span class="comment">//Copy constructor: copies vec8 to location outside of func</span></span></span></span><br><span class="line"><span class="params"><span class="function">&#125;<span class="comment">//Destructors on all values (except return value) are called</span></span></span></span><br></pre></td></tr></table></figure>
+<h2 id="Copy-Constructors-and-Copy-Assignment-Operators"><a href="#Copy-Constructors-and-Copy-Assignment-Operators" class="headerlink" title="Copy Constructors and Copy  Assignment Operators"></a>Copy Constructors and Copy  Assignment Operators</h2><h3 id="initializer-lists"><a href="#initializer-lists" class="headerlink" title="initializer lists"></a>initializer lists</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">vector&lt;T&gt;::<span class="built_in">vector</span>&lt;T&gt;() &#123;<span class="comment">//members are first default constructed (declared to be their default values)</span></span><br><span class="line">    _size = <span class="number">0</span>;</span><br><span class="line">    _capacity = kInitialSize;</span><br><span class="line">    _elems = <span class="keyword">new</span> T[kInitialSize];<span class="comment">//Then each member is reassigned. This seems wasteful!</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//The technique below is called an initializer list</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">vector&lt;T&gt;::<span class="built_in">vector</span>&lt;T&gt;() :<span class="comment">//Directly construct each member with a starting value</span></span><br><span class="line">    _size(<span class="number">0</span>), _capacity(kInitialSize),</span><br><span class="line">    _elems(<span class="keyword">new</span> T[kInitialSize]) &#123; &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Prefer to use member initializer lists, which directly constructs each  member with a given value<ul>
+<li>Faster! Why construct, and then immediately reassign? </li>
+<li>What if members are a non-assignable type (you’ll see by the end of  lecture how this can be possible!)</li>
+</ul>
+</li>
+<li>Important clarification: you can use member initializer lists for ANY  constructor, even if it has parameters (and thus isn’t an SMF)</li>
+</ul>
+<h3 id="Why-aren’t-the-default-SMFs-always-sufficient"><a href="#Why-aren’t-the-default-SMFs-always-sufficient" class="headerlink" title="Why aren’t the default SMFs  always sufficient?"></a>Why aren’t the default SMFs  always sufficient?</h3><p>The default compiler-generated copy constructor and copy  assignment operator functions work by manually copying each member variable!</p>
+<p>Moral of the story: in many cases, copying is not  as simple as copying each member variable!</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//the default copy constructor</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">vector&lt;T&gt;::<span class="built_in">vector</span>&lt;T&gt;(<span class="type">const</span> vector::vector&lt;T&gt;&amp; other) :</span><br><span class="line">    _size(other._size),</span><br><span class="line">    _capacity(other._capacity),</span><br><span class="line">    _elems(other._elems) &#123; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//We can create a new array</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">vector&lt;T&gt;::<span class="built_in">vector</span>&lt;T&gt;(<span class="type">const</span> vector::vector&lt;T&gt;&amp; other) :</span><br><span class="line">    _size(other._size),</span><br><span class="line">    _capacity(other._capacity),</span><br><span class="line">    _elems(other._elems) &#123; </span><br><span class="line">    _elems = <span class="keyword">new</span> T[other._capacity];</span><br><span class="line">    std::<span class="built_in">copy</span>(other._elems, other._elems + other._size, _elems);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Even better: let&#x27;s move this to the initializer list</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">vector&lt;T&gt;::<span class="built_in">vector</span>&lt;T&gt;(<span class="type">const</span> vector::vector&lt;T&gt;&amp; other) :</span><br><span class="line">    _size(other._size),</span><br><span class="line">    _capacity(other._capacity),</span><br><span class="line">    _elems(<span class="keyword">new</span> T[other._capacity]) &#123;<span class="comment">//We can move our reassignment of _elems up!</span></span><br><span class="line">    std::<span class="built_in">copy</span>(other._elems, other._elems + other._size, _elems);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//the default copy assignment operator</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">vector&lt;T&gt;&amp; vector&lt;T&gt;::<span class="keyword">operator</span> = (<span class="type">const</span> vector&lt;T&gt;&amp; other) &#123;</span><br><span class="line">    _size = other._size;</span><br><span class="line">    _capacity = other._capacity;</span><br><span class="line">    _elems = other._elems;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Attempt 1: Allocate a new array and copy over elements</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">vector&lt;T&gt;&amp; vector&lt;T&gt;::<span class="keyword">operator</span> = (<span class="type">const</span> vector&lt;T&gt;&amp; other) &#123;</span><br><span class="line">    _size = other._size;</span><br><span class="line">    _capacity = other._capacity;</span><br><span class="line">    _elems = <span class="keyword">new</span> T[other._capacity];<span class="comment">//We&#x27;ve lost access to the old value of _elems, and leaked the array that it pointed to!</span></span><br><span class="line">    std::<span class="built_in">copy</span>(other._elems, other._elems + other._size, _elems);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Attempt 2: Deallocate the old array and make a new one</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">vector&lt;T&gt;&amp; vector&lt;T&gt;::<span class="keyword">operator</span> = (<span class="type">const</span> vector&lt;T&gt;&amp; other) &#123;</span><br><span class="line">    <span class="keyword">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keyword">return</span> *<span class="keyword">this</span>;<span class="comment">//Also, be careful about self-reassignment!</span></span><br><span class="line">    _size = other._size;</span><br><span class="line">    _capacity = other._capacity;</span><br><span class="line">    <span class="keyword">delete</span>[] _elems;</span><br><span class="line">    _elems = <span class="keyword">new</span> T[other._capacity];</span><br><span class="line">    std::<span class="built_in">copy</span>(other._elems, other._elems + other._size, _elems);</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;<span class="comment">//Remember to return a reference to the vector itself</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Copy operations must perform these tasks:</p>
+<ul>
+<li>Copy constructor<ul>
+<li>Use initializer list to copy members  where simple copying does the  correct thing.<ul>
+<li>int, other objects, etc</li>
+</ul>
+</li>
+<li>Manually copy all members otherwise <ul>
+<li>pointers to heap memory</li>
+<li>non-copyable things</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Copy assignment<ul>
+<li>Clean up any resources in the existing object about to be overwritten</li>
+<li>Copy members using direct  assignment when assignment works</li>
+<li>Manually copy members where assignment does not work</li>
+<li>You don’t have to do these in this order</li>
+</ul>
+</li>
+</ul>
+<p>Summary: Steps to follow for an assignment operator</p>
+<ol>
+<li>Check for self-assignment.</li>
+<li>Make sure to free existing members if applicable.</li>
+<li>Copy assign each automatically assignable member. </li>
+<li>Manually copy all other members.</li>
+<li>Return a reference to *this (that was just reassigned).</li>
+</ol>
+<h2 id="delete-and-default"><a href="#delete-and-default" class="headerlink" title="= delete and = default"></a>= delete and = default</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Explicitly delete the copy member functions</span></span><br><span class="line"><span class="comment">//Adding = delete; after a function prototype tells C++ to not generate the corresponding SMF</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PasswordManager</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">PasswordManager</span>();</span><br><span class="line">        <span class="built_in">PasswordManager</span>(<span class="type">const</span> PasswordManager&amp; pm);</span><br><span class="line">        ~<span class="built_in">PasswordManager</span>();</span><br><span class="line">        <span class="comment">// other methods ...</span></span><br><span class="line">        <span class="built_in">PasswordManager</span>(<span class="type">const</span> PasswordManager&amp; rhs) = <span class="keyword">delete</span>;</span><br><span class="line">        PasswordManager&amp; <span class="keyword">operator</span> = (<span class="type">const</span> PasswordManager&amp; rhs) = <span class="keyword">delete</span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="comment">// other important members ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Is there a way to keep, say, the default copy constructor if you write another constructor?</span></span><br><span class="line"><span class="comment">//Adding = default; after a function prototype tells C++ to still generate the default SMF, even if you&#x27;re defining other SMFs</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PasswordManager</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">PasswordManager</span>();</span><br><span class="line">        <span class="built_in">PasswordManager</span>(<span class="type">const</span> PasswordManager&amp; pm) = <span class="keyword">default</span>;</span><br><span class="line">        ~<span class="built_in">PasswordManager</span>();</span><br><span class="line">        <span class="comment">// other methods ...</span></span><br><span class="line">        <span class="built_in">PasswordManager</span>(<span class="type">const</span> PasswordManager&amp; rhs) = <span class="keyword">delete</span>;</span><br><span class="line">        PasswordManager&amp; <span class="keyword">operator</span> = (<span class="type">const</span> PasswordManager&amp; rhs) = <span class="keyword">delete</span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="comment">// other important members ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Rule-of-0-and-Rule-of-3"><a href="#Rule-of-0-and-Rule-of-3" class="headerlink" title="Rule of 0 and Rule of 3"></a>Rule of 0 and Rule of 3</h2><h3 id="Rule-of-0"><a href="#Rule-of-0" class="headerlink" title="Rule of 0"></a>Rule of 0</h3><blockquote>
+<p> If the default operations work, then don’t define your own!</p>
+</blockquote>
+<p>When should you define your own SMFs</p>
+<ul>
+<li>When the default ones generated by the compiler won’t work</li>
+<li>Most common reason: there’s a resource that our class uses that’s not  stored inside of our class <ul>
+<li>e.g. dynamically allocated memory<ul>
+<li>our class only stores the pointers to arrays, not the arrays in memory  itself</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Rule-of-3-C-98"><a href="#Rule-of-3-C-98" class="headerlink" title="Rule of 3 (C++ 98)"></a>Rule of 3 (C++ 98)</h3><ul>
+<li>If you explicitly define a copy constructor, copy assignment operator, or  destructor, you should define all three</li>
+<li>What’s the rationale?<ul>
+<li>If you’re explicitly writing your own copy operation, you’re controlling  certain resources manually</li>
+<li>You should then manage the creation, use, and releasing of those  resources!</li>
+</ul>
+</li>
+</ul>
+<p><strong>Recap of Special Member Functions (SMFs)</strong></p>
+<ul>
+<li>Default Constructor<ul>
+<li>Object created with no parameters, no member variables instantiated </li>
+</ul>
+</li>
+<li>Copy Constructor<ul>
+<li>Object created as a copy of existing object (member variable-wise) </li>
+</ul>
+</li>
+<li>Copy Assignment Operator<ul>
+<li>Existing object replaced as a copy of another existing object. </li>
+</ul>
+</li>
+<li>Destructor <ul>
+<li>Object destroyed when it is out of scope.</li>
+</ul>
+</li>
+</ul>
+<p>Are these 4 enough?</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StringTable</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">StringTable</span>() &#123;&#125;</span><br><span class="line">        <span class="built_in">StringTable</span>(<span class="type">const</span> StringTable&amp; st) &#123;&#125;</span><br><span class="line">        <span class="comment">// functions for insertion, erasure, lookup, etc., </span></span><br><span class="line">        <span class="comment">// but no move/dtor functionality</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        std::map&lt;<span class="type">int</span>, std::string&gt; values;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Move-constructors-and-move-assignment-operators"><a href="#Move-constructors-and-move-assignment-operators" class="headerlink" title="Move constructors and move  assignment operators"></a>Move constructors and move  assignment operators</h2><h3 id="Move-Operations-C-11"><a href="#Move-Operations-C-11" class="headerlink" title="Move Operations (C++11)"></a>Move Operations (C++11)</h3><p>These functions are generated only when they’re called (and before any are explicitly defined by you)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Allow for moving objects and std::move operations (rvalue refs)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Widget</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">Widget</span>(); <span class="comment">// default constructor</span></span><br><span class="line">        <span class="built_in">Widget</span> (<span class="type">const</span> Widget&amp; w); <span class="comment">// copy constructor</span></span><br><span class="line">        Widget&amp; <span class="keyword">operator</span> = (<span class="type">const</span> Widget&amp; w); <span class="comment">// copy assignment operator</span></span><br><span class="line">        ~<span class="built_in">Widget</span>(); <span class="comment">// destructor</span></span><br><span class="line">        <span class="built_in">Widget</span> (Widget&amp;&amp; rhs); <span class="comment">// move constructor</span></span><br><span class="line">        Widget&amp; <span class="keyword">operator</span> = (Widget&amp;&amp; rhs); <span class="comment">// move assignment operator</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Move constructors and move assignment operators will perform  “memberwise moves”</li>
+<li>Defining a copy constructor does not affect generation of a default copy  assignment operator, and vice versa</li>
+<li>Defining a move assignment operator prevents generation of a move copy  constructor, and vice versa<ul>
+<li>Rationale: if the move assignment operator needs to be re-implemented,  there’d likely be a problem with the move constructor</li>
+</ul>
+</li>
+</ul>
+<h3 id="Some-nuances-to-move-operation-SMFs"><a href="#Some-nuances-to-move-operation-SMFs" class="headerlink" title="Some nuances to move operation SMFs"></a>Some nuances to move operation SMFs</h3><ul>
+<li>Move operations are generated for classes only if these things are true:<ul>
+<li>No copy operations are declared in the class </li>
+<li>No move operations are declared in the class</li>
+<li>No destructor is declared in the class<ul>
+<li>Can get around all of these by using default:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Widget</span>(Widget&amp;&amp;) = <span class="keyword">default</span>;</span><br><span class="line">Widget&amp; <span class="keyword">operator</span>=(Widget&amp;&amp;) = <span class="keyword">default</span>; <span class="comment">// support moving</span></span><br><span class="line"><span class="built_in">Widget</span>(<span class="type">const</span> Widget&amp;) = <span class="keyword">default</span>;</span><br><span class="line">Widget&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Widget&amp;) = <span class="keyword">default</span>; <span class="comment">// support copying</span></span><br></pre></td></tr></table></figure>
+<h1 id="Lec13-Move-Semantics-in-C"><a href="#Lec13-Move-Semantics-in-C" class="headerlink" title="Lec13 Move Semantics in C++"></a>Lec13 Move Semantics in C++</h1><blockquote>
+<p>l-values live until the end of the scope </p>
+<p>r-values live until the end of the line</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Find the r-values! (Only consider the items on the right of = signs)</span></span><br><span class="line"><span class="type">int</span> x = <span class="number">3</span>; <span class="comment">//3 is an r-value</span></span><br><span class="line"><span class="type">int</span> *ptr = <span class="number">0x02248837</span>; <span class="comment">//0x02248837 is an r-value</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v1&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">//&#123;1, 2, 3&#125; is an r-value,v1 is an l-value</span></span><br><span class="line"><span class="keyword">auto</span> v4 = v1 + v2; <span class="comment">//v1 + v2 is an r-value</span></span><br><span class="line"><span class="type">size_t</span> size = v.<span class="built_in">size</span>(); <span class="comment">//v.size()is an r-value</span></span><br><span class="line">v1[<span class="number">1</span>] = <span class="number">4</span>*i; <span class="comment">//4*i is an r-value, v1[1] is an l-value</span></span><br><span class="line">ptr = &amp;x; <span class="comment">//&amp;x is an r-value</span></span><br><span class="line">v1[<span class="number">2</span>] = *ptr; <span class="comment">//*ptr is an l-value</span></span><br><span class="line">MyClass obj; <span class="comment">//obj is an l-value</span></span><br><span class="line">x = obj.public_member_variable; <span class="comment">//obj.public_member_variable is l-value</span></span><br></pre></td></tr></table></figure>
+<h2 id="How-many-arrays-will-be-allocated-copied-and-destroyed-here"><a href="#How-many-arrays-will-be-allocated-copied-and-destroyed-here" class="headerlink" title="How many arrays will be allocated, copied and destroyed here?"></a>How many arrays will be allocated, copied and destroyed here?</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">    vec = <span class="built_in">make_me_a_vec</span>(<span class="number">123</span>); <span class="comment">// //make_me_a_vec(123) is an r-value</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">make_me_a_vec</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">    <span class="keyword">while</span> (num != <span class="number">0</span>) &#123;</span><br><span class="line">        res.<span class="built_in">push_back</span>(num%<span class="number">10</span>);</span><br><span class="line">        num /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>vec is created using the default constructor </li>
+<li>make_me_a_vec creates a vector using the default constructor and returns it </li>
+<li>vec is reassigned to a copy of that return value using copy assignment</li>
+<li>copy assignment creates a new array and copies the contents of the old one </li>
+<li>The original return value’s lifetime ends and it calls its destructor </li>
+<li>vec’s lifetime ends and it calls its destructor</li>
+</ul>
+<h2 id="How-do-we-know-when-to-use-move-assignment-and-when-to-use-copy-assignment"><a href="#How-do-we-know-when-to-use-move-assignment-and-when-to-use-copy-assignment" class="headerlink" title="How do we know when to use move assignment and  when to use copy assignment?"></a>How do we know when to use move assignment and  when to use copy assignment?</h2><p><strong>Answer</strong>: When the item on the right of the = is an  r-value we should use move assignment</p>
+<p>Why? r-values are always about to die, so we can steal their resources</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Examples</span></span><br><span class="line"><span class="comment">//Using move assignment</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">    vec = <span class="built_in">make_me_a_vec</span>(<span class="number">123</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Using copy assignment</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;string&gt; vec1 = &#123;“hello”, “world”&#125;</span><br><span class="line">    vector&lt;string&gt; vec2 = vec1;</span><br><span class="line">    vec1.<span class="built_in">push_back</span>(“Sure hope vec2 doesn’t see <span class="keyword">this</span>!”)</span><br><span class="line">&#125; <span class="comment">//and vec2 never saw a thing</span></span><br></pre></td></tr></table></figure>
+<h2 id="the-r-value-reference"><a href="#the-r-value-reference" class="headerlink" title="the r-value reference"></a>the r-value reference</h2><blockquote>
+<p>How to make two different assignment operators? Overload vector::operator= ! </p>
+<p>How? Introducing… the r-value reference <code>&amp;&amp;</code></p>
+<p>(This is different from the l-value reference &amp; you have see before) (it has one more ampersand)</p>
+</blockquote>
+<p><strong>Overloading with <code>&amp;&amp;</code></strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">change</span>(x); <span class="comment">//this will call version 2</span></span><br><span class="line">    <span class="built_in">change</span>(<span class="number">7</span>); <span class="comment">//this will call version 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">change</span><span class="params">(<span class="type">int</span>&amp;&amp; num)</span></span>&#123;...&#125; <span class="comment">//version 1 takes r-values</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">change</span><span class="params">(<span class="type">int</span>&amp; num)</span></span>&#123;...&#125; <span class="comment">//version 2 takes l-values</span></span><br><span class="line"><span class="comment">//num is a reference to vec</span></span><br></pre></td></tr></table></figure>
+<h3 id="Copy-assignment-and-Move-assignment"><a href="#Copy-assignment-and-Move-assignment" class="headerlink" title="Copy assignment and Move assignment"></a>Copy assignment and Move assignment</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Copy assignment</span></span><br><span class="line">vector&lt;T&gt;&amp; <span class="keyword">operator</span>=(<span class="type">const</span> vector&lt;T&gt;&amp; other) &#123; </span><br><span class="line">    <span class="keyword">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keyword">return</span> *<span class="keyword">this</span>; </span><br><span class="line">    _size = other._size; </span><br><span class="line">    _capacity = other._capacity; </span><br><span class="line">    <span class="comment">//must copy entire array</span></span><br><span class="line">    <span class="keyword">delete</span>[] _elems; </span><br><span class="line">    _elems = <span class="keyword">new</span> T[other._capacity]; </span><br><span class="line">    std::<span class="built_in">copy</span>(other._elems, </span><br><span class="line">    other._elems + other._size, </span><br><span class="line">    _elems); </span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Move assignment</span></span><br><span class="line">vector&lt;T&gt;&amp; <span class="keyword">operator</span>=(vector&lt;T&gt;&amp;&amp; other) &#123; </span><br><span class="line">    <span class="keyword">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keyword">return</span> *<span class="keyword">this</span>; </span><br><span class="line">    _size = other._size; </span><br><span class="line">    _capacity = other._capacity; </span><br><span class="line">    <span class="comment">//we can steal the array</span></span><br><span class="line">    <span class="keyword">delete</span>[] _elems; </span><br><span class="line">    _elems = other._elems</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//This works</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">    vec = <span class="built_in">make_me_a_vec</span>(<span class="number">123</span>); <span class="comment">//this will use move assignment</span></span><br><span class="line">    vector&lt;string&gt; vec1 = &#123;“hello”, “world”&#125;</span><br><span class="line">    vector&lt;string&gt; vec2 = vec1; <span class="comment">//this will use copy assignment</span></span><br><span class="line">    vec1.<span class="built_in">push_back</span>(“Sure hope vec2 doesn’t see <span class="keyword">this</span>!”)</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p><strong>The compiler will pick which vector::operator= to use based  on whether the RHS is an l-value or an r-value</strong></p>
+<h3 id="Can-we-make-it-even-better"><a href="#Can-we-make-it-even-better" class="headerlink" title="Can we make it even better?"></a>Can we make it even better?</h3><p>In the move assignment above, these are also making copies (using int/ptr copy assignment)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">_size = other._size; </span><br><span class="line">_capacity = other._capacity; </span><br><span class="line">_elems = other._elems;</span><br></pre></td></tr></table></figure>
+<p>We can force move assignment  rather than copy assignment of these ints by using std::move</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">vector&lt;T&gt;&amp; <span class="keyword">operator</span>=(vector&lt;T&gt;&amp;&amp; other) &#123; </span><br><span class="line">    <span class="keyword">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keyword">return</span> *<span class="keyword">this</span>; </span><br><span class="line">    _size = std::<span class="built_in">move</span>(other._size); </span><br><span class="line">    _capacity = std::<span class="built_in">move</span>(other._capacity); </span><br><span class="line">    <span class="comment">//we can steal the array</span></span><br><span class="line">    <span class="keyword">delete</span>[] _elems; </span><br><span class="line">    _elems = std::<span class="built_in">move</span>(other._elems);</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The compiler will pick which vector::operator= to use based on whether the RHS is an l-value or an r-value</p>
+<h3 id="Constructor"><a href="#Constructor" class="headerlink" title="Constructor"></a>Constructor</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//How about this</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">    vec = <span class="built_in">make_me_a_vec</span>(<span class="number">123</span>); <span class="comment">//this will use move assignment</span></span><br><span class="line">    vector&lt;string&gt; vec1 = &#123;“hello”, “world”&#125; <span class="comment">//this should use move </span></span><br><span class="line">    vector&lt;string&gt; vec2 = vec1; <span class="comment">//this will use copy construction</span></span><br><span class="line">    vec1.<span class="built_in">push_back</span>(“Sure hope vec2 doesn’t see <span class="keyword">this</span>!”)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//copy constructor</span></span><br><span class="line"><span class="built_in">vector</span>&lt;T&gt;(<span class="type">const</span> vector&lt;T&gt;&amp; other) &#123; </span><br><span class="line">    <span class="keyword">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keyword">return</span> *<span class="keyword">this</span>; </span><br><span class="line">    _size = other._size; </span><br><span class="line">    _capacity = other._capacity; </span><br><span class="line">    <span class="comment">//must copy entire array</span></span><br><span class="line">    <span class="keyword">delete</span>[] _elems; </span><br><span class="line">    _elems = <span class="keyword">new</span> T[other._capacity]; </span><br><span class="line">    std::<span class="built_in">copy</span>(other._elems, other._elems + other._size, _elems); </span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//move constructor</span></span><br><span class="line"><span class="built_in">vector</span>&lt;T&gt;(vector&lt;T&gt;&amp;&amp; other) &#123; </span><br><span class="line">    <span class="keyword">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    _size = std::<span class="built_in">move</span>(other._size); </span><br><span class="line">    _capacity = std::<span class="built_in">move</span>(other._capacity); </span><br><span class="line">    <span class="comment">//we can steal the array</span></span><br><span class="line">    <span class="keyword">delete</span>[] _elems; </span><br><span class="line">    _elems = std::<span class="built_in">move</span>(other._elems);</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Where else should we use std::move?</p>
+<p><strong>Answer</strong>: </p>
+<ol>
+<li>Wherever we take in a const &amp; parameter in a class member function and assign it  to something else in our function</li>
+<li>Don’t use std::move outside of class  definitions, never use it in application code!</li>
+</ol>
+<h3 id="vector-push-back"><a href="#vector-push-back" class="headerlink" title="vector::push_back"></a>vector::push_back</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Copy push_back </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">push_back</span><span class="params">(<span class="type">const</span> T&amp; element)</span> </span>&#123;</span><br><span class="line">    elems[_size++] = element; </span><br><span class="line">    <span class="comment">//this is copy assignment </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Move push_back</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">push_back</span><span class="params">(T&amp;&amp; element)</span> </span>&#123;</span><br><span class="line">    elems[_size++] = std::<span class="built_in">move</span>(element); </span><br><span class="line">    <span class="comment">//this forces T’s move assignment </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Be-careful-with-std-move"><a href="#Be-careful-with-std-move" class="headerlink" title="Be careful with std::move"></a>Be careful with std::move</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;string&gt; vec1 = &#123;“hello”, “world”&#125;</span><br><span class="line">    vector&lt;string&gt; vec2 = std::<span class="built_in">move</span>(vec1);</span><br><span class="line">    vec1.<span class="built_in">push_back</span>(“Sure hope vec2 doesn’t see <span class="keyword">this</span>!”)<span class="comment">//wrong!!!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>After a variable is moved via std::move, it should never be used until it is  reassigned to a new variable!</li>
+<li>The C++ compiler might warn you about this mistake, but the code above compiles!</li>
+</ul>
+<h2 id="TLDR-Move-Semantics"><a href="#TLDR-Move-Semantics" class="headerlink" title="TLDR: Move Semantics"></a>TLDR: Move Semantics</h2><ul>
+<li>If your class has copy constructor and copy assignment defined, you should also define a move constructor and move assignment</li>
+<li>Define these by overloading your copy constructor and assignment to be  defined for Type&amp;&amp; other as well as Type&amp; other </li>
+<li>Use std::move to force the use of other types’ move assignments and  constructors </li>
+<li>All std::move(x) does is cast x as an rvalue </li>
+<li>Be wary of std::move(x) in main function code</li>
+</ul>
+<h2 id="Bonus-std-move-and-RAII"><a href="#Bonus-std-move-and-RAII" class="headerlink" title="Bonus: std::move and RAII"></a>Bonus: std::move and RAII</h2><ul>
+<li>Recall: RAII means all resources required by an object are acquired in its constructor and destroyed in its destructor </li>
+<li>To be consistent with RAII, you should have no half-ready resources, such as a  vector whose underlying array has been deallocated</li>
+</ul>
+<p>Is std::move consistent with RAII?</p>
+<ul>
+<li>I say NO! </li>
+<li>This is a sticky language design flaw, C++ has a lot of those! </li>
+</ul>
+<h1 id="Lec14-Type-Safety-and-std-optional"><a href="#Lec14-Type-Safety-and-std-optional" class="headerlink" title="Lec14 Type Safety and std::optional"></a>Lec14 Type Safety and <code>std::optional</code></h1><h2 id="Recap-Const-Correctness"><a href="#Recap-Const-Correctness" class="headerlink" title="Recap: Const-Correctness"></a>Recap: Const-Correctness</h2><ul>
+<li>We pass big pieces of data by reference into helper functions  by to avoid making copies of that data</li>
+<li>If this function accidentally or sneakily changes that piece of  data, it can lead to hard to find bugs! </li>
+<li><strong>Solution</strong>: mark those reference parameters const to  guarantee they won’t be changed in the function!</li>
+</ul>
+<h2 id="How-does-the-compiler-know-when-it’s-safe-to-call-member-functions-of-const-variables"><a href="#How-does-the-compiler-know-when-it’s-safe-to-call-member-functions-of-const-variables" class="headerlink" title="How does the compiler know when it’s safe to call  member functions of const variables?"></a>How does the compiler know when it’s safe to call  member functions of const variables?</h2><blockquote>
+<p>const-interface: All member functions marked const in a class definition. Objects of  type const ClassName may only use the const-interface.</p>
+</blockquote>
+<p><strong>RealVector’s const-interface</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">ValueType</span>&gt; <span class="keyword">class</span> <span class="title class_">RealVector</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">using</span> iterator = ValueType*;</span><br><span class="line">    <span class="keyword">using</span> const_ iterator = <span class="type">const</span> ValueType*;</span><br><span class="line">    <span class="comment">/*...*/</span></span><br><span class="line">    <span class="function"><span class="type">size_t</span> <span class="title">size</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="comment">/*...*/</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push_back</span><span class="params">(<span class="type">const</span> ValueType&amp; elem)</span></span>;</span><br><span class="line">    <span class="function">iterator <span class="title">begin</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">iterator <span class="title">end</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">const_iterator <span class="title">cbegin</span><span class="params">()</span><span class="type">const</span></span>;</span><br><span class="line">    <span class="function">const_iterator <span class="title">cend</span><span class="params">()</span><span class="type">const</span></span>;</span><br><span class="line">    <span class="comment">/*...*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Key Idea: Sometimes less functionality is better functionality</p>
+<ul>
+<li>Technically, adding a const-interface only limits what RealVector objects marked const can do </li>
+<li>Using types to enforce assumptions we make about function calls help us prevent programmer errors! </li>
+</ul>
+<h2 id="Type-Safety"><a href="#Type-Safety" class="headerlink" title="Type Safety"></a>Type Safety</h2><blockquote>
+<p>Type Safety: The extent to which a language prevents typing errors.<strong>guarantees the behavior  of programs.</strong></p>
+</blockquote>
+<p>What does this code do?</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">removeOddsFromEnd</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; vec)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(vec.<span class="built_in">back</span>() % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">        vec.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//What happens when input is &#123;&#125; ?</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//One solution</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">removeOddsFromEnd</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; vec)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(!vec.<span class="built_in">empty</span>() &amp;&amp; vec.<span class="built_in">back</span>() % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">        vec.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Key idea: it is the programmers job to enforce the precondition that vec be non-empty, otherwise we get undefined behavior!</span></span><br></pre></td></tr></table></figure>
+<p>There may or may not be a “last element” in vec. How can vec.back() have deterministic  behavior in either case?</p>
+<p><strong>The problem</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">valueType&amp; vector&lt;valueType&gt;::<span class="built_in">back</span>()&#123;</span><br><span class="line">    <span class="keyword">return</span> *(<span class="built_in">begin</span>() + <span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Dereferencing a pointer without verifying it points to real memory is undefined behavior!</span></span><br><span class="line"></span><br><span class="line">valueType&amp; vector&lt;valueType&gt;::<span class="built_in">back</span>()&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">empty</span>()) <span class="keyword">throw</span> std::out_of_range;</span><br><span class="line">    <span class="keyword">return</span> *(<span class="built_in">begin</span>() + <span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Now, we will at least reliably error and stop the program or return the last element whenever back() is called</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Type Safety: The extent to  which a <strong>function signature</strong> guarantees the  behavior of a <strong>function</strong>.</p>
+</blockquote>
+<p><strong>The problem</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//back() is promising to return something of type valueType when its possible no such value exists!</span></span><br><span class="line">valueType&amp; vector&lt;valueType&gt;::<span class="built_in">back</span>()&#123;</span><br><span class="line">    <span class="keyword">return</span> *(<span class="built_in">begin</span>() + <span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//A first solution?</span></span><br><span class="line">std::pair&lt;<span class="type">bool</span>, valueType&amp;&gt; vector&lt;valueType&gt;::<span class="built_in">back</span>()&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="literal">false</span>, <span class="built_in">valueType</span>()&#125;;<span class="comment">//valueType may not have a default constructor</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="literal">true</span>, *(<span class="built_in">begin</span>() + <span class="built_in">size</span>() - <span class="number">1</span>)&#125;;</span><br><span class="line">&#125;<span class="comment">//Even if it does, calling constructors is expensive</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//So, what should back() return?</span></span><br><span class="line">??? vector&lt;valueType&gt;::<span class="built_in">back</span>()&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="keyword">return</span> ??;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> *(<span class="built_in">begin</span>() + <span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">&#125;<span class="comment">//Introducing std::optional</span></span><br></pre></td></tr></table></figure>
+<h2 id="std-optional"><a href="#std-optional" class="headerlink" title="std::optional"></a>std::optional</h2><p><strong>What is <code>std::optional&lt;T&gt;</code>?</strong></p>
+<p><code>std::optional</code> is a template class which will either contain a value of type T or contain nothing (expressed as <code>nullopt</code>)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    std::optional&lt;<span class="type">int</span>&gt; num1 = &#123;&#125;; <span class="comment">//num1 does not have a value</span></span><br><span class="line">    num1 = <span class="number">1</span>; <span class="comment">//now it does!</span></span><br><span class="line">    num1 = std::<span class="literal">nullopt</span>; <span class="comment">//now it doesn&#x27;t anymore</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>What if back() returned an optional?</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::optional&lt;valueType&gt; vector&lt;valueType&gt;::<span class="built_in">back</span>()&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> *(<span class="built_in">begin</span>() + <span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>std::optional interface</strong></p>
+<ul>
+<li><code>.value()</code> returns the contained value or throws bad_optional_access error </li>
+<li><code>.value_or(valueType val)</code> returns the contained value or default value, parameter val</li>
+<li><code>.has_value()</code> returns true if contained value exists, false otherwise</li>
+</ul>
+<p><strong>Checking if an optional has value</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::optional&lt;Student&gt; <span class="title">lookupStudent</span><span class="params">(string name)</span></span>&#123;<span class="comment">//something&#125;</span></span><br><span class="line">std::optional&lt;Student&gt; output = <span class="built_in">lookupStudent</span>(“Keith”);</span><br><span class="line"><span class="keyword">if</span>(student)&#123;</span><br><span class="line">    cout &lt;&lt; output.<span class="built_in">value</span>().name &lt;&lt; “ is from “ &lt;&lt; output.<span class="built_in">value</span>().state &lt;&lt; endl;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    cout &lt;&lt; “No student found” &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>So we have perfect solutions</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">removeOddsFromEnd</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; vec)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(vec.<span class="built_in">back</span>().<span class="built_in">has_value</span>() &amp;&amp; vec.<span class="built_in">back</span>().<span class="built_in">value</span>() % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">        vec.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Below totally hacky, but totally works, but don&#x27;t do this!</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">removeOddsFromEnd</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; vec)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(vec.<span class="built_in">back</span>().<span class="built_in">value_or</span>(<span class="number">2</span>) % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">        vec.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Recap: The problem with std::vector::back()</strong></p>
+<ul>
+<li>Why is it so easy to accidentally call back() on empty  vectors if the outcome is so dangerous? </li>
+<li>The function signature gives us a false promise! </li>
+<li>Promises to return an something of type valueType </li>
+<li>But in reality, there either may or may not be a “last element”  in a vector</li>
+</ul>
+<p><strong>std::optional “monadic” interface (C++23 sneak peek!)</strong></p>
+<ul>
+<li><code>.and_then(function f)</code> returns the result of calling f(value) if contained value exists,  otherwise null_opt (f must return optional) </li>
+<li><code>.transform(function f)</code>returns the result of calling f(value) if contained value exists,  otherwise null_opt (f must return optional) </li>
+<li><code>.or_else(function f)</code> returns value if it exists, otherwise returns result of calling f</li>
+</ul>
+<p><strong>Recall: Design Philosophy of C++</strong></p>
+<ul>
+<li>Only add features if they solve an actual problem</li>
+<li>Programmers should be free to choose their own style</li>
+<li>Compartmentalization is key </li>
+<li>Allow the programmer full control if they want it</li>
+<li>Don’t sacrifice performance except as a last resort</li>
+<li>Enforce safety at compile time whenever possible</li>
+</ul>
+<h2 id="Recap-Type-Safety-and-std-optional"><a href="#Recap-Type-Safety-and-std-optional" class="headerlink" title="Recap: Type Safety and std::optional"></a>Recap: Type Safety and std::optional</h2><ul>
+<li>You can guarantee the behavior of your programs by using a strict type  system! </li>
+<li>std::optional is a tool that could make this happen: you can return either a  value or nothing<ul>
+<li>.has_value() </li>
+<li>.value_or() </li>
+<li>.value() </li>
+</ul>
+</li>
+<li>This can be unwieldy and slow, so cpp doesn’t use optionals in most stl data  structures</li>
+<li>Many languages, however, do! </li>
+<li>The ball is in your court!</li>
+</ul>
+<blockquote>
+<p>“Well typed programs cannot go wrong.” </p>
+<ul>
+<li>Robert Milner (very  important and good CS dude)</li>
+</ul>
+</blockquote>
+<h1 id="Lec15-RAII-Smart-Pointers-and-C-Project-Building"><a href="#Lec15-RAII-Smart-Pointers-and-C-Project-Building" class="headerlink" title="Lec15 RAII, Smart Pointers, and C++  Project Building"></a>Lec15 RAII, Smart Pointers, and C++  Project Building</h1><h2 id="Exceptions-Why-care"><a href="#Exceptions-Why-care" class="headerlink" title="Exceptions - Why care?"></a>Exceptions - Why care?</h2><h3 id="How-many-code-paths-are-in-this-function"><a href="#How-many-code-paths-are-in-this-function" class="headerlink" title="How many code paths are in this function?"></a>How many code paths are in this function?</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">string <span class="title">get_name_and_print_sweet_tooth</span><span class="params">(Person p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p.<span class="built_in">favorite_food</span>() == <span class="string">&quot;chocolate&quot;</span> || p.<span class="built_in">favorite_drink</span>() == <span class="string">&quot;milkshake&quot;</span>) &#123;</span><br><span class="line">        cout &lt;&lt; p.<span class="built_in">first</span>() &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; p.<span class="built_in">last</span>() &lt;&lt; <span class="string">&quot; has a sweet tooth!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p.<span class="built_in">first</span>() + <span class="string">&quot; &quot;</span> + p.<span class="built_in">last</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Code Path 1 - favors neither chocolate nor milkshakes</li>
+<li>Code Path 2 - favors milkshakes</li>
+<li>Code Path 3 - favors chocolate (and possibly milkshakes)</li>
+</ul>
+<p>Are there any more code paths?</p>
+<h3 id="Hint-Exceptions"><a href="#Hint-Exceptions" class="headerlink" title="Hint: Exceptions"></a>Hint: Exceptions</h3><ul>
+<li><p>Exceptions are ways to signal that something has gone wrong during run-time</p>
+</li>
+<li><p>Exceptions are “thrown” and can crash the program, but can be “caught” to  avoid this</p>
+</li>
+</ul>
+<h3 id="Hidden-Code-Paths"><a href="#Hidden-Code-Paths" class="headerlink" title="Hidden Code Paths"></a>Hidden Code Paths</h3><p>There are (at least) 23 code paths in the code before! </p>
+<ul>
+<li>(1) copy constructor of Person parameter may throw</li>
+<li>(5) constructor of temp string may throw </li>
+<li>(6) call to favorite_food, favorite_drink, first (2), last (2), may throw</li>
+<li>(10) operators may be user-overloaded, thus may throw</li>
+<li>(1) copy constructor of string for return value may throw</li>
+</ul>
+<h3 id="What-could-go-wrong-here"><a href="#What-could-go-wrong-here" class="headerlink" title="What could go wrong here?"></a>What could go wrong here?</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">string <span class="title">get_name_and_print_sweet_tooth</span><span class="params">(<span class="type">int</span> id_number)</span> </span>&#123;</span><br><span class="line">    Person* p = <span class="keyword">new</span> <span class="built_in">Person</span>(id_number); <span class="comment">// assume the constructor fills in variables</span></span><br><span class="line">    <span class="keyword">if</span> (p-&gt;<span class="built_in">favorite_food</span>() == <span class="string">&quot;chocolate&quot;</span> ||</span><br><span class="line">     p-&gt;<span class="built_in">favorite_drink</span>() == <span class="string">&quot;milkshake&quot;</span>) &#123;</span><br><span class="line">    cout &lt;&lt; p-&gt;<span class="built_in">first</span>() &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; p-&gt;<span class="built_in">last</span>() &lt;&lt; <span class="string">&quot; has a sweet tooth!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">auto</span> result = p-&gt;<span class="built_in">first</span>() + <span class="string">&quot; &quot;</span> + p-&gt;<span class="built_in">last</span>();</span><br><span class="line">    <span class="keyword">delete</span> p;<span class="comment">//must release!!!</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="This-problem-isn’t-just-unique-to-pointers"><a href="#This-problem-isn’t-just-unique-to-pointers" class="headerlink" title="This problem isn’t just unique to pointers"></a>This problem isn’t just unique to pointers</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Acquire</th>
+<th>Release</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heap memory</td>
+<td>new</td>
+<td>delete</td>
+</tr>
+<tr>
+<td>Files</td>
+<td>open</td>
+<td>close</td>
+</tr>
+<tr>
+<td>Locks</td>
+<td>try_lock</td>
+<td>unlock</td>
+</tr>
+<tr>
+<td>Cockets</td>
+<td>socket</td>
+<td>close</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>How do we guarantee resources get released, even if there are exceptions?</p>
+<h2 id="RAII"><a href="#RAII" class="headerlink" title="RAII"></a>RAII</h2><blockquote>
+<p>Resource Acquisition Is Initialization</p>
+</blockquote>
+<h3 id="What-is-R·A·Double-I"><a href="#What-is-R·A·Double-I" class="headerlink" title="What is R·A·Double I?"></a>What is R·A·Double I?</h3><ul>
+<li>All resources used by a class should be acquired in the constructor</li>
+<li>All resources used by a class should be released in the destructor</li>
+</ul>
+<p>Why?</p>
+<ul>
+<li>Objects should be usable immediately after creation </li>
+<li>There should never be a “half-valid” state of an object, where it exists  in memory but is not accessible to/used by the program </li>
+<li>The destructor is always called (when the object goes out of scope),  so the resource is always freed</li>
+</ul>
+<h3 id="Is-it-RAII-Compliant"><a href="#Is-it-RAII-Compliant" class="headerlink" title="Is it RAII Compliant?"></a>Is it RAII Compliant?</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//The following three algorithms are not RALL</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printFile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ifstream input;</span><br><span class="line">    input.<span class="built_in">open</span>(<span class="string">&quot;hamlet.txt&quot;</span>);</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(input, line)) &#123; <span class="comment">// might throw exception</span></span><br><span class="line">         cout &lt;&lt; line &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    input.<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printFile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">ifstream <span class="title">input</span><span class="params">(<span class="string">&quot;hamlet.txt&quot;</span>)</span></span>;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(input, line)) &#123; <span class="comment">// might throw exception</span></span><br><span class="line">         cout &lt;&lt; line &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cleanDatabase</span> <span class="params">(mutex&amp; databaseLock, map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&amp; database)</span> </span>&#123;</span><br><span class="line">    databaseLock.<span class="built_in">lock</span>();</span><br><span class="line">    <span class="comment">// other threads will not modify database</span></span><br><span class="line">    <span class="comment">// modify the database</span></span><br><span class="line">    <span class="comment">// if exception thrown, mutex never unlocked!</span></span><br><span class="line">    databaseLock.<span class="built_in">unlock</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This fixes it!</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cleanDatabase</span> <span class="params">(mutex&amp; databaseLock, map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&amp; database)</span> </span>&#123;</span><br><span class="line">    <span class="function">lock_guard&lt;mutex&gt; <span class="title">lg</span><span class="params">(databaseLock)</span></span>;</span><br><span class="line">    <span class="comment">// other threads will not modify database</span></span><br><span class="line">    <span class="comment">// modify the database</span></span><br><span class="line">    <span class="comment">// if exception thrown, mutex is unlocked!</span></span><br><span class="line">    <span class="comment">// no need to unlock at end, as it&#x27;s handle by the lock_guard</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">lock_guard</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">lock_guard</span>(mutex&amp; lock) : <span class="built_in">acquired_lock</span>(lock)&#123;</span><br><span class="line">            acquired_lock.<span class="built_in">lock</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        ~<span class="built_in">lock_guard</span>() &#123;</span><br><span class="line">        acquired_lock.<span class="built_in">unlock</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        mutex&amp; acquired_lock;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="What-about-RAII-for-memory"><a href="#What-about-RAII-for-memory" class="headerlink" title="What about RAII for memory?"></a>What about RAII for memory?</h3><p>This is where we’re going with RAII: from the C++ Core Guidelines:</p>
+<p><strong>Avoid calling <code>new</code> and <code>delete</code> explicitly</strong></p>
+<h2 id="Smart-Pointers"><a href="#Smart-Pointers" class="headerlink" title="Smart Pointers"></a>Smart Pointers</h2><blockquote>
+<p>RAII for memory</p>
+</blockquote>
+<p>We saw how this was not RAII-compliant because of the “naked” delete.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">string <span class="title">get_name_and_print_sweet_tooth</span><span class="params">(<span class="type">int</span> id_number)</span> </span>&#123;</span><br><span class="line">    Person* p = <span class="keyword">new</span> <span class="built_in">Person</span>(id_number); <span class="comment">//assume the constructor fills in variables</span></span><br><span class="line">    <span class="keyword">if</span> (p-&gt;<span class="built_in">favorite_food</span>() == <span class="string">&quot;chocolate&quot;</span> || p-&gt;<span class="built_in">favorite_drink</span>() == <span class="string">&quot;milkshake&quot;</span>) &#123;</span><br><span class="line">        cout &lt;&lt; p-&gt;<span class="built_in">first</span>() &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; p-&gt;<span class="built_in">last</span>() &lt;&lt; <span class="string">&quot; has a sweet tooth!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">auto</span> result = p-&gt;<span class="built_in">first</span>() + <span class="string">&quot; &quot;</span> + p-&gt;<span class="built_in">last</span>();</span><br><span class="line">    <span class="keyword">delete</span> p;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Solution-built-in-“smart”-RAII-safe-pointers"><a href="#Solution-built-in-“smart”-RAII-safe-pointers" class="headerlink" title="Solution: built-in “smart” (RAII-safe) pointers"></a>Solution: built-in “smart” (RAII-safe) pointers</h3><ul>
+<li>Three types of smart pointers in C++ that automatically free underlying  memory when destructed <ul>
+<li>std::unique_ptr • Uniquely owns its resource, can’t be copied </li>
+<li>std::shared_ptr • Can make copies, destructed when underlying memory goes out of  scope </li>
+<li>std::weak_ptr • models temporary ownership: when an object only needs to be  accessed if it exists (convert to shared_ptr to access)</li>
+</ul>
+</li>
+</ul>
+<h3 id="std-unique-ptr"><a href="#std-unique-ptr" class="headerlink" title="std::unique_ptr"></a>std::unique_ptr</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Before</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rawPtrFn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Node* n = <span class="keyword">new</span> Node;</span><br><span class="line">    <span class="comment">// do things with n</span></span><br><span class="line">    <span class="keyword">delete</span> n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//After</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rawPtrFn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">std::unique_ptr&lt;Node&gt; <span class="title">n</span><span class="params">(<span class="keyword">new</span> Node)</span></span>;</span><br><span class="line">    <span class="comment">// do things with n</span></span><br><span class="line">    <span class="comment">// automatically freed!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>what if we wanted to have multiple  pointers to the same object? <code>std::shared_ptr</code></p>
+<h3 id="std-shared-ptr"><a href="#std-shared-ptr" class="headerlink" title="std::shared_ptr"></a>std::shared_ptr</h3><ul>
+<li>Resources can be stored by any number of shared_ptrs</li>
+<li>The resource is <strong>deleted</strong> when none of the pointers points to the resource</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="function">std::shared_ptr&lt;<span class="type">int</span>&gt; <span class="title">p1</span><span class="params">(<span class="keyword">new</span> <span class="type">int</span>)</span></span>;</span><br><span class="line">    <span class="comment">// use p1</span></span><br><span class="line">    &#123;</span><br><span class="line">        std::shared_ptr&lt;<span class="type">int</span>&gt; p2 = p1;</span><br><span class="line">        <span class="comment">// use p1 and p2</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// use p1, like so</span></span><br><span class="line">    cout &lt;&lt; *p1.<span class="built_in">get</span>() &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// the integer is now deallocated!</span></span><br></pre></td></tr></table></figure>
+<h3 id="Smart-pointers-RAII-Wrapper-for-pointers"><a href="#Smart-pointers-RAII-Wrapper-for-pointers" class="headerlink" title="Smart pointers: RAII Wrapper for pointers"></a>Smart pointers: RAII Wrapper for pointers</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::unique_ptr&lt;T&gt; up&#123;<span class="keyword">new</span> T&#125;;</span><br><span class="line">std::unique_ptr&lt;T&gt; up = std::<span class="built_in">make_unique</span>&lt;T&gt;();</span><br><span class="line">std::shared_ptr&lt;T&gt; sp&#123;<span class="keyword">new</span> T&#125;;</span><br><span class="line">std::shared_ptr&lt;T&gt; sp = std::<span class="built_in">make_shared</span>&lt;T&gt;();</span><br><span class="line">std::weak_ptr&lt;T&gt; wp = sp;<span class="comment">//A weak_ptr is a container for a raw pointer. It is created as a copy of a shared_ptr. The existence or destruction of weak_ptr copies of a shared_ptr have no effect on the shared_ptr or its other copies. After all copies of a shared_ptr have been destroyed, all weak_ptr copies become empty.</span></span><br><span class="line"><span class="comment">// can only be copy/move constructed (or empty)!</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//So which way is better?</span></span><br><span class="line"><span class="comment">//Always use std::make_unique&lt;T&gt;()!</span></span><br><span class="line">std::unique_ptr&lt;T&gt; up&#123;<span class="keyword">new</span> T&#125;;</span><br><span class="line">std::unique_ptr&lt;T&gt; up = std::<span class="built_in">make_unique</span>&lt;T&gt;();</span><br><span class="line">std::shared_ptr&lt;T&gt; sp&#123;<span class="keyword">new</span> T&#125;;</span><br><span class="line">std::shared_ptr&lt;T&gt; sp = std::<span class="built_in">make_shared</span>&lt;T&gt;();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>If we don’t use make_shared, then we’re allocating memory twice (once for sp, and once for new T)!</li>
+<li>We should be consistent across smart pointers</li>
+</ul>
+<h2 id="Building-C-Projects"><a href="#Building-C-Projects" class="headerlink" title="Building C++ Projects"></a>Building C++ Projects</h2><blockquote>
+<p>What happens when you run our “./build_and_run.sh”?</p>
+</blockquote>
+<h3 id="What-do-make-and-Makefiles-do"><a href="#What-do-make-and-Makefiles-do" class="headerlink" title="What do make and Makefiles do?"></a>What do make and Makefiles do?</h3><ul>
+<li>make is a “build system” </li>
+<li>uses g++ as its main engine</li>
+<li>several stages to the compiler system</li>
+<li>can be utilized through a Makefile!</li>
+<li>let’s take a look at a simple makefile to get some practice!</li>
+</ul>
+<h3 id="So-why-do-we-use-cmake-in-our-assignments"><a href="#So-why-do-we-use-cmake-in-our-assignments" class="headerlink" title="So why do we use cmake in our assignments?"></a>So why do we use cmake in our assignments?</h3><ul>
+<li>cmake is a cross-platform make</li>
+<li>cmake creates build systems!</li>
+<li>It takes in an even higher-level config file, ties in external libraries,  and outputs a Makefile, which is then run. </li>
+<li>Let’s take a look at our makefiles!</li>
+</ul>
+<h3 id="Example-cmake-file-CMakeLists-txt"><a href="#Example-cmake-file-CMakeLists-txt" class="headerlink" title="Example cmake file (CMakeLists.txt)"></a>Example cmake file (CMakeLists.txt)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.0) <span class="comment"># 指定 cmake 最低版本</span></span><br><span class="line">project(wikiracer) <span class="comment"># 指定项目名称(随意)</span></span><br><span class="line"><span class="built_in">set</span>(CMAKE_CXX_STANDARD 17) </span><br><span class="line"><span class="built_in">set</span>(CMAKE_CXX_STANDARD_REQUIRED True) </span><br><span class="line">find_package(cpr CONFIG REQUIRED) </span><br><span class="line"><span class="comment"># adding all files </span></span><br><span class="line">add_executable(main main.cpp wikiscraper.cpp.o error.cpp) <span class="comment"># 指定编译一个可执行文件，main是第一个参数，表示生成可执行文件的文件名（这个文件名也是任意的），第二个参数main.cpp则用于指定源文件。</span></span><br><span class="line">target_link_libraries(main PRIVATE cpr)</span><br></pre></td></tr></table></figure>
+<h3 id="Components-of-C-’s-compilation-system"><a href="#Components-of-C-’s-compilation-system" class="headerlink" title="Components of C++’s compilation system"></a>Components of C++’s compilation system</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[Preprocessing &lt;br&gt;in: cpp files out: full cpp files]--&gt;B[Compiling &lt;br&gt;in: full cpp files out: .s files]--&gt;C[Assembling &lt;br&gt;in: .s files out: .o files]--&gt;D[Linking&lt;br&gt; in: .o files out: executable]</span><br></pre></td></tr></table></figure>
+<h3 id="Preprocessing-g-E"><a href="#Preprocessing-g-E" class="headerlink" title="Preprocessing (g++ -E)"></a>Preprocessing (g++ -E)</h3><ul>
+<li>The C/C++ preprocessor handles preprocessor directives: replaces  includes (#include …) and and expands any macros (#define …) <ul>
+<li>Replace #includes with content of respective files (which is  usually just function/variable declarations, so low bloat)</li>
+<li>Replaces macros (#define) and selecting different portions of text  depending on #if, #ifdef, #ifndef </li>
+</ul>
+</li>
+<li>Outputs a stream of tokens resulting from these transformations</li>
+<li>If you want, you can produce some errors at even this stage (#if,  #error)</li>
+</ul>
+<h3 id="Compilation-g-S"><a href="#Compilation-g-S" class="headerlink" title="Compilation (g++ -S)"></a>Compilation (g++ -S)</h3><ul>
+<li>Performed on output of the preprocessor (full C++ code)</li>
+<li>Structure of a compiler: <ul>
+<li>Lexical Analysis</li>
+<li>Parsing </li>
+<li>Semantic Analysis</li>
+<li>Optimization</li>
+<li>Code Generation (assembly code) </li>
+</ul>
+</li>
+<li>This is where traditional “compiler errors” are caught</li>
+</ul>
+<h3 id="Assembling-g-c"><a href="#Assembling-g-c" class="headerlink" title="Assembling (g++ -c)"></a>Assembling (g++ -c)</h3><ul>
+<li>Runs on the assembly code as outputted by the compiler</li>
+<li>Converts assembly code to binary machine code</li>
+<li>Assumes that all functions are defined somewhere without checking</li>
+<li>Final output: object files<ul>
+<li>Can’t be run by themselves!</li>
+</ul>
+</li>
+</ul>
+<h3 id="Linking-ld-g"><a href="#Linking-ld-g" class="headerlink" title="Linking (ld, g++)"></a>Linking (ld, g++)</h3><ul>
+<li>Creates a single executable file from multiple object files <ul>
+<li>Combine the pieces of a program</li>
+<li>Figure out a memory organization so that all the pieces can fit  together </li>
+<li>Resolve references so that the program can run under the new  memory organization<ul>
+<li>.h files declare functions, but the actual functions may be in  separate files from where they’re called!</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Output is fully self-suficient—no other files needed to run</li>
+</ul>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CS106L Midquarter Review</title>
+    <url>/2023/01/20/CS106L-Midquarter-Review/</url>
+    <content><![CDATA[<p>Midquarter review of Stanford CS106L.</p>
+<span id="more"></span>
+<h2 id="stream"><a href="#stream" class="headerlink" title="stream"></a>stream</h2><blockquote>
+<p>stream: an abstraction for input/output. Streams  convert between data and the string representation of data.</p>
+</blockquote>
+<h3 id="Output-Streams"><a href="#Output-Streams" class="headerlink" title="Output Streams"></a>Output Streams</h3><ul>
+<li>Have type <code>std::ostream</code></li>
+<li>Can only send data using the <code>&lt;&lt;</code> operator<ul>
+<li>Converts any type into string and sends it to the stream</li>
+</ul>
+</li>
+<li><code>std::cout</code> is the output stream that goes to the console</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::cout &lt;&lt; <span class="number">5</span> &lt;&lt; std::endl; </span><br><span class="line"><span class="comment">// converts int value 5 to string “5”</span></span><br><span class="line"><span class="comment">// sends “5” to the console output stream</span></span><br></pre></td></tr></table></figure>
+<h3 id="Output-File-Streams"><a href="#Output-File-Streams" class="headerlink" title="Output File Streams"></a>Output File Streams</h3><ul>
+<li>Have type <code>std::ofstream</code></li>
+<li>Only receive data using the <code>&lt;&lt;</code> operator<ul>
+<li>Converts data of any type into a string and sends it to the  file stream</li>
+</ul>
+</li>
+<li>Must initialize your own <code>ofstream</code> object linked to your file</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::ofstream <span class="title">out</span><span class="params">(“out.txt”, std::ofstream::out)</span></span>;</span><br><span class="line"><span class="comment">// out is now an ofstream that outputs to out.txt</span></span><br><span class="line">out &lt;&lt; <span class="number">5</span> &lt;&lt; std::endl; <span class="comment">// out.txt contains 5</span></span><br></pre></td></tr></table></figure>
+<h3 id="Input-Streams"><a href="#Input-Streams" class="headerlink" title="Input Streams"></a>Input Streams</h3><ul>
+<li>Have type <code>std::istream</code></li>
+<li>Can only receive data using the <code>&gt;&gt;</code> operator<ul>
+<li>Receives a string from the stream and converts it to data</li>
+</ul>
+</li>
+<li><code>std::cin</code> is the output stream that gets input from the console</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br><span class="line">string str;</span><br><span class="line">std::cin &gt;&gt; x &gt;&gt; str;</span><br><span class="line"><span class="comment">//reads exactly one int then 1 string from console</span></span><br></pre></td></tr></table></figure>
+<h3 id="Nitty-Gritty-Details-std-cin"><a href="#Nitty-Gritty-Details-std-cin" class="headerlink" title="Nitty Gritty Details: std::cin"></a>Nitty Gritty Details: std::cin</h3><ul>
+<li>First call to std::cin &gt;&gt; creates a command line prompt  that allows the user to type until they hit enter</li>
+<li>Each &gt;&gt; ONLY reads until the next whitespace<ul>
+<li>Whitespace = tab, space, newline</li>
+</ul>
+</li>
+<li>Everything after the first whitespace gets saved and used the  next time std::cin &gt;&gt; is called<ul>
+<li>The place its saved is called a buffer!</li>
+</ul>
+</li>
+<li>If there is nothing waiting in the buffer, std::cin &gt;&gt; creates a new command line prompt</li>
+<li>Whitespace is eaten: it won’t show up in output</li>
+</ul>
+<h3 id="Stringstreams"><a href="#Stringstreams" class="headerlink" title="Stringstreams"></a>Stringstreams</h3><ul>
+<li>Input stream: std::istringstream<ul>
+<li>Give any data type to the istringstream, it’ll store it as a  string!</li>
+</ul>
+</li>
+<li>Output stream: std::ostringstream<ul>
+<li>Make an ostringstream out of a string, read from it  word/type by word/type!</li>
+</ul>
+</li>
+<li>The same as the other i/ostreams you’ve seen</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ostringstreams</span></span><br><span class="line"><span class="function">string <span class="title">judgementCall</span><span class="params">(<span class="type">int</span> age, string name, <span class="type">bool</span> lovesCpp)</span> </span>&#123;</span><br><span class="line">    std::ostringstream formatter;</span><br><span class="line">    formatter &lt;&lt; name &lt;&lt;<span class="string">&quot;, age &quot;</span> &lt;&lt; age;</span><br><span class="line">    <span class="keyword">if</span>(lovesCpp) formatter &lt;&lt; <span class="string">&quot;, rocks.&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> formatter &lt;&lt; <span class="string">&quot; could be better&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> formatter.<span class="built_in">str</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//istringstreams</span></span><br><span class="line"><span class="function">Student <span class="title">reverseJudgementCall</span><span class="params">(string judgement)</span> </span>&#123;</span><br><span class="line">    std::istringstream converter;</span><br><span class="line">    string fluff; <span class="type">int</span> age; <span class="type">bool</span> lovesCpp; string name;</span><br><span class="line">    converter &gt;&gt; name;</span><br><span class="line">    converter &gt;&gt; fluff;</span><br><span class="line">    converter &gt;&gt; age;</span><br><span class="line">    converter &gt;&gt; fluff;</span><br><span class="line">    string cool;</span><br><span class="line">    converter &gt;&gt; cool;</span><br><span class="line">    <span class="keyword">if</span>(fluff == <span class="string">&quot;rocks&quot;</span>) <span class="keyword">return</span> Student&#123;name, age, <span class="string">&quot;bliss&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> Student&#123;name, age, <span class="string">&quot;misery&quot;</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><h3 id="References-to-variables"><a href="#References-to-variables" class="headerlink" title="References to variables"></a>References to variables</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; original&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; copy = original;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt;&amp; ref = original;</span><br><span class="line">original.<span class="built_in">push_back</span>(<span class="number">3</span>);</span><br><span class="line">copy.<span class="built_in">push_back</span>(<span class="number">4</span>);</span><br><span class="line">ref.<span class="built_in">push_back</span>(<span class="number">5</span>);</span><br><span class="line">cout &lt;&lt; original &lt;&lt; endl; <span class="comment">// &#123;1, 2, 3, 5&#125;</span></span><br><span class="line">cout &lt;&lt; copy &lt;&lt; endl; <span class="comment">// &#123;1, 2, 4&#125;</span></span><br><span class="line">cout &lt;&lt; ref &lt;&lt; endl; <span class="comment">// &#123;1, 2, 3, 5&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="The-classic-reference-copy-bug"><a href="#The-classic-reference-copy-bug" class="headerlink" title="The classic reference-copy bug:"></a>The classic reference-copy bug:</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">auto</span> [num1, num2] = nums[i];<span class="comment">//This creates a copy of the course</span></span><br><span class="line">        num1++;</span><br><span class="line">        num2++;<span class="comment">//This is updating that same copy!</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//The classic reference-copy bug, fixed:</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [num1, num2]: nums) &#123;</span><br><span class="line">        num1++;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="The-classic-reference-rvalue-error"><a href="#The-classic-reference-rvalue-error" class="headerlink" title="The classic reference-rvalue error"></a>The classic reference-rvalue error</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [num1, num2]: nums) &#123;</span><br><span class="line">        num1++;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">shift</span>(&#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;&#125;); </span><br><span class="line"><span class="comment">// &#123;&#123;1, 1&#125;&#125; is an rvalue, it can’t be referenced</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>l-values<ul>
+<li>l-values can appear on the left or  right of an =</li>
+<li><code>x</code> is an l-value</li>
+<li>l-values have names</li>
+<li>l-values are not temporary</li>
+</ul>
+</li>
+<li>r-values<ul>
+<li>r-values can ONLY appear on the  right of an =</li>
+<li><code>3</code> is an r-value</li>
+<li>r-values don’t have names</li>
+<li>r-values are temporary</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//The classic reference-rvalue error, fixed</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">shift</span><span class="params">(vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [num1, num2]: nums) &#123;</span><br><span class="line">        num1++;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">auto</span> my_nums = &#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="built_in">shift</span>(my_nums);</span><br></pre></td></tr></table></figure>
+<h3 id="const-indicates-a-variable-can’t-be-modified"><a href="#const-indicates-a-variable-can’t-be-modified" class="headerlink" title="const indicates a variable can’t be modified"></a>const indicates a variable can’t be modified</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; vec&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt; c_vec&#123;<span class="number">7</span>, <span class="number">8</span>&#125;; <span class="comment">// a const variable</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt;&amp; ref = vec; <span class="comment">// a regular reference</span></span><br><span class="line"><span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt;&amp; c_ref = vec; <span class="comment">// a const reference</span></span><br><span class="line">vec.<span class="built_in">push_back</span>(<span class="number">3</span>); <span class="comment">// OKAY</span></span><br><span class="line">c_vec.<span class="built_in">push_back</span>(<span class="number">3</span>); <span class="comment">// BAD - const</span></span><br><span class="line">ref.<span class="built_in">push_back</span>(<span class="number">3</span>); <span class="comment">// OKAY</span></span><br><span class="line">c_ref.<span class="built_in">push_back</span>(<span class="number">3</span>); <span class="comment">// BAD - const</span></span><br></pre></td></tr></table></figure>
+<h3 id="const-amp-subtleties"><a href="#const-amp-subtleties" class="headerlink" title="const &amp; subtleties"></a>const &amp; subtleties</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; vec&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt; c_vec&#123;<span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt;&amp; ref = vec;</span><br><span class="line"><span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt;&amp; c_ref = vec;</span><br><span class="line"><span class="keyword">auto</span> copy = c_ref; <span class="comment">// a non-const copy</span></span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> copy = c_ref; <span class="comment">// a const copy</span></span><br><span class="line"><span class="keyword">auto</span>&amp; a_ref = ref; <span class="comment">// a non-const reference</span></span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span>&amp; c_aref = ref; <span class="comment">// a const reference</span></span><br></pre></td></tr></table></figure>
+<h2 id="Containers-and-Iterators"><a href="#Containers-and-Iterators" class="headerlink" title="Containers and Iterators"></a>Containers and Iterators</h2><h3 id="Simple-Sequence-Containers"><a href="#Simple-Sequence-Containers" class="headerlink" title="Simple  Sequence Containers"></a>Simple  Sequence Containers</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TB</span><br><span class="line">A[Sequence Containers]--&gt;B[Simple]</span><br><span class="line">A--&gt;C[Adaptors]</span><br><span class="line">B--&gt;d[vector]</span><br><span class="line">B--&gt;e[deque]</span><br><span class="line">B--&gt;f[list]</span><br><span class="line">B--&gt;q[tuple]</span><br><span class="line">C--&gt;p[stack]</span><br><span class="line">C--&gt;o[queue]</span><br><span class="line">C--&gt;m[priority_queue]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TB</span><br><span class="line">A[Associative Containers]--&gt;B[Ordered]</span><br><span class="line">A--&gt;C[Unordered]</span><br><span class="line">B--&gt;set</span><br><span class="line">B--&gt;map</span><br><span class="line">C--&gt;unordered_set</span><br><span class="line">C--&gt;unordered_map</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>What you want to do</th>
+<th>std::vector</th>
+<th>std::deque</th>
+<th>std::list</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insert/remove in the front</td>
+<td>Slow</td>
+<td>Fast</td>
+<td>Fast</td>
+</tr>
+<tr>
+<td><strong>Insert/remove in the back</strong></td>
+<td>Super Fast</td>
+<td>Very Fast</td>
+<td>Fast</td>
+</tr>
+<tr>
+<td><strong>Indexed Access</strong></td>
+<td>Super Fast</td>
+<td>Fast</td>
+<td>Impossible</td>
+</tr>
+<tr>
+<td>Insert/remove in the middle</td>
+<td>Slow</td>
+<td>Fast</td>
+<td>Very Fast</td>
+</tr>
+<tr>
+<td>Memory usage</td>
+<td>Low</td>
+<td>High</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Combining (splicing/joining)</td>
+<td>Slow</td>
+<td>Very Slow</td>
+<td>Fast</td>
+</tr>
+<tr>
+<td>Stability (iterators/concurrency)</td>
+<td>Bad</td>
+<td>Very Bad</td>
+<td>Good</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Container-Adaptors"><a href="#Container-Adaptors" class="headerlink" title="Container Adaptors"></a>Container Adaptors</h3><blockquote>
+<p>What is a container adaptor? <code>std::stack and std::queue</code></p>
+</blockquote>
+<p>Container adaptors are wrappers in C++</p>
+<ul>
+<li>Container adaptors provide a different interface for sequence containers. </li>
+<li>You can choose what the underlying container is</li>
+<li>For instance, let’s choose a deque as our underlying container, and let’s implement a  queue</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::queue&lt;<span class="type">int</span>&gt; stack_deque; <span class="comment">// Container = std::deque</span></span><br><span class="line">std::queue&lt;<span class="type">int</span>, std::list&lt;<span class="type">int</span>&gt;&gt; stack_list;<span class="comment">// Container = std::list</span></span><br></pre></td></tr></table></figure>
+<h3 id="Associative-Containers"><a href="#Associative-Containers" class="headerlink" title="Associative Containers"></a>Associative Containers</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//set</span></span><br><span class="line">std::set&lt;<span class="type">int</span>&gt; s;<span class="comment">//Create an empty set</span></span><br><span class="line">s.<span class="built_in">insert</span>(k);<span class="comment">//Add a value k to the set</span></span><br><span class="line">s.<span class="built_in">erase</span>(k);<span class="comment">//Remove value k from the set</span></span><br><span class="line"><span class="keyword">if</span> (s.<span class="built_in">count</span>(k))...<span class="comment">//Check if a value k is in the set</span></span><br><span class="line"><span class="keyword">if</span> (vec.<span class="built_in">empty</span>())...<span class="comment">//Check if vector is empty</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//map</span></span><br><span class="line">std::map&lt;<span class="type">int</span>, <span class="type">char</span>&gt; m;<span class="comment">//Create an empty map</span></span><br><span class="line">m.<span class="built_in">insert</span>(&#123;k, v&#125;);</span><br><span class="line">m[k] = v;<span class="comment">//Add key k with value v into the map</span></span><br><span class="line">m.<span class="built_in">erase</span>(k);<span class="comment">//Remove key k from the map</span></span><br><span class="line"><span class="keyword">if</span> (m.<span class="built_in">count</span>(k)) ...<span class="comment">//Check if key k is in the map</span></span><br><span class="line"><span class="keyword">if</span> (m.<span class="built_in">empty</span>()) ...<span class="comment">//Check if the map is empty</span></span><br><span class="line"><span class="comment">//Retrieve or overwrite value associated with key k (error if key isn’t in map)</span></span><br><span class="line"><span class="type">char</span> c = m.<span class="built_in">at</span>(k);</span><br><span class="line">m.<span class="built_in">at</span>(k) = v;</span><br><span class="line"><span class="comment">//Retrieve or overwrite value associated with key k (auto-insert if key isn’t in map)</span></span><br><span class="line"><span class="type">char</span> c = m[k];</span><br><span class="line">m[k] = v;</span><br></pre></td></tr></table></figure>
+<h3 id="STL-Iterators"><a href="#STL-Iterators" class="headerlink" title="STL Iterators"></a>STL Iterators</h3><ul>
+<li>Iterators are objects that point to elements inside containers.</li>
+<li>Each STL container has its own iterator, but all of these iterators exhibit a similar  behavior!</li>
+<li>Generally, STL iterators support the following operations:</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::set&lt;type&gt; s = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">std::set::iterator iter = s.<span class="built_in">begin</span>(); <span class="comment">// at 0</span></span><br><span class="line">++iter; <span class="comment">// at 1</span></span><br><span class="line">*iter; <span class="comment">// 1</span></span><br><span class="line">(iter != s.<span class="built_in">end</span>()); <span class="comment">// can compare </span></span><br><span class="line">iterator equality</span><br><span class="line"><span class="keyword">auto</span> second_iter = iter; <span class="comment">// &quot;copy construction&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Why ++iter and not iter++?</p>
+<p><strong>Answer</strong>: ++iter returns the value after being incremented! iter++ returns the previous value and then increments it. (wastes  just a bit of time)</p>
+<h3 id="Looping-over-collections"><a href="#Looping-over-collections" class="headerlink" title="Looping over collections"></a>Looping over collections</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//初始</span></span><br><span class="line">std::set&lt;<span class="type">int</span>&gt; set&#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> iter = set.<span class="built_in">begin</span>(); iter != set.<span class="built_in">end</span>(); ++iter) &#123;</span><br><span class="line">    <span class="type">const</span> <span class="keyword">auto</span>&amp; elem = *iter;</span><br><span class="line">    cout &lt;&lt; elem &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">std::map&lt;<span class="type">int</span>&gt; map&#123;&#123;<span class="number">1</span>, <span class="number">6</span>&#125;, &#123;<span class="number">1</span>, <span class="number">8</span>&#125;, &#123;<span class="number">0</span>, <span class="number">3</span>&#125;, &#123;<span class="number">3</span>, <span class="number">9</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> iter = map.<span class="built_in">begin</span>(); iter != map.<span class="built_in">end</span>(); ++iter) &#123;</span><br><span class="line">    <span class="type">const</span> <span class="keyword">auto</span>&amp; [key, value] = *iter; <span class="comment">// structured binding!</span></span><br><span class="line">    cout &lt;&lt; key &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; value &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//改进</span></span><br><span class="line">std::set&lt;<span class="type">int</span>&gt; set&#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; elem : set) &#123;</span><br><span class="line">    cout &lt;&lt; elem &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">std::map&lt;<span class="type">int</span>&gt; map&#123;&#123;<span class="number">1</span>, <span class="number">6</span>&#125;, &#123;<span class="number">1</span>, <span class="number">8</span>&#125;, &#123;<span class="number">0</span>, <span class="number">3</span>&#125;, &#123;<span class="number">3</span>, <span class="number">9</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; [key, value] : map) &#123;</span><br><span class="line">    cout &lt;&lt; key &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; value &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Pointers"><a href="#Pointers" class="headerlink" title="Pointers"></a>Pointers</h3><ul>
+<li>When variables are created, they’re given  an address in memory.</li>
+<li>Pointers are objects that store an address  and type of a variable.</li>
+</ul>
+<h2 id="classes"><a href="#classes" class="headerlink" title="classes"></a>classes</h2><blockquote>
+<p>A programmerdefined custom type. An  abstraction of an object or data type.</p>
+</blockquote>
+<h3 id="Sections"><a href="#Sections" class="headerlink" title="Sections"></a>Sections</h3><ul>
+<li>Public section:<ul>
+<li>Users of the Student object can  directly access anything here!</li>
+<li>Defines interface for interacting with  the private member variables</li>
+</ul>
+</li>
+<li>Private section:<ul>
+<li>Usually contains all member  variables</li>
+<li>Users can’t access or modify  anything in the private section</li>
+</ul>
+</li>
+</ul>
+<h3 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a>Constructors</h3><ul>
+<li>Define how the member variables of an object is initialized</li>
+<li>What gets called when you first create a Student object</li>
+<li>Overloadable</li>
+</ul>
+<h3 id="Destructors"><a href="#Destructors" class="headerlink" title="Destructors"></a>Destructors</h3><ul>
+<li>Arrays are memory WE allocate, so we need to give instructions for when to  deallocate that memory!</li>
+<li>When we are done using our array, we need to <code>delete []</code> it!</li>
+</ul>
+<h3 id="Template-classes"><a href="#Template-classes" class="headerlink" title="Template classes"></a>Template classes</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//mypair.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> “mypair.h”</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">First</span>, <span class="keyword">typename</span> Second&gt;</span><br><span class="line">First MyPair&lt;First, Second&gt;::<span class="built_in">getFirst</span>()&#123;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">Second</span>, <span class="keyword">typename</span> First&gt;</span><br><span class="line">    Second MyPair&lt;First, Second&gt;::<span class="built_in">getSecond</span>()&#123;</span><br><span class="line">    <span class="keyword">return</span> second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Member-Types"><a href="#Member-Types" class="headerlink" title="Member Types"></a>Member Types</h3><ul>
+<li>Sometimes, we need a name for a type that is dependent on  our template types</li>
+<li>iterator is a member type of vector</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//vector.h</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">class</span> <span class="title class_">vector</span> &#123;</span><br><span class="line">    <span class="keyword">using</span> iterator = … <span class="comment">// something internal</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">    iterator front;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vector.cpp</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">typename</span> vector&lt;T&gt;::iterator vector&lt;T&gt;::<span class="built_in">insert</span>(iterator pos, intvalue) &#123;...&#125;</span><br><span class="line"><span class="comment">//iterator is a nested type in namespace vector&lt;T&gt;::</span></span><br></pre></td></tr></table></figure>
+<p><strong>Aside: Type Aliases</strong></p>
+<ul>
+<li>You can use using type_name = type in application  code as well!</li>
+<li>When using it in a class interface, it defines a nested type, like  vector::iterator</li>
+<li>When using it in application code, like main.cpp, it just creates another name for type within that scope (until the  next unmatched })</li>
+</ul>
+<p><strong>Summary</strong></p>
+<ul>
+<li>Used to make sure your clients have a standardized way to  access important types</li>
+<li>Lives in your namespace: <code>vector&lt;T&gt;::iterator</code></li>
+<li>After class specifier, you can use the alias directly (e.g. inside  function arguments, inside function body)</li>
+<li>Before class specifier, use typename.</li>
+</ul>
+<h3 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h3><p><strong>Template classes</strong></p>
+<ul>
+<li>Add <code>template&lt;typename T1, typename T2 ...&gt;</code> before class definition in .h</li>
+<li>Add <code>template&lt;typename T1, typename T2 ...&gt;</code> before all  function signature in .cpp</li>
+<li>When returning nested types (like iterator types), put <code>template&lt;typename T1, typename T2 ...&gt;::member_type</code> as return type, not  just <code>member_type</code></li>
+<li>Templates don’t emit code until instantiated, so <code>#include</code> the  .cpp file in the .h file, not the other way around</li>
+</ul>
+<p><strong>Const and Const-correctness</strong></p>
+<ul>
+<li>Use const parameters and variables wherever you can in application code</li>
+<li>Every member function of a class that doesn’t change its member variables should be marked <code>const</code></li>
+<li>auto will drop all const and &amp;, so be sure to specify</li>
+<li>Make iterators and const_iterators for all your classes!<ul>
+<li><strong>const iterator</strong> = cannot increment the iterator, can dereference and change underlying value</li>
+<li><strong>const_iterator</strong> = can increment the iterator, cannot dereference and change underlying value</li>
+<li><strong>const const_iterator</strong> = cannot increment iterator, cannot dereference and change underlying value</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>course</category>
@@ -975,23 +1425,6 @@
       </categories>
       <tags>
         <tag>ICS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>code before this website</title>
-    <url>/2022/10/27/code-before-this-website/</url>
-    <content><![CDATA[<h1 id="fds刷题记录"><a href="#fds刷题记录" class="headerlink" title="fds刷题记录"></a>fds刷题记录</h1><span id="more"></span>
-<h3 id="PTA-B-1003-我要通过"><a href="#PTA-B-1003-我要通过" class="headerlink" title="PTA B 1003 我要通过!"></a><a href="https://pintia.cn/problem-sets/994805260223102976/exam/problems/994805323154440192">PTA B 1003 我要通过!</a></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n,k,flag;</span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">        getchar();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">                <span class="type">int</span> a[<span class="number">3</span>]= &#123;<span class="number">0</span>&#125;;</span><br><span class="line">                k=<span class="number">0</span>;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>((ch=getchar())!=<span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(ch==<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">                                a[k]++;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;P&#x27;</span>&amp;&amp;k==<span class="number">0</span>)</span><br><span class="line">                                k=<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;T&#x27;</span>&amp;&amp;k==<span class="number">1</span>)</span><br><span class="line">                                k=<span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                                flag=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag&amp;&amp;k==<span class="number">2</span>&amp;&amp;a[<span class="number">0</span>]*a[<span class="number">1</span>]==a[<span class="number">2</span>]&amp;&amp;a[<span class="number">1</span>]!=<span class="number">0</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="初识dp：买卖股票最佳时机"><a href="#初识dp：买卖股票最佳时机" class="headerlink" title="初识dp：买卖股票最佳时机"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2zsx1/">初识dp：买卖股票最佳时机</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size=prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> dp[<span class="number">30005</span>][<span class="number">2</span>]=&#123;<span class="number">0</span>&#125;,i;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>]=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;size; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i])?dp[i<span class="number">-1</span>][<span class="number">0</span>]:dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i];</span><br><span class="line">            dp[i][<span class="number">1</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>])?dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]:dp[i<span class="number">-1</span>][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[size<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*此题利润累加法也可解&lt;贪心算法&gt;</span></span><br><span class="line"><span class="comment">public int maxProfit(int[] prices) &#123;</span></span><br><span class="line"><span class="comment">    if (prices == null || prices.length &lt; 2)</span></span><br><span class="line"><span class="comment">        return 0;</span></span><br><span class="line"><span class="comment">    int total = 0, index = 0, length = prices.length;</span></span><br><span class="line"><span class="comment">    while (index &lt; length) &#123;</span></span><br><span class="line"><span class="comment">        //如果股票下跌就一直找，直到找到股票开始上涨为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &gt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //股票上涨开始的值，也就是这段时间上涨的最小值</span></span><br><span class="line"><span class="comment">        int min = prices[index];</span></span><br><span class="line"><span class="comment">        //一直找到股票上涨的最大值为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &lt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //计算这段上涨时间的差值，然后累加</span></span><br><span class="line"><span class="comment">        total += prices[index++] - min;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return total;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
-<h3 id="异或运算的应用：查重"><a href="#异或运算的应用：查重" class="headerlink" title="异或运算的应用：查重"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x21ib6/">异或运算的应用：查重</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            res=res^nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="位运算的应用：判断数字是否重复"><a href="#位运算的应用：判断数字是否重复" class="headerlink" title="位运算的应用：判断数字是否重复"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2f9gg/">位运算的应用：判断数字是否重复</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> line[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> column[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> block[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> shift = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;<span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="string">&#x27;.&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                shift = <span class="number">1</span> &lt;&lt; (board[i][j] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                <span class="type">int</span> k = (i / <span class="number">3</span>) * <span class="number">3</span> + j / <span class="number">3</span>;</span><br><span class="line">                <span class="comment">//如果对应的位置只要有一个大于0，说明有冲突，直接返回false</span></span><br><span class="line">                <span class="keyword">if</span> ((column[i] &amp; shift) &gt; <span class="number">0</span> || (line[j] &amp; shift) &gt; <span class="number">0</span> || (block[k] &amp; shift) &gt; <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                column[i] |= shift;</span><br><span class="line">                line[j] |= shift;</span><br><span class="line">                block[k] |= shift;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>code</tag>
       </tags>
   </entry>
   <entry>
@@ -1101,6 +1534,37 @@
       </categories>
   </entry>
   <entry>
+    <title>code before this website</title>
+    <url>/2022/10/27/code-before-this-website/</url>
+    <content><![CDATA[<h1 id="fds刷题记录"><a href="#fds刷题记录" class="headerlink" title="fds刷题记录"></a>fds刷题记录</h1><span id="more"></span>
+<h3 id="PTA-B-1003-我要通过"><a href="#PTA-B-1003-我要通过" class="headerlink" title="PTA B 1003 我要通过!"></a><a href="https://pintia.cn/problem-sets/994805260223102976/exam/problems/994805323154440192">PTA B 1003 我要通过!</a></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n,k,flag;</span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">        getchar();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">                <span class="type">int</span> a[<span class="number">3</span>]= &#123;<span class="number">0</span>&#125;;</span><br><span class="line">                k=<span class="number">0</span>;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>((ch=getchar())!=<span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(ch==<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">                                a[k]++;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;P&#x27;</span>&amp;&amp;k==<span class="number">0</span>)</span><br><span class="line">                                k=<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;T&#x27;</span>&amp;&amp;k==<span class="number">1</span>)</span><br><span class="line">                                k=<span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                                flag=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag&amp;&amp;k==<span class="number">2</span>&amp;&amp;a[<span class="number">0</span>]*a[<span class="number">1</span>]==a[<span class="number">2</span>]&amp;&amp;a[<span class="number">1</span>]!=<span class="number">0</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="初识dp：买卖股票最佳时机"><a href="#初识dp：买卖股票最佳时机" class="headerlink" title="初识dp：买卖股票最佳时机"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2zsx1/">初识dp：买卖股票最佳时机</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size=prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> dp[<span class="number">30005</span>][<span class="number">2</span>]=&#123;<span class="number">0</span>&#125;,i;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>]=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;size; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i])?dp[i<span class="number">-1</span>][<span class="number">0</span>]:dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i];</span><br><span class="line">            dp[i][<span class="number">1</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>])?dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]:dp[i<span class="number">-1</span>][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[size<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*此题利润累加法也可解&lt;贪心算法&gt;</span></span><br><span class="line"><span class="comment">public int maxProfit(int[] prices) &#123;</span></span><br><span class="line"><span class="comment">    if (prices == null || prices.length &lt; 2)</span></span><br><span class="line"><span class="comment">        return 0;</span></span><br><span class="line"><span class="comment">    int total = 0, index = 0, length = prices.length;</span></span><br><span class="line"><span class="comment">    while (index &lt; length) &#123;</span></span><br><span class="line"><span class="comment">        //如果股票下跌就一直找，直到找到股票开始上涨为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &gt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //股票上涨开始的值，也就是这段时间上涨的最小值</span></span><br><span class="line"><span class="comment">        int min = prices[index];</span></span><br><span class="line"><span class="comment">        //一直找到股票上涨的最大值为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &lt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //计算这段上涨时间的差值，然后累加</span></span><br><span class="line"><span class="comment">        total += prices[index++] - min;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return total;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="异或运算的应用：查重"><a href="#异或运算的应用：查重" class="headerlink" title="异或运算的应用：查重"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x21ib6/">异或运算的应用：查重</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            res=res^nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="位运算的应用：判断数字是否重复"><a href="#位运算的应用：判断数字是否重复" class="headerlink" title="位运算的应用：判断数字是否重复"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2f9gg/">位运算的应用：判断数字是否重复</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> line[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> column[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> block[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> shift = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;<span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="string">&#x27;.&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                shift = <span class="number">1</span> &lt;&lt; (board[i][j] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                <span class="type">int</span> k = (i / <span class="number">3</span>) * <span class="number">3</span> + j / <span class="number">3</span>;</span><br><span class="line">                <span class="comment">//如果对应的位置只要有一个大于0，说明有冲突，直接返回false</span></span><br><span class="line">                <span class="keyword">if</span> ((column[i] &amp; shift) &gt; <span class="number">0</span> || (line[j] &amp; shift) &gt; <span class="number">0</span> || (block[k] &amp; shift) &gt; <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                column[i] |= shift;</span><br><span class="line">                line[j] |= shift;</span><br><span class="line">                block[k] |= shift;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大物期中整理</title>
+    <url>/2022/11/02/%E5%A4%A7%E7%89%A9%E6%9C%9F%E4%B8%AD%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<p>大二上大学物理乙期中复习。</p>
+<span id="more"></span>
+<div class="pdf-container" data-target="/pdf/大物期中整理.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+      <tags>
+        <tag>大物</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>专业分流内训</title>
     <url>/2022/10/28/%E4%B8%93%E4%B8%9A%E5%88%86%E6%B5%81%E5%86%85%E8%AE%AD/</url>
     <content><![CDATA[<h1 id="Welcome-to-QC-family"><a href="#Welcome-to-QC-family" class="headerlink" title="Welcome to QC family"></a>Welcome to QC family</h1><span id="more"></span>
@@ -1199,20 +1663,6 @@
       <tags>
         <tag>面试</tag>
         <tag>专业分流</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大物期中整理</title>
-    <url>/2022/11/02/%E5%A4%A7%E7%89%A9%E6%9C%9F%E4%B8%AD%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<p>大二上大学物理乙期中复习。</p>
-<span id="more"></span>
-<div class="pdf-container" data-target="/pdf/大物期中整理.pdf" data-height="500px"></div>
-]]></content>
-      <categories>
-        <category>course</category>
-      </categories>
-      <tags>
-        <tag>大物</tag>
       </tags>
   </entry>
   <entry>
