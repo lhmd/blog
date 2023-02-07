@@ -1,53 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>11/25签到推</title>
-    <url>/2022/11/25/11-25%E7%AD%BE%E5%88%B0%E6%8E%A8/</url>
-    <content><![CDATA[<p>微信公众号例会签到推。</p>
-<span id="more"></span>
-<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>最近NovelAi爆火，很多人开始用这玩意进行自己头像的创作，也有大一的同学来问技术组老人能不能教一教怎么把自己变成老婆（bushi），所以这期推文就教大家用一用这个“神奇”的软件。</p>
-<hr>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>start！</p>
-<p>由于每个人电脑不一样，而且有公子富婆在用Mac学习工作），所以这篇推文中只涉及在线创作，如果想要将整个项目部署到自己的电脑/服务器上（不要在勤创服务器上搞这个），请自行参阅github或者各大教学网站（Youtube、Bilibili）。</p>
-<hr>
-<h3 id="NovelAi"><a href="#NovelAi" class="headerlink" title="NovelAi"></a>NovelAi</h3><p>既然这个项目的火爆是由它引起的，那我们自然从本体开始讲解。</p>
-<p>首先进入<a href="[https://aistudio.baidu.com/aistudio/projectdetail/4700305?forkThirdPart=1">有手就会</a>系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。</p>
-<p>系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。</p>
-<p>按照指引进行一步步操作，自己搞着玩的话只需要把图片上传上去，然后等待生成即可。</p>
-<hr>
-<p>但是，我们自然要讲点不一样的东西，如果只是单纯使用怎么可以呢？</p>
-<p>我们发现，输入一张图片，它只能输出同样的图片，这时候我们就需要去学习如何更改图片的风格。</p>
-<p>给图片改风格有两种操作，一种是自己搭配，一种是按照现有的模板，下面将分别讲解。</p>
-<hr>
-<p><a href="https://yun.wafuwafu.com/aliyun/Resources/novelai-naifu">https://yun.wafuwafu.com/aliyun/Resources/novelai-naifu</a></p>
-<p>这是有大佬分享的单词集，你希望生成的图片是什么风格，只需要按照相对的tag输入进去就好，尽情发挥你们的想象力，做出更多的奇行种吧！</p>
-<p>tips：一般来说tag自己搭配要和图生图一起食用，否则AI无法识别你想要什么的时候做出的图就会比较惊艳了。</p>
-<hr>
-<p><strong>《元素法典》</strong></p>
-<p>多么美妙的一本书~由SteelPlate（网名）编纂，旨在收录所有贴吧作品群内的优质tag和元素魔法。同时他还制作了《从零开始的魔法书——Novel AI 入门导论》。</p>
-<p>这本书收录了目前几乎所有风格的ai绘画优质tag，用这些“魔法”你可以轻易创作出非常唯美的画面，但是由于这本书的电子版违反了腾讯公约，所以目前编者手头没有这本书的电子版，需要的米娜桑可以私戳lhmd领取）。</p>
-<p>个人比较喜欢星空法~</p>
-<hr>
-<h3 id="animeGAN"><a href="#animeGAN" class="headerlink" title="animeGAN"></a>animeGAN</h3><p>更真实的体验！</p>
-<p>一般来说，NovelAi生成的图片和本人是不太像的，如果想要更真实的照片级别的体验，不如来试试这个项目：animeGAN。</p>
-<p><a href="https://github.com/TachibanaYoshino/AnimeGAN这是github上开源的项目，不过大多数人不会去研究它。">https://github.com/TachibanaYoshino/AnimeGAN这是github上开源的项目，不过大多数人不会去研究它。</a></p>
-<p>仅仅使用的话可以试试<a href="https://animegan.js.org/">https://animegan.js.org/</a></p>
-<p>这是一个在线的编辑器，可以在线生成相应的图片，建议使用这个项目时上传自己/他人的大头照，否则效果会非常模糊。</p>
-<hr>
-<blockquote>
-<p>如果对原理很感兴趣的话，欢迎学习：《机器学习》《深度学习》《卷积神经网络》《计算机视觉》等相关课程/项目</p>
-</blockquote>
-<p>本周签到问题：猜猜这是谁？</p>
-<blockquote>
-<p>答案是马老师 </p>
-<p>——(animeGAN )制作</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>勤创相关</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CS106L Midquarter Review</title>
     <url>/2023/01/20/CS106L-Midquarter-Review/</url>
     <content><![CDATA[<p>Midquarter review of Stanford CS106L.</p>
@@ -274,6 +227,63 @@
 </ul>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>11/25签到推</title>
+    <url>/2022/11/25/11-25%E7%AD%BE%E5%88%B0%E6%8E%A8/</url>
+    <content><![CDATA[<p>微信公众号例会签到推。</p>
+<span id="more"></span>
+<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>最近NovelAi爆火，很多人开始用这玩意进行自己头像的创作，也有大一的同学来问技术组老人能不能教一教怎么把自己变成老婆（bushi），所以这期推文就教大家用一用这个“神奇”的软件。</p>
+<hr>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>start！</p>
+<p>由于每个人电脑不一样，而且有公子富婆在用Mac学习工作），所以这篇推文中只涉及在线创作，如果想要将整个项目部署到自己的电脑/服务器上（不要在勤创服务器上搞这个），请自行参阅github或者各大教学网站（Youtube、Bilibili）。</p>
+<hr>
+<h3 id="NovelAi"><a href="#NovelAi" class="headerlink" title="NovelAi"></a>NovelAi</h3><p>既然这个项目的火爆是由它引起的，那我们自然从本体开始讲解。</p>
+<p>首先进入<a href="[https://aistudio.baidu.com/aistudio/projectdetail/4700305?forkThirdPart=1">有手就会</a>系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。</p>
+<p>系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。</p>
+<p>按照指引进行一步步操作，自己搞着玩的话只需要把图片上传上去，然后等待生成即可。</p>
+<hr>
+<p>但是，我们自然要讲点不一样的东西，如果只是单纯使用怎么可以呢？</p>
+<p>我们发现，输入一张图片，它只能输出同样的图片，这时候我们就需要去学习如何更改图片的风格。</p>
+<p>给图片改风格有两种操作，一种是自己搭配，一种是按照现有的模板，下面将分别讲解。</p>
+<hr>
+<p><a href="https://yun.wafuwafu.com/aliyun/Resources/novelai-naifu">https://yun.wafuwafu.com/aliyun/Resources/novelai-naifu</a></p>
+<p>这是有大佬分享的单词集，你希望生成的图片是什么风格，只需要按照相对的tag输入进去就好，尽情发挥你们的想象力，做出更多的奇行种吧！</p>
+<p>tips：一般来说tag自己搭配要和图生图一起食用，否则AI无法识别你想要什么的时候做出的图就会比较惊艳了。</p>
+<hr>
+<p><strong>《元素法典》</strong></p>
+<p>多么美妙的一本书~由SteelPlate（网名）编纂，旨在收录所有贴吧作品群内的优质tag和元素魔法。同时他还制作了《从零开始的魔法书——Novel AI 入门导论》。</p>
+<p>这本书收录了目前几乎所有风格的ai绘画优质tag，用这些“魔法”你可以轻易创作出非常唯美的画面，但是由于这本书的电子版违反了腾讯公约，所以目前编者手头没有这本书的电子版，需要的米娜桑可以私戳lhmd领取）。</p>
+<p>个人比较喜欢星空法~</p>
+<hr>
+<h3 id="animeGAN"><a href="#animeGAN" class="headerlink" title="animeGAN"></a>animeGAN</h3><p>更真实的体验！</p>
+<p>一般来说，NovelAi生成的图片和本人是不太像的，如果想要更真实的照片级别的体验，不如来试试这个项目：animeGAN。</p>
+<p><a href="https://github.com/TachibanaYoshino/AnimeGAN这是github上开源的项目，不过大多数人不会去研究它。">https://github.com/TachibanaYoshino/AnimeGAN这是github上开源的项目，不过大多数人不会去研究它。</a></p>
+<p>仅仅使用的话可以试试<a href="https://animegan.js.org/">https://animegan.js.org/</a></p>
+<p>这是一个在线的编辑器，可以在线生成相应的图片，建议使用这个项目时上传自己/他人的大头照，否则效果会非常模糊。</p>
+<hr>
+<blockquote>
+<p>如果对原理很感兴趣的话，欢迎学习：《机器学习》《深度学习》《卷积神经网络》《计算机视觉》等相关课程/项目</p>
+</blockquote>
+<p>本周签到问题：猜猜这是谁？</p>
+<blockquote>
+<p>答案是马老师 </p>
+<p>——(animeGAN )制作</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>勤创相关</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CS231n课程笔记</title>
+    <url>/2023/01/18/CS231n%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>Stanford CS231n: Deep Learning for Computer Vision课程笔记。</p>
+<span id="more"></span>
 ]]></content>
       <categories>
         <category>course</category>
@@ -1388,16 +1398,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CS231n课程笔记</title>
-    <url>/2023/01/18/CS231n%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>Stanford CS231n: Deep Learning for Computer Vision课程笔记。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>course</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Complete Binary Search Tree</title>
     <url>/2022/10/30/Complete-Binary-Search-Tree/</url>
     <content><![CDATA[<h3 id="Complete-Binary-Search-Tree"><a href="#Complete-Binary-Search-Tree" class="headerlink" title="Complete Binary Search Tree"></a><a href="https://pintia.cn/problem-sets/1582215244956827648/exam/problems/1582215245019742217">Complete Binary Search Tree</a></h3><span id="more"></span>
@@ -1424,6 +1424,23 @@
       </categories>
       <tags>
         <tag>ICS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>code before this website</title>
+    <url>/2022/10/27/code-before-this-website/</url>
+    <content><![CDATA[<h1 id="fds刷题记录"><a href="#fds刷题记录" class="headerlink" title="fds刷题记录"></a>fds刷题记录</h1><span id="more"></span>
+<h3 id="PTA-B-1003-我要通过"><a href="#PTA-B-1003-我要通过" class="headerlink" title="PTA B 1003 我要通过!"></a><a href="https://pintia.cn/problem-sets/994805260223102976/exam/problems/994805323154440192">PTA B 1003 我要通过!</a></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n,k,flag;</span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">        getchar();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">                <span class="type">int</span> a[<span class="number">3</span>]= &#123;<span class="number">0</span>&#125;;</span><br><span class="line">                k=<span class="number">0</span>;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>((ch=getchar())!=<span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(ch==<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">                                a[k]++;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;P&#x27;</span>&amp;&amp;k==<span class="number">0</span>)</span><br><span class="line">                                k=<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;T&#x27;</span>&amp;&amp;k==<span class="number">1</span>)</span><br><span class="line">                                k=<span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                                flag=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag&amp;&amp;k==<span class="number">2</span>&amp;&amp;a[<span class="number">0</span>]*a[<span class="number">1</span>]==a[<span class="number">2</span>]&amp;&amp;a[<span class="number">1</span>]!=<span class="number">0</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="初识dp：买卖股票最佳时机"><a href="#初识dp：买卖股票最佳时机" class="headerlink" title="初识dp：买卖股票最佳时机"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2zsx1/">初识dp：买卖股票最佳时机</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size=prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> dp[<span class="number">30005</span>][<span class="number">2</span>]=&#123;<span class="number">0</span>&#125;,i;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>]=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;size; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i])?dp[i<span class="number">-1</span>][<span class="number">0</span>]:dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i];</span><br><span class="line">            dp[i][<span class="number">1</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>])?dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]:dp[i<span class="number">-1</span>][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[size<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*此题利润累加法也可解&lt;贪心算法&gt;</span></span><br><span class="line"><span class="comment">public int maxProfit(int[] prices) &#123;</span></span><br><span class="line"><span class="comment">    if (prices == null || prices.length &lt; 2)</span></span><br><span class="line"><span class="comment">        return 0;</span></span><br><span class="line"><span class="comment">    int total = 0, index = 0, length = prices.length;</span></span><br><span class="line"><span class="comment">    while (index &lt; length) &#123;</span></span><br><span class="line"><span class="comment">        //如果股票下跌就一直找，直到找到股票开始上涨为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &gt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //股票上涨开始的值，也就是这段时间上涨的最小值</span></span><br><span class="line"><span class="comment">        int min = prices[index];</span></span><br><span class="line"><span class="comment">        //一直找到股票上涨的最大值为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &lt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //计算这段上涨时间的差值，然后累加</span></span><br><span class="line"><span class="comment">        total += prices[index++] - min;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return total;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="异或运算的应用：查重"><a href="#异或运算的应用：查重" class="headerlink" title="异或运算的应用：查重"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x21ib6/">异或运算的应用：查重</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            res=res^nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="位运算的应用：判断数字是否重复"><a href="#位运算的应用：判断数字是否重复" class="headerlink" title="位运算的应用：判断数字是否重复"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2f9gg/">位运算的应用：判断数字是否重复</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> line[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> column[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> block[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> shift = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;<span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="string">&#x27;.&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                shift = <span class="number">1</span> &lt;&lt; (board[i][j] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                <span class="type">int</span> k = (i / <span class="number">3</span>) * <span class="number">3</span> + j / <span class="number">3</span>;</span><br><span class="line">                <span class="comment">//如果对应的位置只要有一个大于0，说明有冲突，直接返回false</span></span><br><span class="line">                <span class="keyword">if</span> ((column[i] &amp; shift) &gt; <span class="number">0</span> || (line[j] &amp; shift) &gt; <span class="number">0</span> || (block[k] &amp; shift) &gt; <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                column[i] |= shift;</span><br><span class="line">                line[j] |= shift;</span><br><span class="line">                block[k] |= shift;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>code</tag>
       </tags>
   </entry>
   <entry>
@@ -1531,23 +1548,6 @@
         <category>CV</category>
         <category>paper</category>
       </categories>
-  </entry>
-  <entry>
-    <title>code before this website</title>
-    <url>/2022/10/27/code-before-this-website/</url>
-    <content><![CDATA[<h1 id="fds刷题记录"><a href="#fds刷题记录" class="headerlink" title="fds刷题记录"></a>fds刷题记录</h1><span id="more"></span>
-<h3 id="PTA-B-1003-我要通过"><a href="#PTA-B-1003-我要通过" class="headerlink" title="PTA B 1003 我要通过!"></a><a href="https://pintia.cn/problem-sets/994805260223102976/exam/problems/994805323154440192">PTA B 1003 我要通过!</a></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n,k,flag;</span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">        getchar();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">                <span class="type">int</span> a[<span class="number">3</span>]= &#123;<span class="number">0</span>&#125;;</span><br><span class="line">                k=<span class="number">0</span>;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>((ch=getchar())!=<span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(ch==<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">                                a[k]++;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;P&#x27;</span>&amp;&amp;k==<span class="number">0</span>)</span><br><span class="line">                                k=<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;T&#x27;</span>&amp;&amp;k==<span class="number">1</span>)</span><br><span class="line">                                k=<span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                                flag=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag&amp;&amp;k==<span class="number">2</span>&amp;&amp;a[<span class="number">0</span>]*a[<span class="number">1</span>]==a[<span class="number">2</span>]&amp;&amp;a[<span class="number">1</span>]!=<span class="number">0</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="初识dp：买卖股票最佳时机"><a href="#初识dp：买卖股票最佳时机" class="headerlink" title="初识dp：买卖股票最佳时机"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2zsx1/">初识dp：买卖股票最佳时机</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size=prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> dp[<span class="number">30005</span>][<span class="number">2</span>]=&#123;<span class="number">0</span>&#125;,i;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>]=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;size; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i])?dp[i<span class="number">-1</span>][<span class="number">0</span>]:dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i];</span><br><span class="line">            dp[i][<span class="number">1</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>])?dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]:dp[i<span class="number">-1</span>][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[size<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*此题利润累加法也可解&lt;贪心算法&gt;</span></span><br><span class="line"><span class="comment">public int maxProfit(int[] prices) &#123;</span></span><br><span class="line"><span class="comment">    if (prices == null || prices.length &lt; 2)</span></span><br><span class="line"><span class="comment">        return 0;</span></span><br><span class="line"><span class="comment">    int total = 0, index = 0, length = prices.length;</span></span><br><span class="line"><span class="comment">    while (index &lt; length) &#123;</span></span><br><span class="line"><span class="comment">        //如果股票下跌就一直找，直到找到股票开始上涨为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &gt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //股票上涨开始的值，也就是这段时间上涨的最小值</span></span><br><span class="line"><span class="comment">        int min = prices[index];</span></span><br><span class="line"><span class="comment">        //一直找到股票上涨的最大值为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &lt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //计算这段上涨时间的差值，然后累加</span></span><br><span class="line"><span class="comment">        total += prices[index++] - min;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return total;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
-<h3 id="异或运算的应用：查重"><a href="#异或运算的应用：查重" class="headerlink" title="异或运算的应用：查重"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x21ib6/">异或运算的应用：查重</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            res=res^nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="位运算的应用：判断数字是否重复"><a href="#位运算的应用：判断数字是否重复" class="headerlink" title="位运算的应用：判断数字是否重复"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2f9gg/">位运算的应用：判断数字是否重复</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> line[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> column[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> block[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> shift = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;<span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="string">&#x27;.&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                shift = <span class="number">1</span> &lt;&lt; (board[i][j] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                <span class="type">int</span> k = (i / <span class="number">3</span>) * <span class="number">3</span> + j / <span class="number">3</span>;</span><br><span class="line">                <span class="comment">//如果对应的位置只要有一个大于0，说明有冲突，直接返回false</span></span><br><span class="line">                <span class="keyword">if</span> ((column[i] &amp; shift) &gt; <span class="number">0</span> || (line[j] &amp; shift) &gt; <span class="number">0</span> || (block[k] &amp; shift) &gt; <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                column[i] |= shift;</span><br><span class="line">                line[j] |= shift;</span><br><span class="line">                block[k] |= shift;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>code</tag>
-      </tags>
   </entry>
   <entry>
     <title>专业分流内训</title>
@@ -1665,20 +1665,6 @@
       </tags>
   </entry>
   <entry>
-    <title>大物期末整理</title>
-    <url>/2023/02/02/%E5%A4%A7%E7%89%A9%E6%9C%9F%E6%9C%AB%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<p>大二上大学物理乙期末复习。</p>
-<span id="more"></span>
-<div class="pdf-container" data-target="/pdf/大物期末整理.pdf" data-height="500px"></div>
-]]></content>
-      <categories>
-        <category>course</category>
-      </categories>
-      <tags>
-        <tag>大物</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>概统期末整理</title>
     <url>/2023/02/07/%E6%A6%82%E7%BB%9F%E6%9C%9F%E6%9C%AB%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<p>大二上概率论与数理统计期末复习。</p>
@@ -1690,6 +1676,20 @@
       </categories>
       <tags>
         <tag>概统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大物期末整理</title>
+    <url>/2023/02/02/%E5%A4%A7%E7%89%A9%E6%9C%9F%E6%9C%AB%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<p>大二上大学物理乙期末复习。</p>
+<span id="more"></span>
+<div class="pdf-container" data-target="/pdf/大物期末整理.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+      <tags>
+        <tag>大物</tag>
       </tags>
   </entry>
   <entry>
