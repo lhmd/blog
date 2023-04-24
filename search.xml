@@ -1,53 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>11/25签到推</title>
-    <url>/2022/11/25/11-25%E7%AD%BE%E5%88%B0%E6%8E%A8/</url>
-    <content><![CDATA[<p>微信公众号例会签到推。</p>
-<span id="more"></span>
-<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>最近NovelAi爆火，很多人开始用这玩意进行自己头像的创作，也有大一的同学来问技术组老人能不能教一教怎么把自己变成老婆（bushi），所以这期推文就教大家用一用这个“神奇”的软件。</p>
-<hr>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>start！</p>
-<p>由于每个人电脑不一样，而且有公子富婆在用Mac学习工作），所以这篇推文中只涉及在线创作，如果想要将整个项目部署到自己的电脑/服务器上（不要在勤创服务器上搞这个），请自行参阅github或者各大教学网站（Youtube、Bilibili）。</p>
-<hr>
-<h3 id="NovelAi"><a href="#NovelAi" class="headerlink" title="NovelAi"></a>NovelAi</h3><p>既然这个项目的火爆是由它引起的，那我们自然从本体开始讲解。</p>
-<p>首先进入<a href="[https://aistudio.baidu.com/aistudio/projectdetail/4700305?forkThirdPart=1">有手就会</a>系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。</p>
-<p>系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。</p>
-<p>按照指引进行一步步操作，自己搞着玩的话只需要把图片上传上去，然后等待生成即可。</p>
-<hr>
-<p>但是，我们自然要讲点不一样的东西，如果只是单纯使用怎么可以呢？</p>
-<p>我们发现，输入一张图片，它只能输出同样的图片，这时候我们就需要去学习如何更改图片的风格。</p>
-<p>给图片改风格有两种操作，一种是自己搭配，一种是按照现有的模板，下面将分别讲解。</p>
-<hr>
-<p><a href="https://yun.wafuwafu.com/aliyun/Resources/novelai-naifu">https://yun.wafuwafu.com/aliyun/Resources/novelai-naifu</a></p>
-<p>这是有大佬分享的单词集，你希望生成的图片是什么风格，只需要按照相对的tag输入进去就好，尽情发挥你们的想象力，做出更多的奇行种吧！</p>
-<p>tips：一般来说tag自己搭配要和图生图一起食用，否则AI无法识别你想要什么的时候做出的图就会比较惊艳了。</p>
-<hr>
-<p><strong>《元素法典》</strong></p>
-<p>多么美妙的一本书~由SteelPlate（网名）编纂，旨在收录所有贴吧作品群内的优质tag和元素魔法。同时他还制作了《从零开始的魔法书——Novel AI 入门导论》。</p>
-<p>这本书收录了目前几乎所有风格的ai绘画优质tag，用这些“魔法”你可以轻易创作出非常唯美的画面，但是由于这本书的电子版违反了腾讯公约，所以目前编者手头没有这本书的电子版，需要的米娜桑可以私戳lhmd领取）。</p>
-<p>个人比较喜欢星空法~</p>
-<hr>
-<h3 id="animeGAN"><a href="#animeGAN" class="headerlink" title="animeGAN"></a>animeGAN</h3><p>更真实的体验！</p>
-<p>一般来说，NovelAi生成的图片和本人是不太像的，如果想要更真实的照片级别的体验，不如来试试这个项目：animeGAN。</p>
-<p><a href="https://github.com/TachibanaYoshino/AnimeGAN这是github上开源的项目，不过大多数人不会去研究它。">https://github.com/TachibanaYoshino/AnimeGAN这是github上开源的项目，不过大多数人不会去研究它。</a></p>
-<p>仅仅使用的话可以试试<a href="https://animegan.js.org/">https://animegan.js.org/</a></p>
-<p>这是一个在线的编辑器，可以在线生成相应的图片，建议使用这个项目时上传自己/他人的大头照，否则效果会非常模糊。</p>
-<hr>
-<blockquote>
-<p>如果对原理很感兴趣的话，欢迎学习：《机器学习》《深度学习》《卷积神经网络》《计算机视觉》等相关课程/项目</p>
-</blockquote>
-<p>本周签到问题：猜猜这是谁？</p>
-<blockquote>
-<p>答案是马老师 </p>
-<p>——(animeGAN )制作</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>勤创相关</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CS106L Midquarter Review</title>
     <url>/2023/01/20/CS106L-Midquarter-Review/</url>
     <content><![CDATA[<p>Midquarter review of Stanford CS106L.</p>
@@ -274,16 +227,6 @@
 </ul>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>course</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CS231n课程笔记</title>
-    <url>/2023/01/18/CS231n%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>Stanford CS231n: Deep Learning for Computer Vision课程笔记。</p>
-<span id="more"></span>
 ]]></content>
       <categories>
         <category>course</category>
@@ -1413,18 +1356,51 @@
       </tags>
   </entry>
   <entry>
-    <title>ICS速成笔记</title>
-    <url>/2022/11/09/ICS%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>大一暑学期计算机系统概论考前复习速成。</p>
+    <title>11/25签到推</title>
+    <url>/2022/11/25/11-25%E7%AD%BE%E5%88%B0%E6%8E%A8/</url>
+    <content><![CDATA[<p>微信公众号例会签到推。</p>
 <span id="more"></span>
-<div class="pdf-container" data-target="/pdf/ICS速成笔记.pdf" data-height="500px"></div>
+<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>最近NovelAi爆火，很多人开始用这玩意进行自己头像的创作，也有大一的同学来问技术组老人能不能教一教怎么把自己变成老婆（bushi），所以这期推文就教大家用一用这个“神奇”的软件。</p>
+<hr>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>start！</p>
+<p>由于每个人电脑不一样，而且有公子富婆在用Mac学习工作），所以这篇推文中只涉及在线创作，如果想要将整个项目部署到自己的电脑/服务器上（不要在勤创服务器上搞这个），请自行参阅github或者各大教学网站（Youtube、Bilibili）。</p>
+<hr>
+<h3 id="NovelAi"><a href="#NovelAi" class="headerlink" title="NovelAi"></a>NovelAi</h3><p>既然这个项目的火爆是由它引起的，那我们自然从本体开始讲解。</p>
+<p>首先进入<a href="[https://aistudio.baidu.com/aistudio/projectdetail/4700305?forkThirdPart=1">有手就会</a>系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。</p>
+<p>系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。系列，在飞桨AI上注册一个账号（可以不填真实姓名），点击启动环境，选择“高级CPU”及以上的环境。</p>
+<p>按照指引进行一步步操作，自己搞着玩的话只需要把图片上传上去，然后等待生成即可。</p>
+<hr>
+<p>但是，我们自然要讲点不一样的东西，如果只是单纯使用怎么可以呢？</p>
+<p>我们发现，输入一张图片，它只能输出同样的图片，这时候我们就需要去学习如何更改图片的风格。</p>
+<p>给图片改风格有两种操作，一种是自己搭配，一种是按照现有的模板，下面将分别讲解。</p>
+<hr>
+<p><a href="https://yun.wafuwafu.com/aliyun/Resources/novelai-naifu">https://yun.wafuwafu.com/aliyun/Resources/novelai-naifu</a></p>
+<p>这是有大佬分享的单词集，你希望生成的图片是什么风格，只需要按照相对的tag输入进去就好，尽情发挥你们的想象力，做出更多的奇行种吧！</p>
+<p>tips：一般来说tag自己搭配要和图生图一起食用，否则AI无法识别你想要什么的时候做出的图就会比较惊艳了。</p>
+<hr>
+<p><strong>《元素法典》</strong></p>
+<p>多么美妙的一本书~由SteelPlate（网名）编纂，旨在收录所有贴吧作品群内的优质tag和元素魔法。同时他还制作了《从零开始的魔法书——Novel AI 入门导论》。</p>
+<p>这本书收录了目前几乎所有风格的ai绘画优质tag，用这些“魔法”你可以轻易创作出非常唯美的画面，但是由于这本书的电子版违反了腾讯公约，所以目前编者手头没有这本书的电子版，需要的米娜桑可以私戳lhmd领取）。</p>
+<p>个人比较喜欢星空法~</p>
+<hr>
+<h3 id="animeGAN"><a href="#animeGAN" class="headerlink" title="animeGAN"></a>animeGAN</h3><p>更真实的体验！</p>
+<p>一般来说，NovelAi生成的图片和本人是不太像的，如果想要更真实的照片级别的体验，不如来试试这个项目：animeGAN。</p>
+<p><a href="https://github.com/TachibanaYoshino/AnimeGAN这是github上开源的项目，不过大多数人不会去研究它。">https://github.com/TachibanaYoshino/AnimeGAN这是github上开源的项目，不过大多数人不会去研究它。</a></p>
+<p>仅仅使用的话可以试试<a href="https://animegan.js.org/">https://animegan.js.org/</a></p>
+<p>这是一个在线的编辑器，可以在线生成相应的图片，建议使用这个项目时上传自己/他人的大头照，否则效果会非常模糊。</p>
+<hr>
+<blockquote>
+<p>如果对原理很感兴趣的话，欢迎学习：《机器学习》《深度学习》《卷积神经网络》《计算机视觉》等相关课程/项目</p>
+</blockquote>
+<p>本周签到问题：猜猜这是谁？</p>
+<blockquote>
+<p>答案是马老师 </p>
+<p>——(animeGAN )制作</p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>course</category>
+        <category>勤创相关</category>
       </categories>
-      <tags>
-        <tag>ICS</tag>
-      </tags>
   </entry>
   <entry>
     <title>NeRF</title>
@@ -1533,6 +1509,20 @@
       </categories>
   </entry>
   <entry>
+    <title>ICS速成笔记</title>
+    <url>/2022/11/09/ICS%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>大一暑学期计算机系统概论考前复习速成。</p>
+<span id="more"></span>
+<div class="pdf-container" data-target="/pdf/ICS速成笔记.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+      <tags>
+        <tag>ICS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>code before this website</title>
     <url>/2022/10/27/code-before-this-website/</url>
     <content><![CDATA[<h1 id="fds刷题记录"><a href="#fds刷题记录" class="headerlink" title="fds刷题记录"></a>fds刷题记录</h1><span id="more"></span>
@@ -1561,20 +1551,6 @@
       </categories>
       <tags>
         <tag>大物</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>概统作业题</title>
-    <url>/2023/02/07/%E6%A6%82%E7%BB%9F%E4%BD%9C%E4%B8%9A%E9%A2%98/</url>
-    <content><![CDATA[<p>大二上概率论与数理统计wgz老师班作业题。</p>
-<span id="more"></span>
-<div class="pdf-container" data-target="/pdf/概统作业题.pdf" data-height="500px"></div>
-]]></content>
-      <categories>
-        <category>course</category>
-      </categories>
-      <tags>
-        <tag>概统</tag>
       </tags>
   </entry>
   <entry>
@@ -1679,20 +1655,6 @@
       </tags>
   </entry>
   <entry>
-    <title>概统期末整理</title>
-    <url>/2023/02/07/%E6%A6%82%E7%BB%9F%E6%9C%9F%E6%9C%AB%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<p>大二上概率论与数理统计期末复习。</p>
-<span id="more"></span>
-<div class="pdf-container" data-target="/pdf/概统期末整理.pdf" data-height="500px"></div>
-]]></content>
-      <categories>
-        <category>course</category>
-      </categories>
-      <tags>
-        <tag>概统</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>大物期末整理</title>
     <url>/2023/02/02/%E5%A4%A7%E7%89%A9%E6%9C%9F%E6%9C%AB%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<p>大二上大学物理乙期末复习。</p>
@@ -1704,6 +1666,34 @@
       </categories>
       <tags>
         <tag>大物</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>概统作业题</title>
+    <url>/2023/02/07/%E6%A6%82%E7%BB%9F%E4%BD%9C%E4%B8%9A%E9%A2%98/</url>
+    <content><![CDATA[<p>大二上概率论与数理统计wgz老师班作业题。</p>
+<span id="more"></span>
+<div class="pdf-container" data-target="/pdf/概统作业题.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+      <tags>
+        <tag>概统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>概统期末整理</title>
+    <url>/2023/02/07/%E6%A6%82%E7%BB%9F%E6%9C%9F%E6%9C%AB%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<p>大二上概率论与数理统计期末复习。</p>
+<span id="more"></span>
+<div class="pdf-container" data-target="/pdf/概统期末整理.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>course</category>
+      </categories>
+      <tags>
+        <tag>概统</tag>
       </tags>
   </entry>
   <entry>
