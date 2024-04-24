@@ -20,23 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lhmd.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"flipBounceXIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="罹魂梦蝶の空間">
-<meta property="og:url" content="https://lhmd.github.io/blog/tags/%E9%9D%A2%E8%AF%95/index.html">
+    <meta name="description" content="​    记录安装linux系统之后的所有配置过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 桌面版配置">
+<meta property="og:url" content="https://lhmd.github.io/blog/2023/12/25/linux-%E6%A1%8C%E9%9D%A2%E7%89%88%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="罹魂梦蝶の空間">
+<meta property="og:description" content="​    记录安装linux系统之后的所有配置过程。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-25T08:12:53.000Z">
+<meta property="article:modified_time" content="2023-12-25T08:32:30.662Z">
 <meta property="article:author" content="lhmd">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://lhmd.github.io/blog/tags/%E9%9D%A2%E8%AF%95/">
+<link rel="canonical" href="https://lhmd.github.io/blog/2023/12/25/linux-%E6%A1%8C%E9%9D%A2%E7%89%88%E9%85%8D%E7%BD%AE/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/面试/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lhmd.github.io/blog/2023/12/25/linux-%E6%A1%8C%E9%9D%A2%E7%89%88%E9%85%8D%E7%BD%AE/","path":"2023/12/25/linux-桌面版配置/","title":"linux 桌面版配置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>标签: 面试 | 罹魂梦蝶の空間</title>
+<title>linux 桌面版配置 | 罹魂梦蝶の空間</title>
   
 
 
@@ -127,7 +131,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -140,6 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="nav-text">修改软件源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="nav-text">安装软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker"><span class="nav-text">docker</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -207,51 +212,141 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">面试
-          <small>标签</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lhmd.github.io/blog/2023/12/25/linux-%E6%A1%8C%E9%9D%A2%E7%89%88%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="lhmd">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罹魂梦蝶の空間">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="linux 桌面版配置 | 罹魂梦蝶の空間">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux 桌面版配置
         </h1>
-      </div>
 
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+      <time title="创建时间：2023-12-25 16:12:53 / 修改时间：16:32:30" itemprop="dateCreated datePublished" datetime="2023-12-25T16:12:53+08:00">2023-12-25</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>​    记录安装linux系统之后的所有配置过程。</p>
+<span id="more"></span>
+<h2 id="修改软件源"><a href="#修改软件源" class="headerlink" title="修改软件源"></a>修改软件源</h2><p><a target="_blank" rel="noopener" href="https://mirror.zju.edu.cn/">https://mirror.zju.edu.cn/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt</span><br><span class="line">sudo <span class="built_in">cp</span> sources.list sources.list.bak</span><br><span class="line">sudo vi sources.list</span><br></pre></td></tr></table></figure>
+<p>删掉所有的，换成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.zju.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install curl</span><br><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br><span class="line">sudo apt-get install -y uidmap</span><br><span class="line">dockerd-rootless-setuptool.sh install</span><br></pre></td></tr></table></figure>
+<p>添加<code>.bashrc</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_HOST=unix:///run/user/1000/docker.sock</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bashrc</span><br><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-10-28T11:34:04+08:00"
-              content="2022-10-28">
-          10-28
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/28/%E4%B8%93%E4%B8%9A%E5%88%86%E6%B5%81%E5%86%85%E8%AE%AD/" itemprop="url">
-            <span itemprop="name">专业分流内训</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          
 
-      
-    </header>
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>lhmd
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://lhmd.github.io/blog/2023/12/25/linux-%E6%A1%8C%E9%9D%A2%E7%89%88%E9%85%8D%E7%BD%AE/" title="linux 桌面版配置">https://lhmd.github.io/blog/2023/12/25/linux-桌面版配置/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/12/02/Depth-Gaussian/" rel="prev" title="Depth-Gaussian">
+                  <i class="fa fa-chevron-left"></i> Depth-Gaussian
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
 
+
+
+
+
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -338,7 +433,7 @@
 
 <link rel="stylesheet" href="https://unpkg.com/gitalk@1.8.0/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"lhmd","repo":"MyBlogtalk","client_id":"0698455a5fd3328d9d96","client_secret":"e36300e8cdbb37c3962cb94e0a1ce438a65971d3","admin_user":"lhmd","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://unpkg.com/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"d54f08ffd644f9570a763cd41d83be99"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"lhmd","repo":"MyBlogtalk","client_id":"0698455a5fd3328d9d96","client_secret":"e36300e8cdbb37c3962cb94e0a1ce438a65971d3","admin_user":"lhmd","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://unpkg.com/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5d5b51b202a885fe8cd464a93fdc1894"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 
