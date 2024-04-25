@@ -1156,6 +1156,21 @@
       </categories>
   </entry>
   <entry>
+    <title>Complete Binary Search Tree</title>
+    <url>/blog/2022/10/30/Complete-Binary-Search-Tree/</url>
+    <content><![CDATA[<h3 id="Complete-Binary-Search-Tree"><a href="#Complete-Binary-Search-Tree" class="headerlink" title="Complete Binary Search Tree"></a><a href="https://pintia.cn/problem-sets/1582215244956827648/exam/problems/1582215245019742217">Complete Binary Search Tree</a></h3><span id="more"></span>
+<p>​    本题采取先排序，再将这个问题转换为中序遍历填数字的问题，简化了代码。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10005</span>], b[<span class="number">10005</span>], n, flag;</span><br><span class="line"><span class="type">void</span> <span class="title function_">sort</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">int</span> i, j;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                                <span class="type">int</span> temp = a[j];</span><br><span class="line">                                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">                                cnt = <span class="number">1</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(!cnt)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">inorder</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*i &lt;= n)inorder(<span class="number">2</span>*i);</span><br><span class="line">        b[i] = a[flag];</span><br><span class="line">        flag ++;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*i+<span class="number">1</span> &lt;= n)inorder(<span class="number">2</span>*i+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> i;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]); </span><br><span class="line">        &#125;</span><br><span class="line">        sort();</span><br><span class="line">        inorder(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, b[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CS106L Midquarter Review</title>
     <url>/blog/2023/01/20/CS106L-Midquarter-Review/</url>
     <content><![CDATA[<p>Midquarter review of Stanford CS106L.</p>
@@ -1388,21 +1403,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Complete Binary Search Tree</title>
-    <url>/blog/2022/10/30/Complete-Binary-Search-Tree/</url>
-    <content><![CDATA[<h3 id="Complete-Binary-Search-Tree"><a href="#Complete-Binary-Search-Tree" class="headerlink" title="Complete Binary Search Tree"></a><a href="https://pintia.cn/problem-sets/1582215244956827648/exam/problems/1582215245019742217">Complete Binary Search Tree</a></h3><span id="more"></span>
-<p>​    本题采取先排序，再将这个问题转换为中序遍历填数字的问题，简化了代码。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10005</span>], b[<span class="number">10005</span>], n, flag;</span><br><span class="line"><span class="type">void</span> <span class="title function_">sort</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">int</span> i, j;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                                <span class="type">int</span> temp = a[j];</span><br><span class="line">                                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">                                cnt = <span class="number">1</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(!cnt)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">inorder</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*i &lt;= n)inorder(<span class="number">2</span>*i);</span><br><span class="line">        b[i] = a[flag];</span><br><span class="line">        flag ++;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*i+<span class="number">1</span> &lt;= n)inorder(<span class="number">2</span>*i+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> i;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]); </span><br><span class="line">        &#125;</span><br><span class="line">        sort();</span><br><span class="line">        inorder(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, b[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>递归</tag>
-        <tag>c++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Depth-Gaussian</title>
     <url>/blog/2023/12/02/Depth-Gaussian/</url>
     <content><![CDATA[<p>论文：Depth-Regularized Optimization for 3D Gaussian Splatting in Few-Shot Images</p>
@@ -1575,6 +1575,23 @@ s^*,t^*=\text{arg}\min_{s,t}\sum_{p\in D_{s\text{parse}} }\left\|w(p)\cdotp D_{\
       </categories>
   </entry>
   <entry>
+    <title>linux 桌面版配置</title>
+    <url>/blog/2023/12/25/linux-%E6%A1%8C%E9%9D%A2%E7%89%88%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>​    记录安装linux系统之后的所有配置过程。</p>
+<span id="more"></span>
+<h2 id="修改软件源"><a href="#修改软件源" class="headerlink" title="修改软件源"></a>修改软件源</h2><p><a href="https://mirror.zju.edu.cn/">https://mirror.zju.edu.cn/</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt</span><br><span class="line">sudo <span class="built_in">cp</span> sources.list sources.list.bak</span><br><span class="line">sudo vi sources.list</span><br></pre></td></tr></table></figure>
+<p>删掉所有的，换成</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.zju.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install curl</span><br><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br><span class="line">sudo apt-get install -y uidmap</span><br><span class="line">dockerd-rootless-setuptool.sh install</span><br></pre></td></tr></table></figure>
+<p>添加<code>.bashrc</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_HOST=unix:///run/user/1000/docker.sock</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> .bashrc</span><br><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>专业分流内训</title>
     <url>/blog/2022/10/28/%E4%B8%93%E4%B8%9A%E5%88%86%E6%B5%81%E5%86%85%E8%AE%AD/</url>
     <content><![CDATA[<h1 id="Welcome-to-QC-family"><a href="#Welcome-to-QC-family" class="headerlink" title="Welcome to QC family"></a>Welcome to QC family</h1><span id="more"></span>
@@ -1674,23 +1691,6 @@ s^*,t^*=\text{arg}\min_{s,t}\sum_{p\in D_{s\text{parse}} }\left\|w(p)\cdotp D_{\
         <tag>面试</tag>
         <tag>专业分流</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>linux 桌面版配置</title>
-    <url>/blog/2023/12/25/linux-%E6%A1%8C%E9%9D%A2%E7%89%88%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>​    记录安装linux系统之后的所有配置过程。</p>
-<span id="more"></span>
-<h2 id="修改软件源"><a href="#修改软件源" class="headerlink" title="修改软件源"></a>修改软件源</h2><p><a href="https://mirror.zju.edu.cn/">https://mirror.zju.edu.cn/</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt</span><br><span class="line">sudo <span class="built_in">cp</span> sources.list sources.list.bak</span><br><span class="line">sudo vi sources.list</span><br></pre></td></tr></table></figure>
-<p>删掉所有的，换成</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.zju.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.zju.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.zju.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
-<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install curl</span><br><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br><span class="line">sudo apt-get install -y uidmap</span><br><span class="line">dockerd-rootless-setuptool.sh install</span><br></pre></td></tr></table></figure>
-<p>添加<code>.bashrc</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_HOST=unix:///run/user/1000/docker.sock</span><br></pre></td></tr></table></figure>
-<p>测试</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> .bashrc</span><br><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>计算机视觉导论</title>
