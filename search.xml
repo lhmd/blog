@@ -48,6 +48,21 @@
       </categories>
   </entry>
   <entry>
+    <title>Complete Binary Search Tree</title>
+    <url>/blog/2022/10/30/Complete-Binary-Search-Tree/</url>
+    <content><![CDATA[<h3 id="Complete-Binary-Search-Tree"><a href="#Complete-Binary-Search-Tree" class="headerlink" title="Complete Binary Search Tree"></a><a href="https://pintia.cn/problem-sets/1582215244956827648/exam/problems/1582215245019742217">Complete Binary Search Tree</a></h3><span id="more"></span>
+<p>​    本题采取先排序，再将这个问题转换为中序遍历填数字的问题，简化了代码。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10005</span>], b[<span class="number">10005</span>], n, flag;</span><br><span class="line"><span class="type">void</span> <span class="title function_">sort</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">int</span> i, j;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                                <span class="type">int</span> temp = a[j];</span><br><span class="line">                                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">                                cnt = <span class="number">1</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(!cnt)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">inorder</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*i &lt;= n)inorder(<span class="number">2</span>*i);</span><br><span class="line">        b[i] = a[flag];</span><br><span class="line">        flag ++;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*i+<span class="number">1</span> &lt;= n)inorder(<span class="number">2</span>*i+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> i;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]); </span><br><span class="line">        &#125;</span><br><span class="line">        sort();</span><br><span class="line">        inorder(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, b[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CS106L Midquarter Review</title>
     <url>/blog/2023/01/20/CS106L-Midquarter-Review/</url>
     <content><![CDATA[<p>Midquarter review of Stanford CS106L.</p>
@@ -280,18 +295,175 @@
       </categories>
   </entry>
   <entry>
-    <title>Complete Binary Search Tree</title>
-    <url>/blog/2022/10/30/Complete-Binary-Search-Tree/</url>
-    <content><![CDATA[<h3 id="Complete-Binary-Search-Tree"><a href="#Complete-Binary-Search-Tree" class="headerlink" title="Complete Binary Search Tree"></a><a href="https://pintia.cn/problem-sets/1582215244956827648/exam/problems/1582215245019742217">Complete Binary Search Tree</a></h3><span id="more"></span>
-<p>​    本题采取先排序，再将这个问题转换为中序遍历填数字的问题，简化了代码。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10005</span>], b[<span class="number">10005</span>], n, flag;</span><br><span class="line"><span class="type">void</span> <span class="title function_">sort</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">int</span> i, j;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                                <span class="type">int</span> temp = a[j];</span><br><span class="line">                                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">                                cnt = <span class="number">1</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(!cnt)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">inorder</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*i &lt;= n)inorder(<span class="number">2</span>*i);</span><br><span class="line">        b[i] = a[flag];</span><br><span class="line">        flag ++;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">2</span>*i+<span class="number">1</span> &lt;= n)inorder(<span class="number">2</span>*i+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> i;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]); </span><br><span class="line">        &#125;</span><br><span class="line">        sort();</span><br><span class="line">        inorder(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, b[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>Depth-Gaussian</title>
+    <url>/blog/2023/12/02/Depth-Gaussian/</url>
+    <content><![CDATA[<p>论文：Depth-Regularized Optimization for 3D Gaussian Splatting in Few-Shot Images</p>
+<span id="more"></span>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在本文中，我们提出了一种利用有限图像数量优化高斯拼接的方法，同时避免过度拟合。通过组合大量高斯拼接图像来表现三维场景可以获得出色的视觉质量。然而，当只有少量图像可用时，它往往会过度拟合训练视图。为了解决这个问题，我们引入了高密度深度图作为几何指南，以减轻过度拟合。我们使用预先训练好的单眼深度估计模型来获得深度图，并使用稀疏 COLMAP 特征点来调整比例和偏移量。调整后的深度有助于基于颜色的三维高斯拼接优化，减少浮动伪影，并确保遵守几何约束。我们在具有不同数量图像的 NeRF-LLFF 数据集上验证了所提出的方法。与完全依赖图像的原始方法相比，我们的方法展示了稳健的几何特性。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>从图像重建三维空间一直是计算机视觉领域的难题。最近的研究进展表明，逼真的新颖视图合成是可行的[3, 31]，从而引发了从图像重建完整三维空间的研究。在计算机图形技术进步和行业需求的推动下，特别是在虚拟现实[14]和移动[11]等领域，实现高质量和高速实时渲染的研究一直在进行。在近期的显著发展中，3D 高斯拼接（3DGS）[23] 因其兼具高质量、快速重建速度和支持实时渲染等特点而脱颖而出。3DGS 采用具有不透明度的高斯衰减球形谐波溅射[12, 38]作为基元来表示场景的每个部分。它通过对plats施加约束，引导plats构建一致的几何形状，以同时满足多个图像的要求。</p>
+<p>对场景进行小块拼接的方法能够表达复杂的细节，但由于其局部性，容易造成过度拟合。3DGS [24] 根据多视角色彩监督优化独立的拼接，但没有全局结构。因此，在没有足够数量的图像提供全局几何线索的情况下，就无法防止过拟合。当用于优化三维场景的图像数量较少时，这一问题就会变得更加突出。如图 1 所示，来自少量图像的有限几何信息会导致不正确的局部最优收敛，从而导致优化失败或浮动伪影。尽管如此，利用有限数量的图像重建三维场景的能力在实际应用中至关重要，这促使我们着手解决少量图像优化问题。</p>
+<p>一种直观的解决方案是补充额外的几何线索，如深度。在许多三维重建环境中[6]，深度通过提供直接的几何信息，被证明对重建三维场景具有极大的价值。为了获得这种可靠的几何线索，我们采用了与 RGB 摄像机对准的深度传感器。虽然这些设备能提供误差最小的密集深度图，但这些设备的必要性也给实际应用带来了障碍。</p>
+<p>因此，我们通过调整深度估计网络的输出与来自著名的 “运动结构”（SfM）的稀疏深度图来获得密集的深度图，后者可同时计算摄像机参数和三维特征点。3DGS 也使用 SfM，特别是 COLMAP [41]，来获取此类信息。然而，当图像数量较少时，SfM 也会遇到可用三维特征点明显不足的问题。点云的稀疏性也使得对所有高斯斑块进行正则化变得不切实际。因此，推断密集深度图的方法至关重要。从图像中提取密集深度图的方法之一是利用单目深度估计模型。虽然这些模型能够根据从数据中获得的前验从单个图像中推断出密集深度图，但由于尺度模糊，它们只能产生相对深度。由于尺度模糊会导致多视角图像中出现关键的几何冲突，因此我们需要调整尺度，以防止独立推断的深度之间出现冲突。我们的研究表明，可以通过将 COLMAP [41] 免费输出的稀疏深度拟合到估计的密集深度图来做到这一点。</p>
+<p>在本文中，我们提出了一种利用来自预训练单目深度估计模型 [5] 的先验信息和平滑度约束，使用少量 RGB 图像来表示三维场景的方法。我们根据稀疏的 COLMAP 点调整估计深度的比例和偏移量，从而解决比例模糊问题。我们将调整后的深度作为几何指南，辅助基于颜色的优化，减少浮动伪影，满足几何条件。我们观察到，尽管场景粗糙，但即使是修正后的深度也有助于引导场景达到几何最优解。我们通过采用早期停止策略来防止过拟合问题，即当深度引导损失开始增加时，优化过程就会停止。此外，为了实现更高的稳定性，我们还应用了平滑度约束，确保相邻三维点具有相似的深度。我们采用 3DGS 作为基线，并在 NeRF-LLFF [30] 数据集中比较了我们方法的性能。我们证实，我们的策略不仅在 RGB 新视角合成方面，而且在三维几何重建方面都能带来可信的结果。通过进一步的实验，我们证明了深度和初始点等几何线索对高斯拼接的影响。它们极大地影响了高斯拼接的稳定优化。</p>
+<p>总之，我们的贡献如下：</p>
+<ul>
+<li>我们提出了以深度为导向的高斯拼接优化策略，该策略可以用少量图像优化场景，从而缓解过拟合问题。我们证明，即使是经过稀疏点云调整的估计深度（SfM 管道的成果），也能在几何正则化中发挥重要作用。</li>
+<li>我们提出了一种新颖的早期停止策略：在深度引导损失下降时停止训练过程。我们通过全面的消融研究来说明每种策略的影响。</li>
+<li>我们的研究表明，深度图采用平滑项可以引导模型找到正确的几何图形。综合实验显示，加入平滑项后，性能得到了提升。</li>
+</ul>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p><strong>新颖的视图合成</strong> 来自运动的结构（SfM）[46] 和多视图立体（MVS）[45] 是利用多幅图像重建三维结构的技术，在计算机视觉领域已经研究了很长时间。在这些不断发展的技术中，COLMAP [41] 是一个被广泛使用的代表性工具。COLMAP 利用多视角图像的外极约束 [22] 进行相机姿态校准并找到稀疏的三维关键点。为了实现更密集、更逼真的重建，基于深度学习的三维重建技术已被广泛研究。[21, 31, 51] 其中，神经辐射场（NeRF）[31] 是一种使用神经网络作为表示方法的代表性方法。NeRF 利用 MLP 网络作为三维空间表达和体积渲染，创建了逼真的三维场景，产生了许多关于三维重建研究的后续论文。[3, 4, 18, 44, 47, 54] 特别是，为了克服 NeRF 速度慢的问题，许多人继续努力利用显式表达来实现实时渲染，如稀疏体素[16, 27, 43, 56]、特征点云[52]、张量[10]、多边形[11]。这些表示法具有独立运行的局部元素，因此能显示出快速的渲染和优化速度。在此基础上，人们尝试了多种表示方法，如多级层次[32, 33]、无穷小网络[19, 39]、三平面[9]等。其中，三维高斯拼接法[23] 通过阿尔法混合光栅化取代耗时的体积渲染，提出了一种快速高效的方法。它使用数百万高斯衰减球形谐波与不透明度作为基元优化三维场景，展示了简单、快速和高质量的三维重建。</p>
+<p><strong>少镜头三维重建</strong> 由于图像只包含三维场景的部分信息，因此三维重建需要大量的多视角图像。COLMAP 可将多幅图像之间匹配的特征点上传至三维空间，因此使用的图像越多，获得的三维点和摄像机姿势就越可靠。[48, 57] 然而，对大量图像的要求阻碍了实际应用，从而引发了仅使用少量图像进行三维重建的研究。许多少量三维重建研究利用深度为创建三维场景提供有价值的几何线索。通过引入表面平滑度约束 [25, 35]、监督从 COLMAP 获取的稀疏深度 [13, 49]、使用从额外传感器获取的密集深度 [2, 7, 15]，或利用从预训练网络估算的密集深度，深度有助于减少通过多张图像中的颜色共识推断几何图形的工作量。[34, 37, 40] 这些研究根据神经网络的全局性对几何图形进行了正则化处理，因此很难将其应用于稀疏体素[16]或特征点[52]等具有较大局部性的表征。相反，他们试图通过总变异（TV）损失来建立三维空间中局部元素之间的连接性[16, 53, 59]，但这需要对总变异进行详尽的超参数调整，而总变异因场景和位置而异。三维高斯拼接法[23]由于具有很强的局部性，在图像数量较少的情况下会产生浮动伪影。从高斯拼接子过程中可获得的稀疏 COLMAP 特征点是一种自由的深度引导，无需额外信息即可获得[40]，但从少量图像中获得的稀疏点数量太少，无法引导所有具有强定位性的高斯拼接。我们通过预训练的深度估计模型 [5, 29, 58]，使用粗几何图形引导进行优化。即使它们没有精确的精细深度，也能为拼接位置提供粗略的指导，这大大有助于在拍摄数量较少的情况下提高优化的稳定性，并有助于消除随机位置出现的浮动伪影。</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>我们的方法基于 3DGS [23]。他们根据渲染图像的色彩损失 Lcolor 和 D-SSIM 损失 LD-SSIM 优化高斯光斑。在 3DGS 优化之前，我们使用深度估计网络为每幅图像估计深度图，并拟合稀疏深度图（第 3.1 节）。我们利用色彩光栅化流程从高斯拼接集合中渲染深度，并使用密集深度先验添加深度约束（第 3.2 节）。我们还为相邻像素深度之间的平滑度添加了额外的约束（第 3.3 节），并完善了少镜头设置的优化选项（第 3.4 节）。</p>
+<h3 id="Preparing-Dense-Depth-Prior"><a href="#Preparing-Dense-Depth-Prior" class="headerlink" title="Preparing Dense Depth Prior"></a>Preparing Dense Depth Prior</h3><p>为了引导拼接成可信的几何形状，我们需要提供全局几何信息，因为高斯拼接具有局部性。密度深度是很有前景的几何先验信息之一，但在构建密度深度时存在挑战。SfM 点的密度取决于图像的数量，因此有效点的数量太少，无法在少量拍摄的情况下直接估计密度深度。(例如，从 19 幅图像进行 SfM 重建时，生成的稀疏深度图平均只有 0.04% 的有效像素。[40]）由于存在巨大的信息差距，即使是最新的深度补全模型也无法补全密集深度。</p>
+<p>在设计深度先验时，需要注意的是，即使是粗略的深度也能极大地帮助引导花斑，消除因花斑陷入不正确的几何形状而产生的假象。因此，我们采用了最先进的单目深度估计模型和比例匹配，为优化提供粗略的密集深度引导。根据训练图像 I，单目深度估计模型 Fθ 输出密集深度 $D_{dense}$</p>
+<script type="math/tex; mode=display">
+D_\text{dense}=s\cdot F_\theta(I)+t</script><p>为了解决估计密集深度 $D_{dense}$的尺度模糊问题，我们将估计深度的尺度 s 和偏移 t 调整为稀疏 SfM 深度 $D_{sparse}$：</p>
+<script type="math/tex; mode=display">
+s^*,t^*=\text{arg}\min_{s,t}\sum_{p\in D_{s\text{parse}} }\left\|w(p)\cdotp D_{\mathrm{sparse}}(p)-D_{\mathrm{dense}}(p;s,t)\right\|^2</script><p>其中，w ∈ [0, 1] 是一个归一化权重，表示每个特征点的可靠性，计算方法是 SfM 重投误差的倒数。最后，我们使用调整后的密集深度$D_{\mathrm{dense}}^<em>=s^</em>\cdot F_{\theta}(I)+t^*$来规范高斯拼接的优化损失。</p>
+<h3 id="Depth-Rendering-through-Rasterization"><a href="#Depth-Rendering-through-Rasterization" class="headerlink" title="Depth Rendering through Rasterization"></a>Depth Rendering through Rasterization</h3><p>三维高斯拼接利用光栅化流水线[1]，借助 GPU 的并行架构渲染断开的非结构化拼接。基于可微分的基于点的渲染技术[26, 50, 55]，他们通过α混合对拼接进行光栅化，从而渲染图像。基于点的方法利用与 NeRF 风格体积渲染类似的等式，用覆盖像素的有序点光栅化像素颜色</p>
+<script type="math/tex; mode=display">
+\begin{gathered}C=\sum_{i\in N}c_i\alpha_iT_i\\\mathrm{where}\quad T_i=\prod_{j=1}^{i-1}(1-\alpha_j),\end{gathered}</script><p>C 是像素颜色，c 是飞溅物的颜色，α 是学习到的不透明度乘以二维高斯协方差。受 NeRF 深度实现的启发，我们利用光栅化管道来渲染高斯花斑的深度图。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}D&=\sum_{i\in N}d_i\alpha_iT_i\end{aligned}</script><p>其中，D 是渲染深度，di = (Ripi + Ti)z 是摄像机拍摄到的每块碎片的深度。式 (6) 可以直接利用式 (5) 中计算的 αi 和 Ti，从而以最小的计算负荷快速渲染深度。最后，我们利用 L1 距离将渲染深度引导到估计的密集深度</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{depth}=\left\|D-D_{\mathrm{dense}}^*\right\|_1</script><h3 id="Unsupervised-Smoothness-Constraint"><a href="#Unsupervised-Smoothness-Constraint" class="headerlink" title="Unsupervised Smoothness Constraint"></a>Unsupervised Smoothness Constraint</h3><p>尽管每个独立估计的深度都与 COLMAP 点相匹配，但仍经常出现冲突。受 [20] 的启发，我们为几何平滑度引入了一种无监督约束，以规范冲突。该约束意味着，在相似的三维位置上的点在图像平面上具有相似的深度。我们利用 Canny 边缘检测器 [8] 作为掩码，以确保它不会对沿边界深度差异显著的区域进行正则化。对于深度 di 及其相邻深度 dj，我们对它们之间的差异进行正则化处理：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{smooth}=\sum_{d_j\in\mathrm{adj}(d_i)}1_{ne}(d_i,d_j)\cdotp\left\|d_i-d_j\right\|^2</script><p>其中 1ne 是一个指示函数，表示两个深度是否都不在边缘。我们将公式 (7) 中的深度损失、公式 (8) 中的平滑度损失和平滑度损失与各自的超参数 λdepth 和 λsmooth 结合起来，得出最终的损失项：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}\mathcal{L}&=(1-\lambda_{ssim})\mathcal{L}_{color}+\lambda_{ssim}\mathcal{L}_{D-SSIM}+\lambda_{depth}\mathcal{L}_{depth}+\lambda_{smooth}\mathcal{L}_{smooth}\end{aligned}</script><p>其中，前两个损耗项 Lcolor、LD-SSIM 对应于原始的三维高斯拼接损耗。</p>
+<h3 id="Modification-for-Few-Shot-Learning"><a href="#Modification-for-Few-Shot-Learning" class="headerlink" title="Modification for Few-Shot Learning"></a>Modification for Few-Shot Learning</h3><p>我们修改了原论文中的两种优化技术，以利用有限的图像创建 3D 场景。3DGS 中采用的技术是在利用大量图像的假设前提下设计的，这可能会阻碍在少量图像设置下的收敛。通过反复实验，我们证实了这一点，并对技术进行了修改，以适应少镜头设置。首先，我们将球面谐波（SH）的最大程度设为 1，这样可以防止由于信息不足而导致负责高频率的球面谐波系数过度拟合。其次，我们实施了基于深度损失的提前停止策略。我们将公式 (9) 配置为主要由颜色损失驱动，同时采用深度损失和平滑度损失作为指导因素。因此，由于颜色损失的主要影响，过拟合会逐渐出现。我们使用移动平均深度损失，当斑点开始偏离深度导向时停止优化。最后，我们删除了周期性重置过程。我们发现，重置所有拼板的不透明度 α 会导致不可逆转的有害后果。由于缺乏来自有限图像的信息，无法恢复溅斑的不透明度导致要么所有溅斑都被移除，要么陷入局部最优状态，造成意想不到的结果和优化失败。由于采用了上述技术，我们实现了少量学习中的稳定优化。</p>
+<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><h3 id="Experiment-settings"><a href="#Experiment-settings" class="headerlink" title="Experiment settings"></a>Experiment settings</h3><p>数据集。我们在 NeRF-LLFF [30] 数据集上对我们的方法进行了评估。NeRF-LLFF 包含 8 个带有前向摄像头的场景，我们将每个场景的图像分为训练集和测试集。由于摄像机分布在前方，我们根据凸壳算法[36]将摄像机组的图像外缘作为训练集。在每个实验中，我们用从训练集中随机选取的 k 张（k=2,3,4,5）图像优化场景，并在相同的测试集中进行评估。我们使用十个随机选择的种子，并报告十次实验的平均值。</p>
+<p>实施细节。为了对不同方案进行公平比较，必须在每个场景中使用统一的坐标，并将评估值标准化。为此，我们通过 COLMAP 处理场景的全部图像，以获得一致的摄像机姿势和特征点，并选择与每个 k 次拍摄实验相关的摄像机姿势和特征点。我们从训练集中选择 k 个摄像机，并提取 k 个摄像机中至少有 3 个摄像机可见的特征点。我们使用这些特征点作为公式（4）中的深度引导点 Dsparse 和高斯拼接优化的初始点。在基线（3DGS）中，我们使用相同的 k 个摄像机姿势和相同的滤波初始点，像原始设置一样，在 30k 次迭代时报告评估值。对于神谕，我们旨在说明精确深度的有效性。我们通过优化训练和测试的整个图像来创建伪 GT 深度。我们用伪-GT 深度替换我们方法中的估计深度，并在神谕中报告结果。最后，我们基于 CUDA 实现了公式 (6) 所述的可微分深度光栅化器。</p>
+<h3 id="Experiment-results"><a href="#Experiment-results" class="headerlink" title="Experiment results"></a>Experiment results</h3><p>我们在表 1 中列出了 3DGS、我们的方法和 Oracle 在 NeRF-LLFF 场景中的比较结果。在所有方法和场景中，使用图像数量的减少始终会导致视觉质量的降低。与 3DGS 相比，我们的方法通常能取得更好的效果，尤其是在图像数量有限的情况下。图 3 展示了 3DGS 和我们的方法之间的差异。深度图凸显了 3DGS 在拍摄数量较少的情况下的几何失效。例如，在蕨类植物的 2 视图中，与 RGB 相似度相比，它显示的几何图形完全错误。在类似 2 视角的恶劣条件下，3DGS 往往无法形成合适的几何图形。与此相反，我们的方法在生成具有吸引力的图像的同时，还能形成合理的几何图形。我们在图 4 中展示了更多示例。裁剪后的斑块表明，我们的方法通过深度引导取得了更好的效果。因此，我们证实，深度提供的几何线索对高斯拼接的重建大有裨益，尤其是在图像数量有限的情况下。采用精确几何图形的神谕系统的卓越性能再次证实了这一事实。如图 5 所示，oracle 的示例图像证明了精确深度的有效性。伪几何深度提供了丰富的信息，即使图像数量有限，也能生成详细可靠的结果。一个值得注意的重要现象是，我们的方法在很大程度上依赖于预训练的单目深度估计模型。我们利用了在室内数据集 NYU Depth v2 [42] 和城市数据集 KITTI [28] 上训练的 ZoeDepth [5] 预训练模型。因此，我们的模型在室内场景（堡垒、房间、蕨类植物）中表现相对较好，而在自然场景（兰花、花朵）中表现相对较差。需要注意的是，树叶给 COLMAP 带来了挑战，导致高斯拼接训练普遍不成功。</p>
+<h3 id="Ablations"><a href="#Ablations" class="headerlink" title="Ablations"></a>Ablations</h3><p>我们在表 2 中列出了对我们所建议方法的每个组成部分进行的消融研究。第一行和第二行显示了绝对深度引导的必要性。如果没有第 3.1 节中的调整过程，单目深度估计模型中的密集深度 Ddense 的比例是不正确的。深度与 COLMAP 中的相机固有参数不一致，导致训练完全失败。我们还观察到，在不使用第 3.2 节中介绍的深度监督的情况下，仅使用无监督平滑约束时也会出现优化失败。与基线相比，在没有绝对几何监督的情况下应用平滑约束会产生更差的结果。表 2 的第三行和第四行显示了附加技术的性能提升程度。在深度监控 D∗ 密集的情况下，第 3.3 节中的平滑度约束通过提供额外的几何线索来提高性能。值得注意的是，第 3.4 节中引入的早期停止机制在我们的方法中起到了防止性能下降的关键作用。通过利用深度损失，它可以仔细检查裂片与规定几何线索的偏离情况，从而有效阻止潜在的过拟合情况。在表 3 中，我们比较了不同高斯拼接初始化的性能。第二行说明了使用未投影密集深度 D∗ dense 所生成的点云作为初始化点时的结果。与稀疏 COLMAP 初始化相比，未投影产生的大量初始点没有得到有效合并或剪枝，导致性能降低。相比之下，第三行描述的结果假定使用了所有 COLMAP 点。通过密集深度调整和高斯拼接初始化，采用 k 幅图像无法实现的大量有利初始点有助于提高结果。</p>
+<h2 id="Limitation-and-Future-Work"><a href="#Limitation-and-Future-Work" class="headerlink" title="Limitation and Future Work"></a>Limitation and Future Work</h2><p>我们的方法通过深度引导证明了高斯拼接优化在少镜头设置中的可行性，但它也有局限性。首先，它严重依赖于单目深度估计模型的估计性能。而且，该模型的深度估计性能会根据学习数据域的不同而变化，从而影响高斯拼接优化的性能。此外，依赖将估计深度拟合到 COLMAP 点意味着对 COLMAP 性能的依赖，使其无法处理 COLMAP 可能失效的无纹理平原或具有挑战性的表面。我们将通过相互依赖的估计深度而不是 COLMAP 点来优化三维场景作为今后的工作重点。此外，探索在各种数据集（包括深度估算可能具有挑战性的区域，如天空）中正则化几何图形的方法，也是未来工作的另一个方向。</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>在这项工作中，我们介绍了针对少量图像中三维高斯拼接的深度规整优化，这是一种利用少量图像学习三维高斯拼接的模型。我们的模型利用深度对拼接进行正则化，证明了这种几何引导的有效性。为了获得密集的深度引导，我们利用了单目深度估计模型，并根据 SfM 点调整深度尺度。我们在 NeRF-LLFF 数据集中检验了我们提出的深度损失、无监督平滑约束和早期停止技术的有效性。我们的方法在创建可信几何图形方面优于三维高斯拼接法。最后，我们通过更多实验证明，改进的深度和初始化点可显著提高基于高斯拼接的三维重建性能。</p>
+]]></content>
+      <categories>
+        <category>CV</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>NeRF</title>
+    <url>/blog/2022/11/18/NeRF/</url>
+    <content><![CDATA[<p>第一次阅读计算机视觉相关领域论文。</p>
+<span id="more"></span>
+<blockquote>
+<p>原文链接：<a href="https://arxiv.org/pdf/2003.08934.pdf">NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</a></p>
+<p>NeRF框架总体介绍、原理详解及相关技术(有一些前置知识介绍)：</p>
+</blockquote>
+<iframe src="//player.bilibili.com/player.html?aid=852328703&bvid=BV1fL4y1T7Ag&cid=550491381&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<blockquote>
+<p>其他相关介绍视频（本人并未观看）:</p>
+<p><a href="https://www.bilibili.com/video/BV1d841187tn/">NeRF源码解析</a></p>
+<p><a href="https://www.bilibili.com/video/BV1d34y1n7fn/">NeRF系列公开课</a></p>
+</blockquote>
+<p>下面开始正式论文阅读记录：</p>
+<h1 id="0-Abstract"><a href="#0-Abstract" class="headerlink" title="0 Abstract"></a>0 Abstract</h1><p>这个算法用全连接深度网络来表示场景。</p>
+<ul>
+<li><p>输入：5D坐标（空间位置$x,y,z$和观察方向$θ，φ$）</p>
+<img src="/blog/2022/11/18/NeRF/1.png" class>
+</li>
+<li><p>输出：每个空间位置的体积密度(volume density)和视景发射辐射度(view-dependent emitted radiance)</p>
+</li>
+</ul>
+<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h1><p>将静态场景表示为一个连续的5D函数，这个函数输出空间中每个点的颜色(radiance)和密度(可理解为不透明度)。</p>
+<img src="/blog/2022/11/18/NeRF/2.png" class>
+<blockquote>
+<p>以上图为例，即先将输入的100张图片变成第二张图的样子，找到每个相机的位置，然后用体渲染技术沿光线累积这个场景表示的采样点信息，最后从新的视角渲染图像。</p>
+</blockquote>
+<p>这个程序的运行流程是：</p>
+<ol>
+<li>沿相机光线查询5D坐标</li>
+<li>利用神经网络合成视图</li>
+<li>用体渲染技术输出颜色和密度，投影到图像中</li>
+</ol>
+<p>此算法还优化了神经辐射场：</p>
+<p>​    对于复杂场景，优化神经辐射场的表示并没有收敛到足够高的清晰度，并且在每个摄像机光线所需要的采样数方面效率低下。所以作者还使用了<strong>位置编码</strong>输入的坐标来解决这些问题。</p>
+<p>​    位置编码能使MLP表示频率更高的函数。作者还提出了<strong>分层采样过程</strong>，用来减少需要的输入视图的个数。</p>
+<p>总而言之，这个算法的技术贡献有：</p>
+<ul>
+<li>将具有复杂几何和材质的连续场景表现为5D神经辐射场，参数化为基本MLP网络。</li>
+<li>基于经典体渲染技术的可微分渲染过程，包括分层采样策略，用于将MLP的容量分配给场景中的可见内容。</li>
+<li>将每个5D空间坐标映射到更高维度空间的位置编码，成功优化神经辐射场从而表示高频内容。</li>
+</ul>
+<img src="/blog/2022/11/18/NeRF/3.png" class>
+<p>​    沿着相机的光线采样5D坐标(图a)，将这些信息输入$F_θ$生成颜色和密度(图b)，用体渲染技术合成2D图像(图c)。该渲染函数是可微的，因此我们可以通过最小化合成图像和GT观测图像之间的error来优化场景表示(图d)。</p>
+<h1 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2 Related Work"></a>2 Related Work</h1><p>​    回顾了一些这项工作所用到的技术和前人所做的努力。</p>
+<h2 id="2-1-Neural-3D-shape-representations"><a href="#2-1-Neural-3D-shape-representations" class="headerlink" title="2.1 Neural 3D shape representations"></a>2.1 Neural 3D shape representations</h2><p>​    通过优化将$xyz$坐标映射到有符号距离函数的深层网络。但是该函数仅允许使用2D图像优化神经隐式形状表示，只能表示几何复杂度较低的简单形状。</p>
+<h2 id="2-2-View-synthesis-and-image-based-rendering"><a href="#2-2-View-synthesis-and-image-based-rendering" class="headerlink" title="2.2 View synthesis and image-based rendering"></a>2.2 View synthesis and image-based rendering</h2><ul>
+<li>mesh方法：基于图像重投影的基于梯度的mesh优化通常非常困难，在优化前需要提供具有固定拓扑的末班网络作为初始化。这不适用于无约束的现实世界场景。</li>
+<li>体积方法：能表示更复杂的材料和形状并且适合基于梯度的优化，视觉干扰也更少，现有的方法时间空间复杂度更高。本文提出在MLP的参数中编码连续volume来规避这个问题，渲染质量更高，存储成本更小。</li>
+</ul>
+<h1 id="3-Neural-Radiance-Field-Scene-Representation"><a href="#3-Neural-Radiance-Field-Scene-Representation" class="headerlink" title="3 Neural Radiance Field Scene Representation"></a>3 Neural Radiance Field Scene Representation</h1><p>​    本文将连续场景表现为5D向量值函数。输入为5D坐标，输出为每个点的颜色$c=(r,g,b)$和空间密度$σ$。</p>
+<p>​    在实际表现中，我们将视角方向表示为3D向量<strong>$d$</strong>，用MLP网络近似这种连续的5D场景表示。</p>
+<p>​    我们通过让网络把体积密度预测为仅与位置$x$有关，来保证这种方法在不同视图下是一致的。</p>
+<p>​    同时RGB颜色$c$预测为位置和观察方向的函数：</p>
+<ul>
+<li>MLP首先把3D坐标$x$通过8层全连接层(激活函数为ReLU，每层256通道)，输出体积密度$σ$和一个256维的特征向量。</li>
+<li>将特征向量与相机光线的观察方向连接起来，传递到额外的一个全连接层(激活函数为ReLU，每层128通道)，该层输出与视图相关的RGB颜色。</li>
+</ul>
+<img src="/blog/2022/11/18/NeRF/4.png" class>
+<p>​    显示来自两个相机位置的两个固定3D点的外观，预测这两个3D点镜面反射外观的变化并持续推广。</p>
+<img src="/blog/2022/11/18/NeRF/5.png" class>
+<p>​    没有视图依赖性(只有x输入)训练的模型难以表示镜面反射，会导致过度平滑的外观。</p>
+<h1 id="4-Volume-Rendering-with-Radiance-Fields"><a href="#4-Volume-Rendering-with-Radiance-Fields" class="headerlink" title="4 Volume Rendering with Radiance Fields"></a>4 Volume Rendering with Radiance Fields</h1><blockquote>
+<p>体渲染：<a href="https://blog.csdn.net/Aaron9489/article/details/127899392?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EAD_ESQUERY%7Eyljh-1-127899392-blog-107904447.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EAD_ESQUERY%7Eyljh-1-127899392-blog-107904447.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=2">体渲染(Volume Rendering)与光线投射(Ray Casting)算法详解</a></p>
+<p>alpha合成：图像与背景结合，可以产生部分透明或全透明的视觉效果，透明度用(0,1)表示</p>
+<p>alpha混合：半透明的前景色和背景结合的过程，加权计算。<br>$<br>\left\{<br>\begin{array}{**l}<br>out_A &amp; = &amp; src_A + dst_A(1-src_A) \\<br>out_{RGB} &amp; = &amp; \frac {(src_{RGB}src_A+dst_{RGB}dst_A(1-src_A))}{out_A} \\<br>out_A=0 &amp; =&gt; &amp; out_{RGB}=0<br>\end{array}<br>\right.<br>$</p>
+</blockquote>
+<p>体密度即为光线在x处终止的概率，相机光线$r_{(t)}=o+td$的预期颜色为：</p>
+<p>$C_{(r)}\int_{t_n}^{t_f} T_{(t)}σ(r_{(t)}c(r_{(t)})，d) dt, where: T_{(t)}=exp(-\int_{t_n}^{t} σ(r_{(s)}) ds)$</p>
+<p>$T_{(t)}$表示沿光线从$t_n$到$t$传播而不撞击任何其他粒子的概率，这个$T$可以避免渲染时过度引入对象背面的信息。</p>
+<p>我们使用数值估计这个连续积分。我们将$[t_n,t_f]$划分为$N$个均匀间隔的区域，然后从每个区域内均匀随机抽取一个采样点。</p>
+<h1 id="5-Optimizing-a-Neural-Radiance-Field"><a href="#5-Optimizing-a-Neural-Radiance-Field" class="headerlink" title="5 Optimizing a Neural Radiance Field"></a>5 Optimizing a Neural Radiance Field</h1><p>​    上一节中已经描述了将场景建模为神经辐射场和从该表示中渲染新视图所需的核心组件，但是仍然不能达到最高的质量。因此，需要引入两项改进：</p>
+<ul>
+<li>输入坐标的位置编码，有助于MLP表示高频函数</li>
+<li>分层采样过程，有效地对高频进行采样</li>
+</ul>
+<h2 id="5-1-位置编码-Positional-encoding"><a href="#5-1-位置编码-Positional-encoding" class="headerlink" title="5.1 位置编码(Positional encoding)"></a>5.1 位置编码(Positional encoding)</h2><p>​    将F~θ~重新表示为两个函数的组合$F_θ=F_{θ}^{‘}○γ$，γ是从$R$空间到$R^{2L}$空间的函数，实际上$F_{θ}^{‘}$还是一个MLP。</p>
+<p>​    在流行的Transformer架构中也使用了类似的映射，在这里它被称为位置编码。然而，Transformers将其用于一个不同的目标，即提供序列中token的离散位置，作为不包含任何顺序概念的架构的输入。相反，我们使用这些函数将连续输入坐标映射到更高维空间，以使我们的MLP更容易逼近更高频的函数。</p>
+<h2 id="5-2-分层体积采样-Hierarchical-volume-sampling"><a href="#5-2-分层体积采样-Hierarchical-volume-sampling" class="headerlink" title="5.2 分层体积采样(Hierarchical volume sampling)"></a>5.2 分层体积采样(Hierarchical volume sampling)</h2><p>​    渲染策略是在每个相机光线的N个查询点处密集评估神将辐射场网络，这种策略效率低下，所以本文提出了一中分层表示法，通过按最终渲染的预期效果按比例分配采样点提高渲染效率。</p>
+<p>​    不使用单个神经网络来表示场景，而同时优化两个神经网络：”course”和”fine”</p>
+<ol>
+<li>首先，使用基本的分层采样对一组N~c~个位置进行采样，评估这些位置对应的course网络。</li>
+<li>然后沿着每一条光线生成一个更合理的点采样，其中采样点偏向于体积存在的相关部分。</li>
+<li>为此，我们首先从course网络生成合成颜色，然后在光线上采样体密度大的点，采样N~f~个作为第二组采样点，在第一组和第二组采样的并集上计算”fine”网络，并计算最终的渲染颜色。</li>
+</ol>
+<h2 id="5-3-实现细节"><a href="#5-3-实现细节" class="headerlink" title="5.3 实现细节"></a>5.3 实现细节</h2><p>​    我们为每个场景优化一个单独的神经连续体积表示网络。需要的参数有：RGB图像数据集、相应的相机外参和内参以及场景边界。在每次优化迭代中，我们从数据集中的所有像素集合中随机采样一批相机光线，然后按照$5.2$中的分层采样。最后的损失只是course和fine的渲染像素和真实像素颜色之间的平方误差。</p>
+<img src="/blog/2022/11/18/NeRF/6.png" class>
+<p>​    其中，$R$为batch中的光线集，$C(r),C_{c}(r),C_{f}(r)$为GT，course网络预测，fine网络预测的RGB颜色。</p>
+<h1 id="6-Results"><a href="#6-Results" class="headerlink" title="6 Results"></a>6 Results</h1><p>两种数据集：</p>
+<ul>
+<li>Synthetic renderings of objects</li>
+<li>Real images of complex scenes</li>
+</ul>
+<blockquote>
+<p>nerf-pytorch代码阅读笔记：<a href="https://github.com/lhmd/nerf-notes">nerf-notes</a></p>
+<p>上手pytorch：<a href="https://blog.csdn.net/jiaowoshouzi/article/details/102002468?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-102002468-blog-123333042.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-102002468-blog-123333042.pc_relevant_default&amp;utm_relevant_index=1">60分钟教你上手PyTorch + 迁移学习</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CV</category>
+        <category>paper</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>code before this website</title>
+    <url>/blog/2022/10/27/code-before-this-website/</url>
+    <content><![CDATA[<h1 id="fds刷题记录"><a href="#fds刷题记录" class="headerlink" title="fds刷题记录"></a>fds刷题记录</h1><span id="more"></span>
+<h3 id="PTA-B-1003-我要通过"><a href="#PTA-B-1003-我要通过" class="headerlink" title="PTA B 1003 我要通过!"></a><a href="https://pintia.cn/problem-sets/994805260223102976/exam/problems/994805323154440192">PTA B 1003 我要通过!</a></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n,k,flag;</span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">        getchar();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">                <span class="type">int</span> a[<span class="number">3</span>]= &#123;<span class="number">0</span>&#125;;</span><br><span class="line">                k=<span class="number">0</span>;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>((ch=getchar())!=<span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(ch==<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">                                a[k]++;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;P&#x27;</span>&amp;&amp;k==<span class="number">0</span>)</span><br><span class="line">                                k=<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;T&#x27;</span>&amp;&amp;k==<span class="number">1</span>)</span><br><span class="line">                                k=<span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                                flag=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag&amp;&amp;k==<span class="number">2</span>&amp;&amp;a[<span class="number">0</span>]*a[<span class="number">1</span>]==a[<span class="number">2</span>]&amp;&amp;a[<span class="number">1</span>]!=<span class="number">0</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="初识dp：买卖股票最佳时机"><a href="#初识dp：买卖股票最佳时机" class="headerlink" title="初识dp：买卖股票最佳时机"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2zsx1/">初识dp：买卖股票最佳时机</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size=prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> dp[<span class="number">30005</span>][<span class="number">2</span>]=&#123;<span class="number">0</span>&#125;,i;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>]=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;size; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i])?dp[i<span class="number">-1</span>][<span class="number">0</span>]:dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i];</span><br><span class="line">            dp[i][<span class="number">1</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>])?dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]:dp[i<span class="number">-1</span>][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[size<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*此题利润累加法也可解&lt;贪心算法&gt;</span></span><br><span class="line"><span class="comment">public int maxProfit(int[] prices) &#123;</span></span><br><span class="line"><span class="comment">    if (prices == null || prices.length &lt; 2)</span></span><br><span class="line"><span class="comment">        return 0;</span></span><br><span class="line"><span class="comment">    int total = 0, index = 0, length = prices.length;</span></span><br><span class="line"><span class="comment">    while (index &lt; length) &#123;</span></span><br><span class="line"><span class="comment">        //如果股票下跌就一直找，直到找到股票开始上涨为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &gt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //股票上涨开始的值，也就是这段时间上涨的最小值</span></span><br><span class="line"><span class="comment">        int min = prices[index];</span></span><br><span class="line"><span class="comment">        //一直找到股票上涨的最大值为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &lt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //计算这段上涨时间的差值，然后累加</span></span><br><span class="line"><span class="comment">        total += prices[index++] - min;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return total;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="异或运算的应用：查重"><a href="#异或运算的应用：查重" class="headerlink" title="异或运算的应用：查重"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x21ib6/">异或运算的应用：查重</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            res=res^nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="位运算的应用：判断数字是否重复"><a href="#位运算的应用：判断数字是否重复" class="headerlink" title="位运算的应用：判断数字是否重复"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2f9gg/">位运算的应用：判断数字是否重复</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> line[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> column[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> block[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> shift = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;<span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="string">&#x27;.&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                shift = <span class="number">1</span> &lt;&lt; (board[i][j] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                <span class="type">int</span> k = (i / <span class="number">3</span>) * <span class="number">3</span> + j / <span class="number">3</span>;</span><br><span class="line">                <span class="comment">//如果对应的位置只要有一个大于0，说明有冲突，直接返回false</span></span><br><span class="line">                <span class="keyword">if</span> ((column[i] &amp; shift) &gt; <span class="number">0</span> || (line[j] &amp; shift) &gt; <span class="number">0</span> || (block[k] &amp; shift) &gt; <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                column[i] |= shift;</span><br><span class="line">                line[j] |= shift;</span><br><span class="line">                block[k] |= shift;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>c++</tag>
+        <tag>code</tag>
       </tags>
   </entry>
   <entry>
@@ -1401,178 +1573,6 @@
       <categories>
         <category>course</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Depth-Gaussian</title>
-    <url>/blog/2023/12/02/Depth-Gaussian/</url>
-    <content><![CDATA[<p>论文：Depth-Regularized Optimization for 3D Gaussian Splatting in Few-Shot Images</p>
-<span id="more"></span>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在本文中，我们提出了一种利用有限图像数量优化高斯拼接的方法，同时避免过度拟合。通过组合大量高斯拼接图像来表现三维场景可以获得出色的视觉质量。然而，当只有少量图像可用时，它往往会过度拟合训练视图。为了解决这个问题，我们引入了高密度深度图作为几何指南，以减轻过度拟合。我们使用预先训练好的单眼深度估计模型来获得深度图，并使用稀疏 COLMAP 特征点来调整比例和偏移量。调整后的深度有助于基于颜色的三维高斯拼接优化，减少浮动伪影，并确保遵守几何约束。我们在具有不同数量图像的 NeRF-LLFF 数据集上验证了所提出的方法。与完全依赖图像的原始方法相比，我们的方法展示了稳健的几何特性。</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>从图像重建三维空间一直是计算机视觉领域的难题。最近的研究进展表明，逼真的新颖视图合成是可行的[3, 31]，从而引发了从图像重建完整三维空间的研究。在计算机图形技术进步和行业需求的推动下，特别是在虚拟现实[14]和移动[11]等领域，实现高质量和高速实时渲染的研究一直在进行。在近期的显著发展中，3D 高斯拼接（3DGS）[23] 因其兼具高质量、快速重建速度和支持实时渲染等特点而脱颖而出。3DGS 采用具有不透明度的高斯衰减球形谐波溅射[12, 38]作为基元来表示场景的每个部分。它通过对plats施加约束，引导plats构建一致的几何形状，以同时满足多个图像的要求。</p>
-<p>对场景进行小块拼接的方法能够表达复杂的细节，但由于其局部性，容易造成过度拟合。3DGS [24] 根据多视角色彩监督优化独立的拼接，但没有全局结构。因此，在没有足够数量的图像提供全局几何线索的情况下，就无法防止过拟合。当用于优化三维场景的图像数量较少时，这一问题就会变得更加突出。如图 1 所示，来自少量图像的有限几何信息会导致不正确的局部最优收敛，从而导致优化失败或浮动伪影。尽管如此，利用有限数量的图像重建三维场景的能力在实际应用中至关重要，这促使我们着手解决少量图像优化问题。</p>
-<p>一种直观的解决方案是补充额外的几何线索，如深度。在许多三维重建环境中[6]，深度通过提供直接的几何信息，被证明对重建三维场景具有极大的价值。为了获得这种可靠的几何线索，我们采用了与 RGB 摄像机对准的深度传感器。虽然这些设备能提供误差最小的密集深度图，但这些设备的必要性也给实际应用带来了障碍。</p>
-<p>因此，我们通过调整深度估计网络的输出与来自著名的 “运动结构”（SfM）的稀疏深度图来获得密集的深度图，后者可同时计算摄像机参数和三维特征点。3DGS 也使用 SfM，特别是 COLMAP [41]，来获取此类信息。然而，当图像数量较少时，SfM 也会遇到可用三维特征点明显不足的问题。点云的稀疏性也使得对所有高斯斑块进行正则化变得不切实际。因此，推断密集深度图的方法至关重要。从图像中提取密集深度图的方法之一是利用单目深度估计模型。虽然这些模型能够根据从数据中获得的前验从单个图像中推断出密集深度图，但由于尺度模糊，它们只能产生相对深度。由于尺度模糊会导致多视角图像中出现关键的几何冲突，因此我们需要调整尺度，以防止独立推断的深度之间出现冲突。我们的研究表明，可以通过将 COLMAP [41] 免费输出的稀疏深度拟合到估计的密集深度图来做到这一点。</p>
-<p>在本文中，我们提出了一种利用来自预训练单目深度估计模型 [5] 的先验信息和平滑度约束，使用少量 RGB 图像来表示三维场景的方法。我们根据稀疏的 COLMAP 点调整估计深度的比例和偏移量，从而解决比例模糊问题。我们将调整后的深度作为几何指南，辅助基于颜色的优化，减少浮动伪影，满足几何条件。我们观察到，尽管场景粗糙，但即使是修正后的深度也有助于引导场景达到几何最优解。我们通过采用早期停止策略来防止过拟合问题，即当深度引导损失开始增加时，优化过程就会停止。此外，为了实现更高的稳定性，我们还应用了平滑度约束，确保相邻三维点具有相似的深度。我们采用 3DGS 作为基线，并在 NeRF-LLFF [30] 数据集中比较了我们方法的性能。我们证实，我们的策略不仅在 RGB 新视角合成方面，而且在三维几何重建方面都能带来可信的结果。通过进一步的实验，我们证明了深度和初始点等几何线索对高斯拼接的影响。它们极大地影响了高斯拼接的稳定优化。</p>
-<p>总之，我们的贡献如下：</p>
-<ul>
-<li>我们提出了以深度为导向的高斯拼接优化策略，该策略可以用少量图像优化场景，从而缓解过拟合问题。我们证明，即使是经过稀疏点云调整的估计深度（SfM 管道的成果），也能在几何正则化中发挥重要作用。</li>
-<li>我们提出了一种新颖的早期停止策略：在深度引导损失下降时停止训练过程。我们通过全面的消融研究来说明每种策略的影响。</li>
-<li>我们的研究表明，深度图采用平滑项可以引导模型找到正确的几何图形。综合实验显示，加入平滑项后，性能得到了提升。</li>
-</ul>
-<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p><strong>新颖的视图合成</strong> 来自运动的结构（SfM）[46] 和多视图立体（MVS）[45] 是利用多幅图像重建三维结构的技术，在计算机视觉领域已经研究了很长时间。在这些不断发展的技术中，COLMAP [41] 是一个被广泛使用的代表性工具。COLMAP 利用多视角图像的外极约束 [22] 进行相机姿态校准并找到稀疏的三维关键点。为了实现更密集、更逼真的重建，基于深度学习的三维重建技术已被广泛研究。[21, 31, 51] 其中，神经辐射场（NeRF）[31] 是一种使用神经网络作为表示方法的代表性方法。NeRF 利用 MLP 网络作为三维空间表达和体积渲染，创建了逼真的三维场景，产生了许多关于三维重建研究的后续论文。[3, 4, 18, 44, 47, 54] 特别是，为了克服 NeRF 速度慢的问题，许多人继续努力利用显式表达来实现实时渲染，如稀疏体素[16, 27, 43, 56]、特征点云[52]、张量[10]、多边形[11]。这些表示法具有独立运行的局部元素，因此能显示出快速的渲染和优化速度。在此基础上，人们尝试了多种表示方法，如多级层次[32, 33]、无穷小网络[19, 39]、三平面[9]等。其中，三维高斯拼接法[23] 通过阿尔法混合光栅化取代耗时的体积渲染，提出了一种快速高效的方法。它使用数百万高斯衰减球形谐波与不透明度作为基元优化三维场景，展示了简单、快速和高质量的三维重建。</p>
-<p><strong>少镜头三维重建</strong> 由于图像只包含三维场景的部分信息，因此三维重建需要大量的多视角图像。COLMAP 可将多幅图像之间匹配的特征点上传至三维空间，因此使用的图像越多，获得的三维点和摄像机姿势就越可靠。[48, 57] 然而，对大量图像的要求阻碍了实际应用，从而引发了仅使用少量图像进行三维重建的研究。许多少量三维重建研究利用深度为创建三维场景提供有价值的几何线索。通过引入表面平滑度约束 [25, 35]、监督从 COLMAP 获取的稀疏深度 [13, 49]、使用从额外传感器获取的密集深度 [2, 7, 15]，或利用从预训练网络估算的密集深度，深度有助于减少通过多张图像中的颜色共识推断几何图形的工作量。[34, 37, 40] 这些研究根据神经网络的全局性对几何图形进行了正则化处理，因此很难将其应用于稀疏体素[16]或特征点[52]等具有较大局部性的表征。相反，他们试图通过总变异（TV）损失来建立三维空间中局部元素之间的连接性[16, 53, 59]，但这需要对总变异进行详尽的超参数调整，而总变异因场景和位置而异。三维高斯拼接法[23]由于具有很强的局部性，在图像数量较少的情况下会产生浮动伪影。从高斯拼接子过程中可获得的稀疏 COLMAP 特征点是一种自由的深度引导，无需额外信息即可获得[40]，但从少量图像中获得的稀疏点数量太少，无法引导所有具有强定位性的高斯拼接。我们通过预训练的深度估计模型 [5, 29, 58]，使用粗几何图形引导进行优化。即使它们没有精确的精细深度，也能为拼接位置提供粗略的指导，这大大有助于在拍摄数量较少的情况下提高优化的稳定性，并有助于消除随机位置出现的浮动伪影。</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>我们的方法基于 3DGS [23]。他们根据渲染图像的色彩损失 Lcolor 和 D-SSIM 损失 LD-SSIM 优化高斯光斑。在 3DGS 优化之前，我们使用深度估计网络为每幅图像估计深度图，并拟合稀疏深度图（第 3.1 节）。我们利用色彩光栅化流程从高斯拼接集合中渲染深度，并使用密集深度先验添加深度约束（第 3.2 节）。我们还为相邻像素深度之间的平滑度添加了额外的约束（第 3.3 节），并完善了少镜头设置的优化选项（第 3.4 节）。</p>
-<h3 id="Preparing-Dense-Depth-Prior"><a href="#Preparing-Dense-Depth-Prior" class="headerlink" title="Preparing Dense Depth Prior"></a>Preparing Dense Depth Prior</h3><p>为了引导拼接成可信的几何形状，我们需要提供全局几何信息，因为高斯拼接具有局部性。密度深度是很有前景的几何先验信息之一，但在构建密度深度时存在挑战。SfM 点的密度取决于图像的数量，因此有效点的数量太少，无法在少量拍摄的情况下直接估计密度深度。(例如，从 19 幅图像进行 SfM 重建时，生成的稀疏深度图平均只有 0.04% 的有效像素。[40]）由于存在巨大的信息差距，即使是最新的深度补全模型也无法补全密集深度。</p>
-<p>在设计深度先验时，需要注意的是，即使是粗略的深度也能极大地帮助引导花斑，消除因花斑陷入不正确的几何形状而产生的假象。因此，我们采用了最先进的单目深度估计模型和比例匹配，为优化提供粗略的密集深度引导。根据训练图像 I，单目深度估计模型 Fθ 输出密集深度 $D_{dense}$</p>
-<script type="math/tex; mode=display">
-D_\text{dense}=s\cdot F_\theta(I)+t</script><p>为了解决估计密集深度 $D_{dense}$的尺度模糊问题，我们将估计深度的尺度 s 和偏移 t 调整为稀疏 SfM 深度 $D_{sparse}$：</p>
-<script type="math/tex; mode=display">
-s^*,t^*=\text{arg}\min_{s,t}\sum_{p\in D_{s\text{parse}} }\left\|w(p)\cdotp D_{\mathrm{sparse}}(p)-D_{\mathrm{dense}}(p;s,t)\right\|^2</script><p>其中，w ∈ [0, 1] 是一个归一化权重，表示每个特征点的可靠性，计算方法是 SfM 重投误差的倒数。最后，我们使用调整后的密集深度$D_{\mathrm{dense}}^<em>=s^</em>\cdot F_{\theta}(I)+t^*$来规范高斯拼接的优化损失。</p>
-<h3 id="Depth-Rendering-through-Rasterization"><a href="#Depth-Rendering-through-Rasterization" class="headerlink" title="Depth Rendering through Rasterization"></a>Depth Rendering through Rasterization</h3><p>三维高斯拼接利用光栅化流水线[1]，借助 GPU 的并行架构渲染断开的非结构化拼接。基于可微分的基于点的渲染技术[26, 50, 55]，他们通过α混合对拼接进行光栅化，从而渲染图像。基于点的方法利用与 NeRF 风格体积渲染类似的等式，用覆盖像素的有序点光栅化像素颜色</p>
-<script type="math/tex; mode=display">
-\begin{gathered}C=\sum_{i\in N}c_i\alpha_iT_i\\\mathrm{where}\quad T_i=\prod_{j=1}^{i-1}(1-\alpha_j),\end{gathered}</script><p>C 是像素颜色，c 是飞溅物的颜色，α 是学习到的不透明度乘以二维高斯协方差。受 NeRF 深度实现的启发，我们利用光栅化管道来渲染高斯花斑的深度图。</p>
-<script type="math/tex; mode=display">
-\begin{aligned}D&=\sum_{i\in N}d_i\alpha_iT_i\end{aligned}</script><p>其中，D 是渲染深度，di = (Ripi + Ti)z 是摄像机拍摄到的每块碎片的深度。式 (6) 可以直接利用式 (5) 中计算的 αi 和 Ti，从而以最小的计算负荷快速渲染深度。最后，我们利用 L1 距离将渲染深度引导到估计的密集深度</p>
-<script type="math/tex; mode=display">
-\mathcal{L}_{depth}=\left\|D-D_{\mathrm{dense}}^*\right\|_1</script><h3 id="Unsupervised-Smoothness-Constraint"><a href="#Unsupervised-Smoothness-Constraint" class="headerlink" title="Unsupervised Smoothness Constraint"></a>Unsupervised Smoothness Constraint</h3><p>尽管每个独立估计的深度都与 COLMAP 点相匹配，但仍经常出现冲突。受 [20] 的启发，我们为几何平滑度引入了一种无监督约束，以规范冲突。该约束意味着，在相似的三维位置上的点在图像平面上具有相似的深度。我们利用 Canny 边缘检测器 [8] 作为掩码，以确保它不会对沿边界深度差异显著的区域进行正则化。对于深度 di 及其相邻深度 dj，我们对它们之间的差异进行正则化处理：</p>
-<script type="math/tex; mode=display">
-\mathcal{L}_{smooth}=\sum_{d_j\in\mathrm{adj}(d_i)}1_{ne}(d_i,d_j)\cdotp\left\|d_i-d_j\right\|^2</script><p>其中 1ne 是一个指示函数，表示两个深度是否都不在边缘。我们将公式 (7) 中的深度损失、公式 (8) 中的平滑度损失和平滑度损失与各自的超参数 λdepth 和 λsmooth 结合起来，得出最终的损失项：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}\mathcal{L}&=(1-\lambda_{ssim})\mathcal{L}_{color}+\lambda_{ssim}\mathcal{L}_{D-SSIM}+\lambda_{depth}\mathcal{L}_{depth}+\lambda_{smooth}\mathcal{L}_{smooth}\end{aligned}</script><p>其中，前两个损耗项 Lcolor、LD-SSIM 对应于原始的三维高斯拼接损耗。</p>
-<h3 id="Modification-for-Few-Shot-Learning"><a href="#Modification-for-Few-Shot-Learning" class="headerlink" title="Modification for Few-Shot Learning"></a>Modification for Few-Shot Learning</h3><p>我们修改了原论文中的两种优化技术，以利用有限的图像创建 3D 场景。3DGS 中采用的技术是在利用大量图像的假设前提下设计的，这可能会阻碍在少量图像设置下的收敛。通过反复实验，我们证实了这一点，并对技术进行了修改，以适应少镜头设置。首先，我们将球面谐波（SH）的最大程度设为 1，这样可以防止由于信息不足而导致负责高频率的球面谐波系数过度拟合。其次，我们实施了基于深度损失的提前停止策略。我们将公式 (9) 配置为主要由颜色损失驱动，同时采用深度损失和平滑度损失作为指导因素。因此，由于颜色损失的主要影响，过拟合会逐渐出现。我们使用移动平均深度损失，当斑点开始偏离深度导向时停止优化。最后，我们删除了周期性重置过程。我们发现，重置所有拼板的不透明度 α 会导致不可逆转的有害后果。由于缺乏来自有限图像的信息，无法恢复溅斑的不透明度导致要么所有溅斑都被移除，要么陷入局部最优状态，造成意想不到的结果和优化失败。由于采用了上述技术，我们实现了少量学习中的稳定优化。</p>
-<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><h3 id="Experiment-settings"><a href="#Experiment-settings" class="headerlink" title="Experiment settings"></a>Experiment settings</h3><p>数据集。我们在 NeRF-LLFF [30] 数据集上对我们的方法进行了评估。NeRF-LLFF 包含 8 个带有前向摄像头的场景，我们将每个场景的图像分为训练集和测试集。由于摄像机分布在前方，我们根据凸壳算法[36]将摄像机组的图像外缘作为训练集。在每个实验中，我们用从训练集中随机选取的 k 张（k=2,3,4,5）图像优化场景，并在相同的测试集中进行评估。我们使用十个随机选择的种子，并报告十次实验的平均值。</p>
-<p>实施细节。为了对不同方案进行公平比较，必须在每个场景中使用统一的坐标，并将评估值标准化。为此，我们通过 COLMAP 处理场景的全部图像，以获得一致的摄像机姿势和特征点，并选择与每个 k 次拍摄实验相关的摄像机姿势和特征点。我们从训练集中选择 k 个摄像机，并提取 k 个摄像机中至少有 3 个摄像机可见的特征点。我们使用这些特征点作为公式（4）中的深度引导点 Dsparse 和高斯拼接优化的初始点。在基线（3DGS）中，我们使用相同的 k 个摄像机姿势和相同的滤波初始点，像原始设置一样，在 30k 次迭代时报告评估值。对于神谕，我们旨在说明精确深度的有效性。我们通过优化训练和测试的整个图像来创建伪 GT 深度。我们用伪-GT 深度替换我们方法中的估计深度，并在神谕中报告结果。最后，我们基于 CUDA 实现了公式 (6) 所述的可微分深度光栅化器。</p>
-<h3 id="Experiment-results"><a href="#Experiment-results" class="headerlink" title="Experiment results"></a>Experiment results</h3><p>我们在表 1 中列出了 3DGS、我们的方法和 Oracle 在 NeRF-LLFF 场景中的比较结果。在所有方法和场景中，使用图像数量的减少始终会导致视觉质量的降低。与 3DGS 相比，我们的方法通常能取得更好的效果，尤其是在图像数量有限的情况下。图 3 展示了 3DGS 和我们的方法之间的差异。深度图凸显了 3DGS 在拍摄数量较少的情况下的几何失效。例如，在蕨类植物的 2 视图中，与 RGB 相似度相比，它显示的几何图形完全错误。在类似 2 视角的恶劣条件下，3DGS 往往无法形成合适的几何图形。与此相反，我们的方法在生成具有吸引力的图像的同时，还能形成合理的几何图形。我们在图 4 中展示了更多示例。裁剪后的斑块表明，我们的方法通过深度引导取得了更好的效果。因此，我们证实，深度提供的几何线索对高斯拼接的重建大有裨益，尤其是在图像数量有限的情况下。采用精确几何图形的神谕系统的卓越性能再次证实了这一事实。如图 5 所示，oracle 的示例图像证明了精确深度的有效性。伪几何深度提供了丰富的信息，即使图像数量有限，也能生成详细可靠的结果。一个值得注意的重要现象是，我们的方法在很大程度上依赖于预训练的单目深度估计模型。我们利用了在室内数据集 NYU Depth v2 [42] 和城市数据集 KITTI [28] 上训练的 ZoeDepth [5] 预训练模型。因此，我们的模型在室内场景（堡垒、房间、蕨类植物）中表现相对较好，而在自然场景（兰花、花朵）中表现相对较差。需要注意的是，树叶给 COLMAP 带来了挑战，导致高斯拼接训练普遍不成功。</p>
-<h3 id="Ablations"><a href="#Ablations" class="headerlink" title="Ablations"></a>Ablations</h3><p>我们在表 2 中列出了对我们所建议方法的每个组成部分进行的消融研究。第一行和第二行显示了绝对深度引导的必要性。如果没有第 3.1 节中的调整过程，单目深度估计模型中的密集深度 Ddense 的比例是不正确的。深度与 COLMAP 中的相机固有参数不一致，导致训练完全失败。我们还观察到，在不使用第 3.2 节中介绍的深度监督的情况下，仅使用无监督平滑约束时也会出现优化失败。与基线相比，在没有绝对几何监督的情况下应用平滑约束会产生更差的结果。表 2 的第三行和第四行显示了附加技术的性能提升程度。在深度监控 D∗ 密集的情况下，第 3.3 节中的平滑度约束通过提供额外的几何线索来提高性能。值得注意的是，第 3.4 节中引入的早期停止机制在我们的方法中起到了防止性能下降的关键作用。通过利用深度损失，它可以仔细检查裂片与规定几何线索的偏离情况，从而有效阻止潜在的过拟合情况。在表 3 中，我们比较了不同高斯拼接初始化的性能。第二行说明了使用未投影密集深度 D∗ dense 所生成的点云作为初始化点时的结果。与稀疏 COLMAP 初始化相比，未投影产生的大量初始点没有得到有效合并或剪枝，导致性能降低。相比之下，第三行描述的结果假定使用了所有 COLMAP 点。通过密集深度调整和高斯拼接初始化，采用 k 幅图像无法实现的大量有利初始点有助于提高结果。</p>
-<h2 id="Limitation-and-Future-Work"><a href="#Limitation-and-Future-Work" class="headerlink" title="Limitation and Future Work"></a>Limitation and Future Work</h2><p>我们的方法通过深度引导证明了高斯拼接优化在少镜头设置中的可行性，但它也有局限性。首先，它严重依赖于单目深度估计模型的估计性能。而且，该模型的深度估计性能会根据学习数据域的不同而变化，从而影响高斯拼接优化的性能。此外，依赖将估计深度拟合到 COLMAP 点意味着对 COLMAP 性能的依赖，使其无法处理 COLMAP 可能失效的无纹理平原或具有挑战性的表面。我们将通过相互依赖的估计深度而不是 COLMAP 点来优化三维场景作为今后的工作重点。此外，探索在各种数据集（包括深度估算可能具有挑战性的区域，如天空）中正则化几何图形的方法，也是未来工作的另一个方向。</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>在这项工作中，我们介绍了针对少量图像中三维高斯拼接的深度规整优化，这是一种利用少量图像学习三维高斯拼接的模型。我们的模型利用深度对拼接进行正则化，证明了这种几何引导的有效性。为了获得密集的深度引导，我们利用了单目深度估计模型，并根据 SfM 点调整深度尺度。我们在 NeRF-LLFF 数据集中检验了我们提出的深度损失、无监督平滑约束和早期停止技术的有效性。我们的方法在创建可信几何图形方面优于三维高斯拼接法。最后，我们通过更多实验证明，改进的深度和初始化点可显著提高基于高斯拼接的三维重建性能。</p>
-]]></content>
-      <categories>
-        <category>CV</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>NeRF</title>
-    <url>/blog/2022/11/18/NeRF/</url>
-    <content><![CDATA[<p>第一次阅读计算机视觉相关领域论文。</p>
-<span id="more"></span>
-<blockquote>
-<p>原文链接：<a href="https://arxiv.org/pdf/2003.08934.pdf">NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</a></p>
-<p>NeRF框架总体介绍、原理详解及相关技术(有一些前置知识介绍)：</p>
-</blockquote>
-<iframe src="//player.bilibili.com/player.html?aid=852328703&bvid=BV1fL4y1T7Ag&cid=550491381&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<blockquote>
-<p>其他相关介绍视频（本人并未观看）:</p>
-<p><a href="https://www.bilibili.com/video/BV1d841187tn/">NeRF源码解析</a></p>
-<p><a href="https://www.bilibili.com/video/BV1d34y1n7fn/">NeRF系列公开课</a></p>
-</blockquote>
-<p>下面开始正式论文阅读记录：</p>
-<h1 id="0-Abstract"><a href="#0-Abstract" class="headerlink" title="0 Abstract"></a>0 Abstract</h1><p>这个算法用全连接深度网络来表示场景。</p>
-<ul>
-<li><p>输入：5D坐标（空间位置$x,y,z$和观察方向$θ，φ$）</p>
-<img src="/blog/2022/11/18/NeRF/1.png" class>
-</li>
-<li><p>输出：每个空间位置的体积密度(volume density)和视景发射辐射度(view-dependent emitted radiance)</p>
-</li>
-</ul>
-<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h1><p>将静态场景表示为一个连续的5D函数，这个函数输出空间中每个点的颜色(radiance)和密度(可理解为不透明度)。</p>
-<img src="/blog/2022/11/18/NeRF/2.png" class>
-<blockquote>
-<p>以上图为例，即先将输入的100张图片变成第二张图的样子，找到每个相机的位置，然后用体渲染技术沿光线累积这个场景表示的采样点信息，最后从新的视角渲染图像。</p>
-</blockquote>
-<p>这个程序的运行流程是：</p>
-<ol>
-<li>沿相机光线查询5D坐标</li>
-<li>利用神经网络合成视图</li>
-<li>用体渲染技术输出颜色和密度，投影到图像中</li>
-</ol>
-<p>此算法还优化了神经辐射场：</p>
-<p>​    对于复杂场景，优化神经辐射场的表示并没有收敛到足够高的清晰度，并且在每个摄像机光线所需要的采样数方面效率低下。所以作者还使用了<strong>位置编码</strong>输入的坐标来解决这些问题。</p>
-<p>​    位置编码能使MLP表示频率更高的函数。作者还提出了<strong>分层采样过程</strong>，用来减少需要的输入视图的个数。</p>
-<p>总而言之，这个算法的技术贡献有：</p>
-<ul>
-<li>将具有复杂几何和材质的连续场景表现为5D神经辐射场，参数化为基本MLP网络。</li>
-<li>基于经典体渲染技术的可微分渲染过程，包括分层采样策略，用于将MLP的容量分配给场景中的可见内容。</li>
-<li>将每个5D空间坐标映射到更高维度空间的位置编码，成功优化神经辐射场从而表示高频内容。</li>
-</ul>
-<img src="/blog/2022/11/18/NeRF/3.png" class>
-<p>​    沿着相机的光线采样5D坐标(图a)，将这些信息输入$F_θ$生成颜色和密度(图b)，用体渲染技术合成2D图像(图c)。该渲染函数是可微的，因此我们可以通过最小化合成图像和GT观测图像之间的error来优化场景表示(图d)。</p>
-<h1 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2 Related Work"></a>2 Related Work</h1><p>​    回顾了一些这项工作所用到的技术和前人所做的努力。</p>
-<h2 id="2-1-Neural-3D-shape-representations"><a href="#2-1-Neural-3D-shape-representations" class="headerlink" title="2.1 Neural 3D shape representations"></a>2.1 Neural 3D shape representations</h2><p>​    通过优化将$xyz$坐标映射到有符号距离函数的深层网络。但是该函数仅允许使用2D图像优化神经隐式形状表示，只能表示几何复杂度较低的简单形状。</p>
-<h2 id="2-2-View-synthesis-and-image-based-rendering"><a href="#2-2-View-synthesis-and-image-based-rendering" class="headerlink" title="2.2 View synthesis and image-based rendering"></a>2.2 View synthesis and image-based rendering</h2><ul>
-<li>mesh方法：基于图像重投影的基于梯度的mesh优化通常非常困难，在优化前需要提供具有固定拓扑的末班网络作为初始化。这不适用于无约束的现实世界场景。</li>
-<li>体积方法：能表示更复杂的材料和形状并且适合基于梯度的优化，视觉干扰也更少，现有的方法时间空间复杂度更高。本文提出在MLP的参数中编码连续volume来规避这个问题，渲染质量更高，存储成本更小。</li>
-</ul>
-<h1 id="3-Neural-Radiance-Field-Scene-Representation"><a href="#3-Neural-Radiance-Field-Scene-Representation" class="headerlink" title="3 Neural Radiance Field Scene Representation"></a>3 Neural Radiance Field Scene Representation</h1><p>​    本文将连续场景表现为5D向量值函数。输入为5D坐标，输出为每个点的颜色$c=(r,g,b)$和空间密度$σ$。</p>
-<p>​    在实际表现中，我们将视角方向表示为3D向量<strong>$d$</strong>，用MLP网络近似这种连续的5D场景表示。</p>
-<p>​    我们通过让网络把体积密度预测为仅与位置$x$有关，来保证这种方法在不同视图下是一致的。</p>
-<p>​    同时RGB颜色$c$预测为位置和观察方向的函数：</p>
-<ul>
-<li>MLP首先把3D坐标$x$通过8层全连接层(激活函数为ReLU，每层256通道)，输出体积密度$σ$和一个256维的特征向量。</li>
-<li>将特征向量与相机光线的观察方向连接起来，传递到额外的一个全连接层(激活函数为ReLU，每层128通道)，该层输出与视图相关的RGB颜色。</li>
-</ul>
-<img src="/blog/2022/11/18/NeRF/4.png" class>
-<p>​    显示来自两个相机位置的两个固定3D点的外观，预测这两个3D点镜面反射外观的变化并持续推广。</p>
-<img src="/blog/2022/11/18/NeRF/5.png" class>
-<p>​    没有视图依赖性(只有x输入)训练的模型难以表示镜面反射，会导致过度平滑的外观。</p>
-<h1 id="4-Volume-Rendering-with-Radiance-Fields"><a href="#4-Volume-Rendering-with-Radiance-Fields" class="headerlink" title="4 Volume Rendering with Radiance Fields"></a>4 Volume Rendering with Radiance Fields</h1><blockquote>
-<p>体渲染：<a href="https://blog.csdn.net/Aaron9489/article/details/127899392?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EAD_ESQUERY%7Eyljh-1-127899392-blog-107904447.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EAD_ESQUERY%7Eyljh-1-127899392-blog-107904447.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=2">体渲染(Volume Rendering)与光线投射(Ray Casting)算法详解</a></p>
-<p>alpha合成：图像与背景结合，可以产生部分透明或全透明的视觉效果，透明度用(0,1)表示</p>
-<p>alpha混合：半透明的前景色和背景结合的过程，加权计算。<br>$<br>\left\{<br>\begin{array}{**l}<br>out_A &amp; = &amp; src_A + dst_A(1-src_A) \\<br>out_{RGB} &amp; = &amp; \frac {(src_{RGB}src_A+dst_{RGB}dst_A(1-src_A))}{out_A} \\<br>out_A=0 &amp; =&gt; &amp; out_{RGB}=0<br>\end{array}<br>\right.<br>$</p>
-</blockquote>
-<p>体密度即为光线在x处终止的概率，相机光线$r_{(t)}=o+td$的预期颜色为：</p>
-<p>$C_{(r)}\int_{t_n}^{t_f} T_{(t)}σ(r_{(t)}c(r_{(t)})，d) dt, where: T_{(t)}=exp(-\int_{t_n}^{t} σ(r_{(s)}) ds)$</p>
-<p>$T_{(t)}$表示沿光线从$t_n$到$t$传播而不撞击任何其他粒子的概率，这个$T$可以避免渲染时过度引入对象背面的信息。</p>
-<p>我们使用数值估计这个连续积分。我们将$[t_n,t_f]$划分为$N$个均匀间隔的区域，然后从每个区域内均匀随机抽取一个采样点。</p>
-<h1 id="5-Optimizing-a-Neural-Radiance-Field"><a href="#5-Optimizing-a-Neural-Radiance-Field" class="headerlink" title="5 Optimizing a Neural Radiance Field"></a>5 Optimizing a Neural Radiance Field</h1><p>​    上一节中已经描述了将场景建模为神经辐射场和从该表示中渲染新视图所需的核心组件，但是仍然不能达到最高的质量。因此，需要引入两项改进：</p>
-<ul>
-<li>输入坐标的位置编码，有助于MLP表示高频函数</li>
-<li>分层采样过程，有效地对高频进行采样</li>
-</ul>
-<h2 id="5-1-位置编码-Positional-encoding"><a href="#5-1-位置编码-Positional-encoding" class="headerlink" title="5.1 位置编码(Positional encoding)"></a>5.1 位置编码(Positional encoding)</h2><p>​    将F~θ~重新表示为两个函数的组合$F_θ=F_{θ}^{‘}○γ$，γ是从$R$空间到$R^{2L}$空间的函数，实际上$F_{θ}^{‘}$还是一个MLP。</p>
-<p>​    在流行的Transformer架构中也使用了类似的映射，在这里它被称为位置编码。然而，Transformers将其用于一个不同的目标，即提供序列中token的离散位置，作为不包含任何顺序概念的架构的输入。相反，我们使用这些函数将连续输入坐标映射到更高维空间，以使我们的MLP更容易逼近更高频的函数。</p>
-<h2 id="5-2-分层体积采样-Hierarchical-volume-sampling"><a href="#5-2-分层体积采样-Hierarchical-volume-sampling" class="headerlink" title="5.2 分层体积采样(Hierarchical volume sampling)"></a>5.2 分层体积采样(Hierarchical volume sampling)</h2><p>​    渲染策略是在每个相机光线的N个查询点处密集评估神将辐射场网络，这种策略效率低下，所以本文提出了一中分层表示法，通过按最终渲染的预期效果按比例分配采样点提高渲染效率。</p>
-<p>​    不使用单个神经网络来表示场景，而同时优化两个神经网络：”course”和”fine”</p>
-<ol>
-<li>首先，使用基本的分层采样对一组N~c~个位置进行采样，评估这些位置对应的course网络。</li>
-<li>然后沿着每一条光线生成一个更合理的点采样，其中采样点偏向于体积存在的相关部分。</li>
-<li>为此，我们首先从course网络生成合成颜色，然后在光线上采样体密度大的点，采样N~f~个作为第二组采样点，在第一组和第二组采样的并集上计算”fine”网络，并计算最终的渲染颜色。</li>
-</ol>
-<h2 id="5-3-实现细节"><a href="#5-3-实现细节" class="headerlink" title="5.3 实现细节"></a>5.3 实现细节</h2><p>​    我们为每个场景优化一个单独的神经连续体积表示网络。需要的参数有：RGB图像数据集、相应的相机外参和内参以及场景边界。在每次优化迭代中，我们从数据集中的所有像素集合中随机采样一批相机光线，然后按照$5.2$中的分层采样。最后的损失只是course和fine的渲染像素和真实像素颜色之间的平方误差。</p>
-<img src="/blog/2022/11/18/NeRF/6.png" class>
-<p>​    其中，$R$为batch中的光线集，$C(r),C_{c}(r),C_{f}(r)$为GT，course网络预测，fine网络预测的RGB颜色。</p>
-<h1 id="6-Results"><a href="#6-Results" class="headerlink" title="6 Results"></a>6 Results</h1><p>两种数据集：</p>
-<ul>
-<li>Synthetic renderings of objects</li>
-<li>Real images of complex scenes</li>
-</ul>
-<blockquote>
-<p>nerf-pytorch代码阅读笔记：<a href="https://github.com/lhmd/nerf-notes">nerf-notes</a></p>
-<p>上手pytorch：<a href="https://blog.csdn.net/jiaowoshouzi/article/details/102002468?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-102002468-blog-123333042.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-102002468-blog-123333042.pc_relevant_default&amp;utm_relevant_index=1">60分钟教你上手PyTorch + 迁移学习</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>CV</category>
-        <category>paper</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>code before this website</title>
-    <url>/blog/2022/10/27/code-before-this-website/</url>
-    <content><![CDATA[<h1 id="fds刷题记录"><a href="#fds刷题记录" class="headerlink" title="fds刷题记录"></a>fds刷题记录</h1><span id="more"></span>
-<h3 id="PTA-B-1003-我要通过"><a href="#PTA-B-1003-我要通过" class="headerlink" title="PTA B 1003 我要通过!"></a><a href="https://pintia.cn/problem-sets/994805260223102976/exam/problems/994805323154440192">PTA B 1003 我要通过!</a></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n,k,flag;</span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">        getchar();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">                <span class="type">int</span> a[<span class="number">3</span>]= &#123;<span class="number">0</span>&#125;;</span><br><span class="line">                k=<span class="number">0</span>;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>((ch=getchar())!=<span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(ch==<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">                                a[k]++;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;P&#x27;</span>&amp;&amp;k==<span class="number">0</span>)</span><br><span class="line">                                k=<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">&#x27;T&#x27;</span>&amp;&amp;k==<span class="number">1</span>)</span><br><span class="line">                                k=<span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                                flag=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag&amp;&amp;k==<span class="number">2</span>&amp;&amp;a[<span class="number">0</span>]*a[<span class="number">1</span>]==a[<span class="number">2</span>]&amp;&amp;a[<span class="number">1</span>]!=<span class="number">0</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="初识dp：买卖股票最佳时机"><a href="#初识dp：买卖股票最佳时机" class="headerlink" title="初识dp：买卖股票最佳时机"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2zsx1/">初识dp：买卖股票最佳时机</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size=prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> dp[<span class="number">30005</span>][<span class="number">2</span>]=&#123;<span class="number">0</span>&#125;,i;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>]=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;size; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i])?dp[i<span class="number">-1</span>][<span class="number">0</span>]:dp[i<span class="number">-1</span>][<span class="number">1</span>]+prices[i];</span><br><span class="line">            dp[i][<span class="number">1</span>] = (dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]&gt;dp[i<span class="number">-1</span>][<span class="number">1</span>])?dp[i<span class="number">-1</span>][<span class="number">0</span>]-prices[i]:dp[i<span class="number">-1</span>][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[size<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*此题利润累加法也可解&lt;贪心算法&gt;</span></span><br><span class="line"><span class="comment">public int maxProfit(int[] prices) &#123;</span></span><br><span class="line"><span class="comment">    if (prices == null || prices.length &lt; 2)</span></span><br><span class="line"><span class="comment">        return 0;</span></span><br><span class="line"><span class="comment">    int total = 0, index = 0, length = prices.length;</span></span><br><span class="line"><span class="comment">    while (index &lt; length) &#123;</span></span><br><span class="line"><span class="comment">        //如果股票下跌就一直找，直到找到股票开始上涨为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &gt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //股票上涨开始的值，也就是这段时间上涨的最小值</span></span><br><span class="line"><span class="comment">        int min = prices[index];</span></span><br><span class="line"><span class="comment">        //一直找到股票上涨的最大值为止</span></span><br><span class="line"><span class="comment">        while (index &lt; length - 1 &amp;&amp; prices[index] &lt;= prices[index + 1])</span></span><br><span class="line"><span class="comment">            index++;</span></span><br><span class="line"><span class="comment">        //计算这段上涨时间的差值，然后累加</span></span><br><span class="line"><span class="comment">        total += prices[index++] - min;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return total;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
-<h3 id="异或运算的应用：查重"><a href="#异或运算的应用：查重" class="headerlink" title="异或运算的应用：查重"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x21ib6/">异或运算的应用：查重</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            res=res^nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="位运算的应用：判断数字是否重复"><a href="#位运算的应用：判断数字是否重复" class="headerlink" title="位运算的应用：判断数字是否重复"></a><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2f9gg/">位运算的应用：判断数字是否重复</a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> line[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> column[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> block[<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> shift = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;<span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="string">&#x27;.&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                shift = <span class="number">1</span> &lt;&lt; (board[i][j] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                <span class="type">int</span> k = (i / <span class="number">3</span>) * <span class="number">3</span> + j / <span class="number">3</span>;</span><br><span class="line">                <span class="comment">//如果对应的位置只要有一个大于0，说明有冲突，直接返回false</span></span><br><span class="line">                <span class="keyword">if</span> ((column[i] &amp; shift) &gt; <span class="number">0</span> || (line[j] &amp; shift) &gt; <span class="number">0</span> || (block[k] &amp; shift) &gt; <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                column[i] |= shift;</span><br><span class="line">                line[j] |= shift;</span><br><span class="line">                block[k] |= shift;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>code</tag>
-      </tags>
   </entry>
   <entry>
     <title>linux 桌面版配置</title>
